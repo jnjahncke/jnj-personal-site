@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts | Jennifer Jahncke</title>
+    <link>/post/</link>
+      <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <description>Posts</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <image>
+      <url>/img/logo.JPEG</url>
+      <title>Posts</title>
+      <link>/post/</link>
+    </image>
+    
+    <item>
+      <title>Side Effects of Psychiatric Medications</title>
+      <link>/post/side-effects-of-psychiatric-medications/</link>
+      <pubDate>Thu, 25 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>/post/side-effects-of-psychiatric-medications/</guid>
+      <description>
+
+
+&lt;div id=&#34;the-data-sider-4.1-side-effect-resource&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Data: SIDER 4.1 Side Effect Resource&lt;/h3&gt;
+&lt;p&gt;From the &lt;a href=&#34;http://sideeffects.embl.de/&#34;&gt;website&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;SIDER contains information on marketed medicines and their recorded adverse drug reactions. The information is extracted from public documents and package inserts. The available information include side effect frequency, drug and side effect classifications as well as links to further information, for example drug–target relations.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-visualization-what-are-the-most-common-side-effects-of-psychiatric-medications&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Visualization: What are the most common side effects of psychiatric medications?&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/post/side-effects-of-psychiatric-medications/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;864&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-details-how-the-plot-was-made&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Details: How the Plot was Made&lt;/h3&gt;
+&lt;p&gt;This plot was made using &lt;code&gt;ggplot&lt;/code&gt;. It uses &lt;code&gt;geom_bar&lt;/code&gt; with &lt;code&gt;coord_theta&lt;/code&gt; to change the bar to a circle. The color scheme is the Futurama palette from the &lt;code&gt;ggsci&lt;/code&gt; package. Here is a glimpse of the data:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;STITCH&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Drug&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;MedDra_code&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;MedDra_term&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;freq_lb&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;freq_ub&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;CID100000444&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bupropion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C0004093&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Asthenia&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.022&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.164&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;CID100000444&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bupropion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C0009806&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Constipation&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.096&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.096&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;CID100000444&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bupropion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C0011991&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Diarrhoea&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.052&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.052&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;CID100000444&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bupropion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C0012833&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Dizziness&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.064&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.064&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;CID100000444&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bupropion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C0015672&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Fatigue&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.050&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.050&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;CID100000444&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bupropion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C0018681&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Headache&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.191&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.290&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;CID100000444&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bupropion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C0027497&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Nausea&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.096&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.096&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;CID100000444&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bupropion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C0042963&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Vomiting&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.046&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.170&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;CID100000444&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bupropion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C0043352&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Dry mouth&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.150&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.150&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;CID100000444&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bupropion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C0232462&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Decreased appetite&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.051&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.051&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;And here is the &lt;code&gt;ggplot&lt;/code&gt; code:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;top12_psych %&amp;gt;% filter(freq_lb &amp;gt;= 0.1) %&amp;gt;% 
+ggplot(mapping = aes(x = 1, y=freq_lb, fill = MedDra_term)) + 
+  geom_bar(stat = &amp;quot;identity&amp;quot;, position = &amp;quot;fill&amp;quot;, width = 0.1) +
+  coord_polar(theta=&amp;quot;y&amp;quot;) +
+  facet_wrap(~Drug, ncol=5) +
+  xlim(c(0.9, 1.05)) +
+  labs(title = &amp;quot;What are the most common side effects of psychiatric medications?&amp;quot;,
+       subtitle = &amp;quot; &amp;quot;) +
+  theme_void() +
+  theme(legend.position = &amp;quot;top&amp;quot;,
+        legend.title = element_blank(),
+        plot.title = element_text(hjust=0.5, size = 20),
+        plot.margin = margin(t = 20, r = 0, b = 20, l = 0, unit = &amp;quot;pt&amp;quot;),
+        plot.subtitle = element_text(size=1),
+        strip.background = element_rect(colour=&amp;quot;black&amp;quot;, fill=&amp;quot;grey90&amp;quot;),
+        strip.text = element_text(size = 10, vjust=1, hjust=0.5, margin=margin(3,0,3,0,&amp;quot;pt&amp;quot;))) +
+  scale_fill_futurama()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Home Ownership in Portland, OR</title>
+      <link>/post/home-ownership-in-portland-or/</link>
+      <pubDate>Tue, 02 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>/post/home-ownership-in-portland-or/</guid>
+      <description>
+
+
+&lt;div id=&#34;the-data-portland-or-2010-census-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Data: Portland, OR 2010 Census Data&lt;/h3&gt;
+&lt;p&gt;Portland provides open access &lt;a href=&#34;http://www.civicapps.org/datasets&#34;&gt;maps and GIS data&lt;/a&gt; as well as &lt;a href=&#34;https://www.portlandoregon.gov/civic/56897&#34;&gt;census data&lt;/a&gt;. Here I chose to focus on data from each Portland neighborhood describing the number of individuals who either own their housing versus rent their housing. For the map I am also using data describing the layout of the city neighborhoods and the Willamette River.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-visualization-percent-of-housing-units-that-are-owned-by-neighborhood&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Visualization: Percent of Housing Units that are Owned, by Neighborhood&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/post/home-ownership-in-portland-or/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Here I am using color to indicate the percent of housing units that are owned in a given neighborhood. With this color scale, red indicates that more units are owned than rented and blue indicates that more units are rented than owned. White indicates that an equal number of units are owned and rented. As you can see, in the neighborhoods surroundng the downtown area/city center, more units are rented than owned but in the majority of other neighborhoods the opposite is true.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-details-how-the-plot-was-made&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Details: How the Plot was Made&lt;/h3&gt;
+&lt;p&gt;This plot was made using &lt;code&gt;ggplot2&lt;/code&gt; with &lt;code&gt;geom_sf&lt;/code&gt; from the &lt;code&gt;sf&lt;/code&gt; package. The data is organized into shp/shapefile folders and imported using &lt;code&gt;st_read()&lt;/code&gt; (also part of &lt;code&gt;sf&lt;/code&gt;). This results in an information-rich dataframe that makes these kinds of plots easy to create.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;boundaries_with_pop %&amp;gt;% ggplot() + 
+  geom_sf(aes(fill=`Percent Owned`), color = &amp;quot;black&amp;quot;) + # plot the neighborhoods
+  scale_fill_gradient2(midpoint = 50,
+                        low=&amp;quot;blue&amp;quot;, mid=&amp;quot;white&amp;quot;, high=&amp;quot;red&amp;quot;) + # specify the gradient color scale
+  geom_sf(data=river_boundaries, fill=&amp;quot;blue&amp;quot;, color = &amp;quot;transparent&amp;quot;) + # plot the river
+  labs(title = &amp;quot;Percent of Housing Units that are Owned (Not Rented), \nby Neighborhood&amp;quot;,
+       fill = &amp;quot;% Owned&amp;quot;) +
+  theme_minimal()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mobility During COVID19</title>
+      <link>/post/mobility-during-covid19/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      <guid>/post/mobility-during-covid19/</guid>
+      <description>
+
+
+&lt;p&gt;The whole world is on lockdown due to the SARS-CoV-2 pandemic that began in 2019 and continues to grow today. As lockdown orders have been issued, the way people move about their hometowns have changed. More people are working from home and only grocery shopping every couple of weeks. &lt;a href=&#34;https://www.apple.com/covid19&#34;&gt;Apple&lt;/a&gt; has made available trends in mobility in major cities and countries as measured through usage of the Apple Maps application. Data is available from January 2020 onwards and can be accessed through the &lt;a href=&#34;https://kjhealy.github.io/covdata/&#34;&gt;&lt;code&gt;covdata&lt;/code&gt; R package&lt;/a&gt;. Below is an interactive widget to view the mobility trends for individual countries. (The app can also be found &lt;a href=&#34;https://jennifer-jahncke.shinyapps.io/Mobility-During-COVID19/&#34;&gt;here&lt;/a&gt;.)&lt;/p&gt;
+&lt;iframe height=&#34;1500&#34; width=&#34;100%&#34; frameborder=&#34;no&#34; src=&#34;https://jennifer-jahncke.shinyapps.io/Mobility-During-COVID19/&#34;&gt;
+&lt;/iframe&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Danceability Across the Ages</title>
+      <link>/post/danceability/</link>
+      <pubDate>Wed, 22 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/post/danceability/</guid>
+      <description>
+
+
+&lt;div id=&#34;the-data-billboard-200-tracks&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Data: Billboard 200 Tracks&lt;/h3&gt;
+&lt;p&gt;This data set is from &lt;a href=&#34;https://components.one/datasets/billboard-200/&#34;&gt;Components One’s Datasets&lt;/a&gt;. It’s a large database containing data on 340,000 tracks from Billboard 200 albums released from 1963-2019. Included for each track is the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Track name&lt;/li&gt;
+&lt;li&gt;Track ID on Spotify&lt;/li&gt;
+&lt;li&gt;Album name&lt;/li&gt;
+&lt;li&gt;Album ID on Spotify&lt;/li&gt;
+&lt;li&gt;Artist name&lt;/li&gt;
+&lt;li&gt;Duration&lt;/li&gt;
+&lt;li&gt;Release date of the album&lt;/li&gt;
+&lt;li&gt;Spotify’s EchoNest acoustic data:
+&lt;ul&gt;
+&lt;li&gt;Acousticness&lt;/li&gt;
+&lt;li&gt;Danceability&lt;/li&gt;
+&lt;li&gt;Energy&lt;/li&gt;
+&lt;li&gt;Instrumentalness&lt;/li&gt;
+&lt;li&gt;Liveness&lt;/li&gt;
+&lt;li&gt;Loudness&lt;/li&gt;
+&lt;li&gt;Speechiness&lt;/li&gt;
+&lt;li&gt;Key&lt;/li&gt;
+&lt;li&gt;Time signature&lt;/li&gt;
+&lt;li&gt;Valence&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-visualization-how-has-the-danceability-of-music-changed-over-time&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Visualization: How has the danceability of music changed over time?&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/post/danceability/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;1152&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Here, color indicates how “danceable” music was for a given year. Immediately, we can tell that the ’80s and ’90s were the most danceable decades and that 1961 must have been pretty dark days for music.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-details-how-the-plot-was-made&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Details: How the Plot was Made&lt;/h3&gt;
+&lt;p&gt;This ridgeline plot was made using the &lt;code&gt;ggridges&lt;/code&gt; package, which integrates with ggplot. (For more information on the ridgeline plot, &lt;a href=&#34;/project/the-ridgeline-plot/&#34;&gt;see my post&lt;/a&gt;.) Here, I used &lt;code&gt;geom_density_ridges()&lt;/code&gt; and faceted by decade. The color gradient is the “inferno” palette from &lt;code&gt;viridis&lt;/code&gt;. The theme is &lt;code&gt;ggplot:theme_minimal()&lt;/code&gt; with some modifications to the background and facet titles.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(track_data, aes(x = danceability, y = year, fill = YearDanceability)) +
+  geom_density_ridges(scale = 4, alpha = 0.9) + 
+  facet_wrap(~ decade, scales = &amp;quot;free_y&amp;quot;, nrow = 1) + # Need free_y scale otherwise the plots aren&amp;#39;t aligned
+  scale_y_discrete(expand = c(0,0,0, 4)) + # The facet labels were covering the top curve so I added padding
+  scale_x_continuous(expand = c(0, 0)) +
+  coord_cartesian(clip = &amp;quot;off&amp;quot;) + # to avoid clipping of the top bit of the top curve
+  scale_fill_viridis(option = &amp;quot;inferno&amp;quot;) +
+  theme_minimal() +
+  labs(fill = &amp;quot;Mean Year\nDanceability\nScore&amp;quot;,
+       title = &amp;quot;1980&amp;#39;s &amp;amp; 90&amp;#39;s: The Most Danceable Decades?&amp;quot;,
+       subtitle = &amp;#39;How does the &amp;quot;danceability&amp;quot; of music change over time?&amp;#39;,
+       x = &amp;quot;Song Danceability Score&amp;quot;,
+       y = &amp;quot;Year&amp;quot;) +
+  theme(strip.background = element_rect(color = &amp;quot;white&amp;quot;, fill = &amp;quot;lightgray&amp;quot;), # Format the facet labels
+        axis.title.y = element_text(hjust = 0.35)) # Change the justification of the y-axis label&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Resting Heart Rate after Pulmonary Embolism</title>
+      <link>/post/hr-after-pe/</link>
+      <pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/post/hr-after-pe/</guid>
+      <description>
+
+
+&lt;div id=&#34;the-data-personal-fitbit-heart-rate-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Data: Personal Fitbit Heart Rate Data&lt;/h3&gt;
+&lt;p&gt;I’ve been wearing a Fitbit for nearly two years at this point and as a result, I have a lot of data on my heart rate, sleep, and activity. Fitbit allows you to &lt;a href=&#34;https://help.fitbit.com/articles/en_US/Help_article/1133&#34;&gt;export all of your data fairly easily&lt;/a&gt;. I then did some basic data wrangling to isolate my “before PE” and “after PE” heart rate data.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-visualization-how-was-my-heart-rate-affected-by-my-embolism&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Visualization: How was my heart rate affected by my embolism?&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/post/HR-after-PE/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;As the plot states, I had a pulmonary embolism last July. Being the data nerd that I am, ever since my embolism I have been obsessed with tracking my heart rate using my Fitbit. Here I used color to separate my heart rate data from before my PE to my heart rate after my PE It’s clear that my heart rate has been elevated following my PE.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-details-how-the-plot-was-made&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Details: How the Plot was Made&lt;/h3&gt;
+&lt;p&gt;This plot was made in ggplot2 using &lt;code&gt;geom_line()&lt;/code&gt;. The theme used is &lt;code&gt;ggplot2::theme_light()&lt;/code&gt; with some simple tweaks. The color palette was made using the &lt;a href=&#34;https://github.com/dill/beyonce&#34;&gt;&lt;code&gt;beyonce&lt;/code&gt; package&lt;/a&gt;. Here I pulled two colors from the #78 color palette:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/HR-after-PE/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;288&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(fitbit, aes(x = Week, y = BPM, group = `Heart Rate`, color = `Heart Rate`)) +
+  geom_line(size = 1) +
+  labs(y = &amp;quot;Resting Heart Rate (BPM)&amp;quot;,
+       title = &amp;quot;Resting Heart Rate after Pulmonary Embolism&amp;quot;,
+       subtitle = &amp;quot;In July 2019 I had a pulmonary embolism (PE). My heart rate increased as a result. \nHere is my resting heart rate six months before my PE and six months after my PE.&amp;quot;) +
+  scale_x_continuous(expand = c(0.01,0.01), 
+                     breaks = seq(0, 26, 5)) +
+  theme_light() +
+  theme(panel.border = element_blank(),
+        plot.title = element_text(face = &amp;quot;bold&amp;quot;, size = 15)) +
+  scale_color_manual(values = beyonce_palette(78)[c(2,4)])&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The lifespan of MoMA artists</title>
+      <link>/post/lifespan-of-moma-artists/</link>
+      <pubDate>Wed, 08 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/post/lifespan-of-moma-artists/</guid>
+      <description>
+
+
+&lt;div id=&#34;the-data-the-new-york-moma-collection&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Data: The New York MoMA Collection&lt;/h3&gt;
+&lt;p&gt;From &lt;em&gt;Data Is Plural&lt;/em&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This July, the Museum of Modern Art published a dataset containing 120,000 artworks from its catalog, joining the UK’s Tate, the Smithsonian’s Cooper Hewitt, and other forward-thinking museums. The MoMA data contains the names of the artwork and artist, the dates created and acquired, and the medium — but no images. Related: Artist Jer Thorp encourages you to “perform” the data. Also related: Every museum in the United States. (&lt;a href=&#34;https://twitter.com/popovichn&#34;&gt;h/t Nadja Popovich&lt;/a&gt;)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The data can be found &lt;a href=&#34;https://github.com/MuseumofModernArt/collection&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-visualization-is-there-a-difference-in-lifespan-between-male-and-female-artists&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Visualization: Is there a difference in lifespan between male and female artists?&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/post/moma/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;This plot looks at the lifespans of the artists represented in the MoMA collection of paintings. The distribution of lifespans for males and females are overalayed with the average lifespan for each gender. Through this visualization we can see that male and female artists had similar lifespans with the average lifespan for both gender being around 75 years of age.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-details-how-the-plot-was-made&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Details: How the Plot was Made&lt;/h3&gt;
+&lt;p&gt;This plot was made in ggplot2 using &lt;code&gt;geom_density()&lt;/code&gt;. To add the vertical lines I used &lt;code&gt;geom_vline()&lt;/code&gt;, setting the x-intercept to the average lifespan, calculated elsewhere. The text and arrow were created using the &lt;code&gt;annotate()&lt;/code&gt; function with &lt;code&gt;geom = &#34;text&#34;&lt;/code&gt; and &lt;code&gt;geom = &#34;curve&#34;&lt;/code&gt;. The theme for this plot is &lt;code&gt;theme_fivethirtyeight()&lt;/code&gt; from the &lt;code&gt;ggthemes&lt;/code&gt; package, with some modifications to the legend and axes.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;moma_life &amp;lt;- moma %&amp;gt;% 
+  mutate(Lifespan = artist_death_year - artist_birth_year) %&amp;gt;% 
+  filter(!is.na(Lifespan)) %&amp;gt;%
+  filter(!is.na(artist_gender))
+
+# Calculate the average lifespans for each gender
+avgmale &amp;lt;- moma_life %&amp;gt;% filter(artist_gender == &amp;quot;Male&amp;quot;)
+avgmale &amp;lt;- mean(avgmale$Lifespan)
+avgfemale &amp;lt;- moma_life %&amp;gt;% filter(artist_gender == &amp;quot;Female&amp;quot;)
+avgfemale &amp;lt;- mean(avgfemale$Lifespan)
+
+# Set color palette
+colorgender &amp;lt;- c(&amp;quot;Male&amp;quot; = &amp;quot;lightseagreen&amp;quot;, 
+               &amp;quot;Female&amp;quot; = &amp;quot;indianred1&amp;quot;)
+
+# The plot
+ggplot(data = moma_life, aes(fill = artist_gender, x = Lifespan)) +
+  geom_density(alpha = 0.6, size = 1) +
+  coord_cartesian(xlim = c(27,102)) +
+  geom_vline(xintercept = avgmale, size = 1, color = &amp;quot;turquoise4&amp;quot;) +
+  geom_vline(xintercept = avgfemale, size = 1, color = &amp;quot;indianred1&amp;quot;) +
+  theme_fivethirtyeight() +
+  scale_fill_manual(values = colorgender) +
+  theme(legend.position = c(0.115, 0.95), 
+        legend.title = element_blank(),
+        legend.background = element_rect(),
+        legend.margin = margin(c(0,0,7,0)),
+        axis.title = element_text()) +
+  labs(title = &amp;quot;The lifespan of MoMA artists&amp;quot;,
+       subtitle = &amp;quot;Here we see the distribution of lifepans for male and female artists \nrepresented in the MoMA collection&amp;quot;,
+       x = &amp;quot;Lifespan (Years)&amp;quot;,
+       y = &amp;quot;Frequency of Occurrence&amp;quot;) +
+  annotate(x = 77, y = 0.004, geom = &amp;quot;text&amp;quot;,
+           label = &amp;quot;average \nlifespans&amp;quot;, 
+           color = &amp;quot;grey20&amp;quot;, size = 4,
+           hjust = 0, fontface = 2, lineheight = 0.8) +
+  annotate(geom = &amp;quot;curve&amp;quot;, size = 1, color = &amp;quot;grey20&amp;quot;,
+           x = 80.5, y = 0.006, xend = 76, yend = 0.009,
+           arrow = arrow(length = unit(3, &amp;quot;mm&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

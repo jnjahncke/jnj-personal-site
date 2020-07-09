@@ -1,0 +1,1912 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>data viz | Jennifer Jahncke</title>
+    <link>/tag/data-viz/</link>
+      <atom:link href="/tag/data-viz/index.xml" rel="self" type="application/rss+xml" />
+    <description>data viz</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 25 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/logo.JPEG</url>
+      <title>data viz</title>
+      <link>/tag/data-viz/</link>
+    </image>
+    
+    <item>
+      <title>Side Effects of Psychiatric Medications</title>
+      <link>/post/side-effects-of-psychiatric-medications/</link>
+      <pubDate>Thu, 25 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>/post/side-effects-of-psychiatric-medications/</guid>
+      <description>
+
+
+&lt;div id=&#34;the-data-sider-4.1-side-effect-resource&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Data: SIDER 4.1 Side Effect Resource&lt;/h3&gt;
+&lt;p&gt;From the &lt;a href=&#34;http://sideeffects.embl.de/&#34;&gt;website&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;SIDER contains information on marketed medicines and their recorded adverse drug reactions. The information is extracted from public documents and package inserts. The available information include side effect frequency, drug and side effect classifications as well as links to further information, for example drug–target relations.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-visualization-what-are-the-most-common-side-effects-of-psychiatric-medications&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Visualization: What are the most common side effects of psychiatric medications?&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/post/side-effects-of-psychiatric-medications/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;864&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-details-how-the-plot-was-made&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Details: How the Plot was Made&lt;/h3&gt;
+&lt;p&gt;This plot was made using &lt;code&gt;ggplot&lt;/code&gt;. It uses &lt;code&gt;geom_bar&lt;/code&gt; with &lt;code&gt;coord_theta&lt;/code&gt; to change the bar to a circle. The color scheme is the Futurama palette from the &lt;code&gt;ggsci&lt;/code&gt; package. Here is a glimpse of the data:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;STITCH&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Drug&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;MedDra_code&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;MedDra_term&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;freq_lb&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;freq_ub&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;CID100000444&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bupropion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C0004093&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Asthenia&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.022&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.164&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;CID100000444&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bupropion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C0009806&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Constipation&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.096&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.096&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;CID100000444&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bupropion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C0011991&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Diarrhoea&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.052&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.052&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;CID100000444&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bupropion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C0012833&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Dizziness&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.064&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.064&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;CID100000444&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bupropion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C0015672&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Fatigue&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.050&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.050&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;CID100000444&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bupropion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C0018681&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Headache&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.191&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.290&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;CID100000444&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bupropion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C0027497&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Nausea&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.096&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.096&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;CID100000444&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bupropion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C0042963&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Vomiting&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.046&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.170&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;CID100000444&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bupropion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C0043352&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Dry mouth&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.150&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.150&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;CID100000444&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bupropion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C0232462&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Decreased appetite&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.051&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.051&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;And here is the &lt;code&gt;ggplot&lt;/code&gt; code:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;top12_psych %&amp;gt;% filter(freq_lb &amp;gt;= 0.1) %&amp;gt;% 
+ggplot(mapping = aes(x = 1, y=freq_lb, fill = MedDra_term)) + 
+  geom_bar(stat = &amp;quot;identity&amp;quot;, position = &amp;quot;fill&amp;quot;, width = 0.1) +
+  coord_polar(theta=&amp;quot;y&amp;quot;) +
+  facet_wrap(~Drug, ncol=5) +
+  xlim(c(0.9, 1.05)) +
+  labs(title = &amp;quot;What are the most common side effects of psychiatric medications?&amp;quot;,
+       subtitle = &amp;quot; &amp;quot;) +
+  theme_void() +
+  theme(legend.position = &amp;quot;top&amp;quot;,
+        legend.title = element_blank(),
+        plot.title = element_text(hjust=0.5, size = 20),
+        plot.margin = margin(t = 20, r = 0, b = 20, l = 0, unit = &amp;quot;pt&amp;quot;),
+        plot.subtitle = element_text(size=1),
+        strip.background = element_rect(colour=&amp;quot;black&amp;quot;, fill=&amp;quot;grey90&amp;quot;),
+        strip.text = element_text(size = 10, vjust=1, hjust=0.5, margin=margin(3,0,3,0,&amp;quot;pt&amp;quot;))) +
+  scale_fill_futurama()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Radar Diagrams</title>
+      <link>/project/radar-diagrams/</link>
+      <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>/project/radar-diagrams/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Radar plots are also known as spider web or polar plots. These charts are useful for conveying information about multiple quantitative variables using multiple axes, arranged in a circle. In R it is &lt;a href=&#34;https://www.r-bloggers.com/the-grammar-of-graphics-and-radar-charts/&#34;&gt;technically possible to use &lt;code&gt;ggplot2&lt;/code&gt;&lt;/a&gt; to make these kinds of charts but the &lt;code&gt;fmsb&lt;/code&gt; package allows for much easier and more readily customizable charts. (See &lt;a href=&#34;https://cran.r-project.org/web/packages/fmsb/&#34;&gt;fmsb’s CRAN page&lt;/a&gt; and &lt;a href=&#34;https://www.rdocumentation.org/packages/fmsb/versions/0.7.0&#34;&gt;RDocumentation page&lt;/a&gt; for more details.)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/project/radar-diagrams/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;768&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;div id=&#34;the-data-neuroelectro-database-of-electrical-properties-of-brain-cells&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;The Data: NeuroElectro Database of Electrical Properties of Brain Cells&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.neuroelectro.org/api/docs/&#34;&gt;NeuroElectro&lt;/a&gt; is a great resource for electrophysiologists in neuroscience. This project extracts information about the electrophysiological properties of neurons from existing literature and integrates it into a centralized database. There are dozens of measurements documented for a large number of cell types in multiple species and preparations.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Citation:&lt;/em&gt;
+NeuroElectro: a window to the world’s neuron electrophysiology data.
+Frontiers in Neuroinformatics, April 2014
+Tripathy SJ, Savitskaya J, Burton SD, Urban NN, and Gerkin RC
+Description: A methods paper outlining the text-mining and manual curation methodology used to construct the NeuroElectro resource.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;representaiton-description&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Representaiton Description&lt;/h1&gt;
+&lt;p&gt;For my visualization I am focusing on in vitro patch clamp data in mouse tissue, because that’s what I work with in the lab. I decided to feature only 6 cell types which were more or less randomly chosen using my personal bias. I chose to focus on only 5 physiological properties even though there were many more in the dataset. Each radar plot here represents a single cell type. My intent is to showcase electrical properties of these cells for quick comparison. This is a lot of data in a small space. The same data could be conveyed using five bar graphs instead (in fact, if you were interested in the absolute measurements, bar graphs would be better.&lt;/p&gt;
+&lt;p&gt;For the &lt;code&gt;fmsb&lt;/code&gt; package I need to include the maximum and minimum data for each variable so that it knows how to scale its axes. Here is the data that I am working with:&lt;/p&gt;
+&lt;table class=&#34;table&#34; style=&#34;width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+Input Resistance
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+Resting Membrane Potential*
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+Capacitance
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+Rheobase
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+Spike Amplitude
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Max
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+221.53
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+81.64
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+614.61
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1300.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+86.42
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Min
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.00
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr grouplength=&#34;6&#34;&gt;
+&lt;td colspan=&#34;6&#34; style=&#34;border-bottom: 1px solid;&#34;&gt;
+&lt;strong&gt;Neurons&lt;/strong&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left; padding-left: 2em;&#34; indentlevel=&#34;1&#34;&gt;
+Neocortex pyramidal cell layer 5-6
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+162.13
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+70.35
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+89.23
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+166.11
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+79.33
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left; padding-left: 2em;&#34; indentlevel=&#34;1&#34;&gt;
+Neocortex basket cell
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+158.96
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+67.41
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+51.31
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+281.98
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+61.22
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left; padding-left: 2em;&#34; indentlevel=&#34;1&#34;&gt;
+Hippocampus CA1 pyramidal cell
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+155.91
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+66.55
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+94.55
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+75.60
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+86.42
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left; padding-left: 2em;&#34; indentlevel=&#34;1&#34;&gt;
+Neostriatum medium spiny neuron
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+121.20
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+81.64
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+80.50
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+263.62
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+81.59
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left; padding-left: 2em;&#34; indentlevel=&#34;1&#34;&gt;
+Cerebellum Purkinje cell
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+125.31
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+62.02
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+614.61
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1300.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+81.32
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left; padding-left: 2em;&#34; indentlevel=&#34;1&#34;&gt;
+Hippocampus CA3 pyramidal cell
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+221.53
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+67.28
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+208.54
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+92.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+82.25
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tfoot&gt;
+&lt;tr&gt;
+&lt;td style=&#34;padding: 0; border: 0;&#34; colspan=&#34;100%&#34;&gt;
+&lt;sup&gt;*&lt;/sup&gt; Note: Resting membrane potential is shown positive, but is in fact negative. This is because the radar plot struggles with negative values.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-to-interpret&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;How to interpret&lt;/h1&gt;
+&lt;p&gt;As I mentioned above, each radar plot represents a single cell type. Here, color serves no purpose other to indicate that each plot is a unique cell type. Each of the five axes represents a different measurement and has a different scale. The minimum is 0 in all cases. The maximum is indicated y the number at the apex of the axis. The lines indicate the percent of maximum from 0% to 100%, with each segment representing 25% of the maximum. This is indicated on the vertical axis, the only one with labels at each segment. It’s easy to see, for example, that cerebellar Purkinje cells have significantly higher cell capacitance and rheobase compared to other cell types. We can also see that all of this cell types have similar restine membrane potentials.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;presentation-tips&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Presentation Tips&lt;/h1&gt;
+&lt;p&gt;While &lt;code&gt;fmsb&lt;/code&gt; will allow you to create as many axes as you want, I wouldn’t do more than 6. Beyond 6 things start to get difficult to interpret. Additionally, it is easiest to understand radar plots when each of the axes have the same scale (which mine do not). If the axes do have different scales, try to be as explicit as possible with labels. Unfortunately only the “center” axis (the vertical one) can show labels at each segment break. While the &lt;code&gt;fmsb&lt;/code&gt; package contains many variables that can be modified to customize the plot, I found that it lacks in specifying text. For example, there is no way to adjust the text justification (left, center, right) of only one text element, you can only do it for all or none. You also cannot manually move text labels; this results in a lot of overlapping text, requiring you to get creative.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;variations-and-alternatives&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Variations and Alternatives&lt;/h1&gt;
+&lt;p&gt;There is a lot of hate for radar plots in the data viz world. In most cases, a series of bar graphs or a parallel coordinate plot conveys the data in a more easily interpretable way, albeit not as cool looking.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-radar-plot&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;The Radar Plot&lt;/h1&gt;
+&lt;div id=&#34;the-most-basic-radar-plot&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The most basic radar plot&lt;/h3&gt;
+&lt;p&gt;Before getting too fancy, what does &lt;code&gt;fmsb&lt;/code&gt; do with basically no embelishments? For this, we’ll use just one cell type. I decided to use Neocortex pyramidal cell (layer 5/6) data for this example. The top two rows of the data frame represent the axis max and min values. The next row(s) are the actual data. It should look like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 5
+##     rin   rmp   cap  rheo apamp
+##   &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+## 1  222.  81.6 615.  1300   86.4
+## 2    0    0     0      0    0  
+## 3  162.  70.3  89.2  166.  79.3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now, feed it into &lt;code&gt;fmsb::radarchart()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(mar=c(0,0,1.2,0)+0.1) # Set the margins
+radarchart(cortexpyramidal, title=&amp;quot;Neocortex pyramidal cell layer 5-6&amp;quot;) # Make the default radar plot&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/project/radar-diagrams/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;480&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-embelished-radar-plot&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The embelished radar plot&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;I used &lt;code&gt;par()&lt;/code&gt; to customize the output. You can do a lot with &lt;code&gt;par&lt;/code&gt;. Find helpful documentation &lt;a href=&#34;https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/par&#34;&gt;here&lt;/a&gt;.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;There’s a lot you can do with &lt;code&gt;fmsb::radarchart()&lt;/code&gt;! For full documentation, go &lt;a href=&#34;https://www.rdocumentation.org/packages/fmsb/versions/0.7.0/topics/radarchart&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Define colors for border and shading
+bordercol=colormap(colormap=colormaps$portland, nshades=6, alpha=1)
+shadingcol=colormap(colormap=colormaps$portland, nshades=6, alpha=0.3)
+
+# Set the titles
+titles &amp;lt;- as.character(neuron.data$NeuronName[3:8])
+
+# Split the graphic into 6 frames
+par(mar=c(0.1,0.5,0.5,0.1)+0.1) # Define margins
+par(mfrow=c(2,3)) # 2 rows, 3 column layout
+
+# Loop through each subplot to build the 6 panels
+neuron.data.input &amp;lt;- neuron.data %&amp;gt;% select(-NeuronName) # Get rid of the &amp;quot;NeuronName&amp;quot; column
+
+for(i in 1:6){
+
+  # Build the radarChart
+  radarchart(neuron.data.input[c(1,2,i+2),], axistype=3, 
+  
+    # Build polygon
+    pcol=bordercol[i] , pfcol=shadingcol[i] , plwd=2, plty=1 , 
+  
+    # Define grid properties
+    cglcol=&amp;quot;grey&amp;quot;, cglty=1, axislabcol=&amp;quot;black&amp;quot;, 
+    # The weird spaces below are because you cannot define text alignment for individual compondents of the graph and text was overlapping.
+    paxislabels = c(NA,&amp;quot;\n-80mV        &amp;quot;,&amp;quot;615pF&amp;quot;,&amp;quot;1300pA&amp;quot;,&amp;quot;\n        85mV&amp;quot;), 
+    cglwd=0.8, 
+    caxislabels = c(&amp;quot;0%&amp;quot;,&amp;quot;25%&amp;quot;,&amp;quot;50%&amp;quot;,&amp;quot;75%&amp;quot;,&amp;quot;220MOhm&amp;quot;),
+    
+    # Add titles
+    title=titles[i],
+    
+    # Customize labels
+    vlabels=c(expression(&amp;#39;R&amp;#39;[&amp;#39;in&amp;#39;]), expression(&amp;quot;V&amp;quot;[&amp;quot;m&amp;quot;]), &amp;quot;Capacitance&amp;quot;, &amp;quot;Rheobase&amp;quot;, &amp;quot;Spike\nAmp&amp;quot;),
+    vlcex=1.2, palcex=0.9, calcex=0.9,
+    )
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/project/radar-diagrams/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;768&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Home Ownership in Portland, OR</title>
+      <link>/post/home-ownership-in-portland-or/</link>
+      <pubDate>Tue, 02 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>/post/home-ownership-in-portland-or/</guid>
+      <description>
+
+
+&lt;div id=&#34;the-data-portland-or-2010-census-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Data: Portland, OR 2010 Census Data&lt;/h3&gt;
+&lt;p&gt;Portland provides open access &lt;a href=&#34;http://www.civicapps.org/datasets&#34;&gt;maps and GIS data&lt;/a&gt; as well as &lt;a href=&#34;https://www.portlandoregon.gov/civic/56897&#34;&gt;census data&lt;/a&gt;. Here I chose to focus on data from each Portland neighborhood describing the number of individuals who either own their housing versus rent their housing. For the map I am also using data describing the layout of the city neighborhoods and the Willamette River.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-visualization-percent-of-housing-units-that-are-owned-by-neighborhood&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Visualization: Percent of Housing Units that are Owned, by Neighborhood&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/post/home-ownership-in-portland-or/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Here I am using color to indicate the percent of housing units that are owned in a given neighborhood. With this color scale, red indicates that more units are owned than rented and blue indicates that more units are rented than owned. White indicates that an equal number of units are owned and rented. As you can see, in the neighborhoods surroundng the downtown area/city center, more units are rented than owned but in the majority of other neighborhoods the opposite is true.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-details-how-the-plot-was-made&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Details: How the Plot was Made&lt;/h3&gt;
+&lt;p&gt;This plot was made using &lt;code&gt;ggplot2&lt;/code&gt; with &lt;code&gt;geom_sf&lt;/code&gt; from the &lt;code&gt;sf&lt;/code&gt; package. The data is organized into shp/shapefile folders and imported using &lt;code&gt;st_read()&lt;/code&gt; (also part of &lt;code&gt;sf&lt;/code&gt;). This results in an information-rich dataframe that makes these kinds of plots easy to create.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;boundaries_with_pop %&amp;gt;% ggplot() + 
+  geom_sf(aes(fill=`Percent Owned`), color = &amp;quot;black&amp;quot;) + # plot the neighborhoods
+  scale_fill_gradient2(midpoint = 50,
+                        low=&amp;quot;blue&amp;quot;, mid=&amp;quot;white&amp;quot;, high=&amp;quot;red&amp;quot;) + # specify the gradient color scale
+  geom_sf(data=river_boundaries, fill=&amp;quot;blue&amp;quot;, color = &amp;quot;transparent&amp;quot;) + # plot the river
+  labs(title = &amp;quot;Percent of Housing Units that are Owned (Not Rented), \nby Neighborhood&amp;quot;,
+       fill = &amp;quot;% Owned&amp;quot;) +
+  theme_minimal()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Chord Diagrams</title>
+      <link>/project/chord-diagrams/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      <guid>/project/chord-diagrams/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/d3/d3.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/d3-tip/index.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/chorddiag/chorddiag.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/chorddiag/chorddiag.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/chorddiag-binding/chorddiag.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Also known as “radial network diagrams”, chord diagrams are useful for representing connections between groups (“nodes”). The nodes are circularly arranged and relationships are represented using “chords” connecting two nodes. The chords can carry directional relationships or non-directional relationships. This is a very visually pleasing way to represent relationships and is a powerful method of visualizing large datasets. There is, however, a steep learning curve when it comes to creating chord diagrams. Below I will outline two methods, first I will use the &lt;code&gt;circlize&lt;/code&gt; package to create a static diagram and then I will use the &lt;code&gt;chorddiag&lt;/code&gt; package to create an interactive diagram. For more information on how to build chord diagrams using &lt;code&gt;circlize&lt;/code&gt;, see &lt;a href=&#34;https://jokergoo.github.io/circlize_book/book/&#34;&gt;Circular Visualization in R&lt;/a&gt; by Zuguang Gu (the creator of the &lt;code&gt;circlize&lt;/code&gt; package). The documentation for &lt;code&gt;circlize&lt;/code&gt; can be found &lt;a href=&#34;https://github.com/jokergoo/circlize&#34;&gt;here&lt;/a&gt;. There is some useful information on the &lt;a href=&#34;https://www.r-graph-gallery.com/chord-diagram&#34;&gt;R Graph Gallery chord diagram page&lt;/a&gt; (more &lt;a href=&#34;https://www.r-graph-gallery.com/123-circular-plot-circlize-package-2.html&#34;&gt;here&lt;/a&gt; and &lt;a href=&#34;https://www.r-graph-gallery.com/122-a-circular-plot-with-the-circlize-package.html&#34;&gt;here&lt;/a&gt;). For more information on the &lt;code&gt;chorddiag&lt;/code&gt; package, you can find the documentation &lt;a href=&#34;https://github.com/mattflor/chorddiag&#34;&gt;here&lt;/a&gt;. For an explanation of all of the variables you can customize, see &lt;a href=&#34;https://github.com/mattflor/chorddiag/blob/master/R/chorddiag.R&#34;&gt;additional documentation here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;featured.png&#34; style=&#34;width:80.0%&#34; /&gt;&lt;/p&gt;
+&lt;div id=&#34;the-data-how-couples-meet-and-stay-together&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;The Data: How Couples Meet and Stay Together&lt;/h1&gt;
+&lt;p&gt;The datset is from Stanford’s &lt;a href=&#34;https://data.stanford.edu/hcmst&#34;&gt;How Couples Meet and Stay Together&lt;/a&gt; research project. The dataset contains responses from 4,000 individuals and describes the relationships in their lives. The researchers then followed up on the respondents over several years to track their relationships over time. There are 300+ variables in this dataset. Here I focused on the religious identities of the couples surveyed.&lt;/p&gt;
+&lt;div id=&#34;a-glimpse-of-the-data-what-are-the-religious-compositions-of-partners&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;A glimpse of the data: What are the religious compositions of partners?&lt;/h3&gt;
+&lt;table class=&#34;table table-condensed&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Respondent
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Partner
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Count
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Baptist
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Baptist
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+224
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Baptist
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Buddhist
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Baptist
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Catholic
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+112
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Baptist
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Jewish
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Baptist
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Mormon
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Baptist
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Muslim
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Baptist
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+None
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+72
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Baptist
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Other
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Baptist
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Other Christian
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+67
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Baptist
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Pentecostal
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+26
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Baptist
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Protestant
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+147
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Buddhist
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Catholic
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+5
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Buddhist
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+None
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Buddhist
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Other
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Buddhist
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Other Christian
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Buddhist
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Protestant
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Catholic
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Catholic
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+415
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Catholic
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Eastern Orthodox
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+5
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Catholic
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Hindu
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Catholic
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Jewish
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+40
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;representation-description&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Representation Description&lt;/h1&gt;
+&lt;p&gt;One of the variables in the dataset is the religion of the responent and their partner when they were 16. Each node in my chord diagram represents a religion. Chords connecting the nodes illustrate the religion of the respondent on one end of the chord and their partner on the other end of the chord. In many cases the respondent had the same religious identity as their partner, in which case the chord loops back on itself and looks more like a bump. The thickness of the chord corresponds to the number of partners of that particular religous identity composition. Each node is assigned a color to aid in interpretation. The color of a chord corresponds to the node from which the chord stems from. Transparency was used to aid in the perception of overlapping chords.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-to-interpret&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;How to interpret&lt;/h1&gt;
+&lt;p&gt;Chord diagrams are best used to communicate broad concepts rather than specifics. From this representation it becomes immediately apparent that a very common religious pairing occurs between Catholics and Protestants. It is also common for partners to share the same religious identity. A side effect of this representation is that we can learn something about the religious composition of the participants that were surveyed; most respondents were Protestant, Baptist, or Catholic.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;presentation-tips&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Presentation Tips&lt;/h1&gt;
+&lt;p&gt;Many aspects of the diagram can be customized if you’re using the &lt;code&gt;circlize&lt;/code&gt; package. The package creator has an entire book on the topic available online: &lt;a href=&#34;https://jokergoo.github.io/circlize_book/book/&#34;&gt;Circular Visualization in R&lt;/a&gt;. You can indicate directionality of the chords using arrowheads, which I disabled in my diagrams. You can also change the appearance of within-node chords such that they look like little bumps instead of a chord turned in on itself, which I find easier to understand. Depending on the level of detail that you are trying to convey with your diagram, you might opt to eliminate smaller chords by setting a threshold for chord thickness.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;variations-and-alternatives&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Variations and Alternatives&lt;/h1&gt;
+&lt;p&gt;Another way to represent relationships between groups is through a Sankey or Alluvial diagram. These are very similar to chord diagrams except that the relationship is conveyed through a line connecting two columns and can thus show a larger number of relationships due to the linear layout. Alternatively, network diagrams and arc diagrams can also be useful for communicating relationships.&lt;/p&gt;
+&lt;div id=&#34;the-chord-diagrams&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The Chord Diagrams&lt;/h2&gt;
+&lt;div id=&#34;static-chord-diagram-using-circlize&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Static Chord Diagram Using &lt;code&gt;circlize&lt;/code&gt;&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Define colors
+gridcolors &amp;lt;- c(Baptist = &amp;quot;#F8766D&amp;quot;,
+                Buddhist = &amp;quot;#E18A00&amp;quot;,
+                Catholic = &amp;quot;#BE9C00&amp;quot;,
+                `Eastern Orthodox` = &amp;quot;#8CAB00&amp;quot;,
+                Hindu = &amp;quot;#24B700&amp;quot;,
+                Jewish = &amp;quot;#00BE70&amp;quot;,
+                Mormon = &amp;quot;#00C1AB&amp;quot;,
+                Muslim = &amp;quot;#00BBDA&amp;quot;,
+                None = &amp;quot;#00ACFC&amp;quot;,
+                Other = &amp;quot;#8B93FF&amp;quot;,
+                `Other Christian` = &amp;quot;#D575FE&amp;quot;,
+                Pentecostal = &amp;quot;#F962DD&amp;quot;,
+                Protestant = &amp;quot;#FF65AC&amp;quot;)
+
+chordcolors &amp;lt;- religion_16_summary %&amp;gt;% mutate(Color = case_when(Respondent == &amp;quot;Baptist&amp;quot; ~ &amp;quot;#F8766D&amp;quot;,
+                                                                Respondent == &amp;quot;Buddhist&amp;quot; ~ &amp;quot;#E18A00&amp;quot;,
+                                                                Respondent == &amp;quot;Catholic&amp;quot; ~ &amp;quot;#BE9C00&amp;quot;,
+                                                                Respondent == &amp;quot;Eastern Orthodox&amp;quot; ~ &amp;quot;#8CAB00&amp;quot;,
+                                                                Respondent == &amp;quot;Hindu&amp;quot; ~ &amp;quot;#24B700&amp;quot;,
+                                                                Respondent == &amp;quot;Jewish&amp;quot; ~ &amp;quot;#00BE70&amp;quot;,
+                                                                Respondent == &amp;quot;Mormon&amp;quot; ~ &amp;quot;#00C1AB&amp;quot;,
+                                                                Respondent == &amp;quot;Muslim&amp;quot; ~ &amp;quot;#00BBDA&amp;quot;,
+                                                                Respondent == &amp;quot;None&amp;quot; ~ &amp;quot;#00ACFC&amp;quot;,
+                                                                Respondent == &amp;quot;Other&amp;quot; ~ &amp;quot;#8B93FF&amp;quot;,
+                                                                Respondent == &amp;quot;Other Christian&amp;quot; ~ &amp;quot;#D575FE&amp;quot;,
+                                                                Respondent == &amp;quot;Pentecostal&amp;quot; ~ &amp;quot;#F962DD&amp;quot;,
+                                                                Respondent == &amp;quot;Protestant&amp;quot; ~ &amp;quot;#FF65AC&amp;quot;))
+chordcolors &amp;lt;- chordcolors$Color %&amp;gt;% unlist()
+
+
+# Create the chord diagram
+circos.clear()
+par(mar = c(0, 0, 0.5, 0)) # left, right, top, bottom: add margin around circle
+circos.par(cell.padding = c(0, 0, 0, 0),
+           gap.degree = 1,
+           canvas.ylim = c(-0.6, 0.8), # change the y limits of the canvas
+           canvas.xlim = c(-1.1, 1.1)) # change the x limits of the canvas
+chordDiagram(religion_16_summary,
+             transparency = 0.5, 
+             grid.col = gridcolors, 
+             link.lwd = 0.5, # border line width
+             link.lty = 1, #  border line type
+             link.border = chordcolors, # border line color
+             link.sort = TRUE, link.decreasing = TRUE, # Control the positioning of the sector links to minimize crossings
+             self.link = 1, # Make self-links humps, not chords ( = 2 for chords)
+             annotationTrack = &amp;quot;grid&amp;quot;, # We&amp;#39;ll plot the labels later
+             annotationTrackHeight = 0.02, # Height for the annotation &amp;quot;grid&amp;quot;
+             preAllocateTracks = 1, # Pre allocate a track and later the sector labels will be added
+             directional = FALSE, # There is no directionality to the connections
+             order = religion_16_summary$Respondent) # Order according the the respondent first, partner second
+
+# Since each respondent is a sector, we need to use `draw.sector` to add annotation grids for regions which go across several religions
+first = tapply(religion_16_summary$Respondent, religion_16_summary$Partner, function(x) x[1])
+last = tapply(religion_16_summary$Respondent, religion_16_summary$Partner, function(x) x[length(x)])
+for(i in seq_along(first)) {
+    start.degree = get.cell.meta.data(&amp;quot;cell.start.degree&amp;quot;, sector.index = first[i], track.index = 1)
+    end.degree = get.cell.meta.data(&amp;quot;cell.end.degree&amp;quot;, sector.index = last[i], track.index = 1)
+    rou1 = get.cell.meta.data(&amp;quot;cell.bottom.radius&amp;quot;, sector.index = first[i], track.index = 1)
+    rou2 = get.cell.meta.data(&amp;quot;cell.top.radius&amp;quot;, sector.index = last[i], track.index = 1)
+    draw.sector(start.degree, end.degree, rou1, rou2, border = NA, col = &amp;quot;white&amp;quot;)
+}
+
+# Since default text facing in `chordDiagram` is fixed, we need to manually add text in track 1
+for(si in get.all.sector.index()) {
+    xlim = get.cell.meta.data(&amp;quot;xlim&amp;quot;, sector.index = si, track.index = 1)
+    ylim = get.cell.meta.data(&amp;quot;ylim&amp;quot;, sector.index = si, track.index = 1)
+    circos.text(mean(xlim), ylim[1], si, facing = &amp;quot;clockwise&amp;quot;, adj = c(0, 0.5),
+    niceFacing = TRUE, cex = 1.25, col = &amp;quot;black&amp;quot;, sector.index = si, track.index = 1)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/project/chord-diagrams/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;interactive-chord-diagram-using-chorddiag&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Interactive Chord Diagram Using &lt;code&gt;chorddiag&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;For &lt;code&gt;chorddiag&lt;/code&gt; the data needs to be organized as a matrix, but the subsequent coding for the diagram is much simpler.&lt;/p&gt;
+&lt;table class=&#34;table table-condensed&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Baptist
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Buddhist
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Catholic
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Eastern Orthodox
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Hindu
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Jewish
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Mormon
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Muslim
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+None
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Other
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Other Christian
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Pentecostal
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Protestant
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Baptist
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+224
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+56
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+33
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+38
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+14
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+77
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Buddhist
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Catholic
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+56
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+415
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+19
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+81
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+13
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+63
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+8
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+172
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Eastern Orthodox
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Hindu
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Jewish
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+21
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+32
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+13
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Mormon
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+38
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Muslim
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+None
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+39
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+92
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+134
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+20
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+50
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+75
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Other
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+8
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Other Christian
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+29
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+52
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+42
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+8
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+106
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+47
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Pentecostal
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+12
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+17
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+8
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;font-weight: bold;&#34;&gt;
+Protestant
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+70
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+166
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+15
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+46
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+39
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+14
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+319
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Define colors
+diagcolors &amp;lt;- c(&amp;quot;#F8766D&amp;quot;, &amp;quot;#E18A00&amp;quot;, &amp;quot;#BE9C00&amp;quot;, &amp;quot;#8CAB00&amp;quot;, &amp;quot;#24B700&amp;quot;, &amp;quot;#00BE70&amp;quot;, &amp;quot;#00C1AB&amp;quot;, &amp;quot;#00BBDA&amp;quot;, &amp;quot;#00ACFC&amp;quot;, &amp;quot;#8B93FF&amp;quot;, &amp;quot;#D575FE&amp;quot;, &amp;quot;#F962DD&amp;quot;, &amp;quot;#FF65AC&amp;quot;)
+
+# Create the chord diagram
+chorddiag(religionmatrix, 
+          type = &amp;quot;directional&amp;quot;,
+          groupColors = diagcolors, 
+          groupnamePadding = 5, groupnameFontsize = 18,
+          chordedgeColor = &amp;quot;&amp;quot;,
+          showTicks = FALSE,
+          showZeroTooltips = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:864px;height:768px;&#34; class=&#34;chorddiag html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;matrix&#34;:[[224,0,56,0,0,0,3,1,33,5,38,14,77],[1,0,2,0,0,0,0,0,3,1,1,0,1],[56,3,415,2,1,19,9,0,81,13,63,8,172],[0,0,3,3,1,1,0,0,0,1,2,0,0],[0,0,0,0,5,0,0,1,0,0,0,0,1],[2,0,21,0,2,32,1,0,9,2,1,0,13],[4,0,6,0,0,0,38,0,4,0,3,0,9],[2,0,1,0,0,0,0,3,3,0,1,1,1],[39,4,92,3,0,5,3,0,134,20,50,10,75],[4,0,7,0,0,1,1,0,8,3,2,1,7],[29,0,52,1,1,4,2,1,42,8,106,9,47],[12,0,3,0,1,0,0,0,7,0,9,17,8],[70,3,166,4,0,15,5,0,46,9,39,14,319]],&#34;options&#34;:{&#34;type&#34;:&#34;directional&#34;,&#34;width&#34;:null,&#34;height&#34;:null,&#34;margin&#34;:100,&#34;showGroupnames&#34;:true,&#34;groupNames&#34;:[&#34;Baptist&#34;,&#34;Buddhist&#34;,&#34;Catholic&#34;,&#34;Eastern Orthodox&#34;,&#34;Hindu&#34;,&#34;Jewish&#34;,&#34;Mormon&#34;,&#34;Muslim&#34;,&#34;None&#34;,&#34;Other&#34;,&#34;Other Christian&#34;,&#34;Pentecostal&#34;,&#34;Protestant&#34;],&#34;groupColors&#34;:[&#34;#F8766D&#34;,&#34;#E18A00&#34;,&#34;#BE9C00&#34;,&#34;#8CAB00&#34;,&#34;#24B700&#34;,&#34;#00BE70&#34;,&#34;#00C1AB&#34;,&#34;#00BBDA&#34;,&#34;#00ACFC&#34;,&#34;#8B93FF&#34;,&#34;#D575FE&#34;,&#34;#F962DD&#34;,&#34;#FF65AC&#34;],&#34;groupThickness&#34;:0.1,&#34;groupPadding&#34;:0.0349065850398866,&#34;groupnamePadding&#34;:[5,5,5,5,5,5,5,5,5,5,5,5,5],&#34;groupnameFontsize&#34;:18,&#34;groupedgeColor&#34;:null,&#34;chordedgeColor&#34;:&#34;&#34;,&#34;categoryNames&#34;:null,&#34;categorynamePadding&#34;:100,&#34;categorynameFontsize&#34;:28,&#34;showTicks&#34;:false,&#34;tickInterval&#34;:10,&#34;ticklabelFontsize&#34;:10,&#34;fadeLevel&#34;:0.1,&#34;showTooltips&#34;:true,&#34;showZeroTooltips&#34;:false,&#34;tooltipNames&#34;:[&#34;Baptist&#34;,&#34;Buddhist&#34;,&#34;Catholic&#34;,&#34;Eastern Orthodox&#34;,&#34;Hindu&#34;,&#34;Jewish&#34;,&#34;Mormon&#34;,&#34;Muslim&#34;,&#34;None&#34;,&#34;Other&#34;,&#34;Other Christian&#34;,&#34;Pentecostal&#34;,&#34;Protestant&#34;],&#34;tooltipFontsize&#34;:12,&#34;tooltipUnit&#34;:&#34;&#34;,&#34;tooltipGroupConnector&#34;:&#34; &amp;#x25B6; &#34;,&#34;precision&#34;:&#34;null&#34;,&#34;clickAction&#34;:null,&#34;clickGroupAction&#34;:null}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Danceability Across the Ages</title>
+      <link>/post/danceability/</link>
+      <pubDate>Wed, 22 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/post/danceability/</guid>
+      <description>
+
+
+&lt;div id=&#34;the-data-billboard-200-tracks&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Data: Billboard 200 Tracks&lt;/h3&gt;
+&lt;p&gt;This data set is from &lt;a href=&#34;https://components.one/datasets/billboard-200/&#34;&gt;Components One’s Datasets&lt;/a&gt;. It’s a large database containing data on 340,000 tracks from Billboard 200 albums released from 1963-2019. Included for each track is the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Track name&lt;/li&gt;
+&lt;li&gt;Track ID on Spotify&lt;/li&gt;
+&lt;li&gt;Album name&lt;/li&gt;
+&lt;li&gt;Album ID on Spotify&lt;/li&gt;
+&lt;li&gt;Artist name&lt;/li&gt;
+&lt;li&gt;Duration&lt;/li&gt;
+&lt;li&gt;Release date of the album&lt;/li&gt;
+&lt;li&gt;Spotify’s EchoNest acoustic data:
+&lt;ul&gt;
+&lt;li&gt;Acousticness&lt;/li&gt;
+&lt;li&gt;Danceability&lt;/li&gt;
+&lt;li&gt;Energy&lt;/li&gt;
+&lt;li&gt;Instrumentalness&lt;/li&gt;
+&lt;li&gt;Liveness&lt;/li&gt;
+&lt;li&gt;Loudness&lt;/li&gt;
+&lt;li&gt;Speechiness&lt;/li&gt;
+&lt;li&gt;Key&lt;/li&gt;
+&lt;li&gt;Time signature&lt;/li&gt;
+&lt;li&gt;Valence&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-visualization-how-has-the-danceability-of-music-changed-over-time&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Visualization: How has the danceability of music changed over time?&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/post/danceability/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;1152&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Here, color indicates how “danceable” music was for a given year. Immediately, we can tell that the ’80s and ’90s were the most danceable decades and that 1961 must have been pretty dark days for music.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-details-how-the-plot-was-made&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Details: How the Plot was Made&lt;/h3&gt;
+&lt;p&gt;This ridgeline plot was made using the &lt;code&gt;ggridges&lt;/code&gt; package, which integrates with ggplot. (For more information on the ridgeline plot, &lt;a href=&#34;/project/the-ridgeline-plot/&#34;&gt;see my post&lt;/a&gt;.) Here, I used &lt;code&gt;geom_density_ridges()&lt;/code&gt; and faceted by decade. The color gradient is the “inferno” palette from &lt;code&gt;viridis&lt;/code&gt;. The theme is &lt;code&gt;ggplot:theme_minimal()&lt;/code&gt; with some modifications to the background and facet titles.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(track_data, aes(x = danceability, y = year, fill = YearDanceability)) +
+  geom_density_ridges(scale = 4, alpha = 0.9) + 
+  facet_wrap(~ decade, scales = &amp;quot;free_y&amp;quot;, nrow = 1) + # Need free_y scale otherwise the plots aren&amp;#39;t aligned
+  scale_y_discrete(expand = c(0,0,0, 4)) + # The facet labels were covering the top curve so I added padding
+  scale_x_continuous(expand = c(0, 0)) +
+  coord_cartesian(clip = &amp;quot;off&amp;quot;) + # to avoid clipping of the top bit of the top curve
+  scale_fill_viridis(option = &amp;quot;inferno&amp;quot;) +
+  theme_minimal() +
+  labs(fill = &amp;quot;Mean Year\nDanceability\nScore&amp;quot;,
+       title = &amp;quot;1980&amp;#39;s &amp;amp; 90&amp;#39;s: The Most Danceable Decades?&amp;quot;,
+       subtitle = &amp;#39;How does the &amp;quot;danceability&amp;quot; of music change over time?&amp;#39;,
+       x = &amp;quot;Song Danceability Score&amp;quot;,
+       y = &amp;quot;Year&amp;quot;) +
+  theme(strip.background = element_rect(color = &amp;quot;white&amp;quot;, fill = &amp;quot;lightgray&amp;quot;), # Format the facet labels
+        axis.title.y = element_text(hjust = 0.35)) # Change the justification of the y-axis label&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Ridgeline Plot</title>
+      <link>/project/the-ridgeline-plot/</link>
+      <pubDate>Wed, 22 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/project/the-ridgeline-plot/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Ridgeline plots are a variation of density plots in which you aim to compare the distributions of several categorical variables (represented on the y-axis) for a single continuous variable (represented on the x-axis). This is a quick way to compare a large number of groups where doing something like a simple &lt;code&gt;geom_density()&lt;/code&gt; + &lt;code&gt;facet_wrap()&lt;/code&gt; would occupy a large amount of space. By making use of transparency the ridges can be places in close proximity to save space.&lt;/p&gt;
+&lt;p&gt;This ridgeline plot was created using the package &lt;code&gt;ggridges&lt;/code&gt;, which integrates with ggplot in R. Here I used &lt;code&gt;geom_density_ridges()&lt;/code&gt;. There are ways to add more features to the ridges (ex. raincloud, rug). See the following resources for more information:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html&#34;&gt;CRAN vignette&lt;/a&gt;&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/wilkelab/ggridges&#34;&gt;Wilke’s Github&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;/project/the-ridgeline-plot/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;div id=&#34;the-data-billboard-200-tracks&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;The Data: Billboard 200 Tracks&lt;/h1&gt;
+&lt;p&gt;This data set is from &lt;a href=&#34;https://components.one/datasets/billboard-200/&#34;&gt;Components One’s Datasets&lt;/a&gt;. It’s a large database containing data on 340,000 tracks from Billboard 200 albums released from 1963-2019. Included for each track is the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Track name&lt;/li&gt;
+&lt;li&gt;Track ID on Spotify&lt;/li&gt;
+&lt;li&gt;Album name&lt;/li&gt;
+&lt;li&gt;Album ID on Spotify&lt;/li&gt;
+&lt;li&gt;Artist name&lt;/li&gt;
+&lt;li&gt;Duration&lt;/li&gt;
+&lt;li&gt;Release date of the album&lt;/li&gt;
+&lt;li&gt;Spotify’s EchoNest acoustic data:
+&lt;ul&gt;
+&lt;li&gt;Acousticness&lt;/li&gt;
+&lt;li&gt;Danceability&lt;/li&gt;
+&lt;li&gt;Energy&lt;/li&gt;
+&lt;li&gt;Instrumentalness&lt;/li&gt;
+&lt;li&gt;Liveness&lt;/li&gt;
+&lt;li&gt;Loudness&lt;/li&gt;
+&lt;li&gt;Speechiness&lt;/li&gt;
+&lt;li&gt;Key&lt;/li&gt;
+&lt;li&gt;Time signature&lt;/li&gt;
+&lt;li&gt;Valence&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&#34;a-glimpse-of-the-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;A glimpse of the data:&lt;/h3&gt;
+&lt;table class=&#34;table table-striped&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Song
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Artist
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+Year
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+Decade
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+Song Danceability
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+Year Danceability
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+Decade Danceability
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+A
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Cartel
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2005
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2000’s
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.28
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.55
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.55
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+A
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Barenaked Ladies
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1994
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1990’s
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.78
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.55
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.57
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+A-1 Performance
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+AZ
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2002
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2000’s
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.72
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.57
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.55
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+A-11
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Jamey Johnson
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2012
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2010’s
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.73
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.51
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.53
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+A-11
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Buck Owens
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1995
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1990’s
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.55
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.56
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.57
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;representation-description&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Representation Description&lt;/h1&gt;
+&lt;p&gt;I found the idea of “danceability” interesting; I wanted to see how danceability changed over time. There are a lot of years represented in this dataset. Initial data exploration showed that data for tracks before 1960 were much less abundant than other years (ex. there were 4 tracks from the 1930’s and 10,000+ from 1999 alone) so I decided to exclude data from before 1960. I was still left with a lot of data so I figured that the best way to quickly see a trend was through the use of color. What I’m trying to show in this graph is that the 1980’s and 90’s have higher danceability scores than other decades.&lt;/p&gt;
+&lt;p&gt;On the x-axis is the danceability score, ranging from 0 to 1. On the y-axis is each year (or decade). (In one iteration of this graph I’ve used &lt;code&gt;facet_wrap()&lt;/code&gt; to split up the data by decade.) There is a continuous color scale used to encode for the average daceability rating of the given year (or decade). Transparency is used to allow for easier discernability of the underlying ridges. Each ridge represents the distribution of danceability scores for all tracks released that year.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-to-interpret&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;How to interpret&lt;/h1&gt;
+&lt;p&gt;The most danceable era should be that with the brightest (most yellow/white) ridges. Here it is clear that the 1980’s and ’90s are brightest. The peaks of the ridges should also line up somewhat continuously and show the trend for how danceability changes from year to year, in addition to the color trend (re: redundancy). A more subtle trend is that the variance within each year seems to become wider over time as well. This graph makes the identification of continuous trends as well as stark outliers quite easy.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;presentation-tips&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Presentation Tips&lt;/h1&gt;
+&lt;p&gt;To draw attention to specific ridges, callout annotations can be used. Color can be used on a continuous scale to observe relative differences between ridges. Discrete colors can be used to compare between categorical variables with no ordinal relationship (in this case I suggest a color scale that does not imply order).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;variations-and-alternatives&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Variations and Alternatives&lt;/h1&gt;
+&lt;p&gt;Ridgeline plots are related to histograms, density plots, and violin plots. Compared to ridgeline plots these all have the disadvantage of taking up more space. Histograms bin the data into a given number of bins and therefore don’t have the smooth look of ridgeline plots but do indicate changes from bin to bin with more fidelity. Density plots are ridgeline plots that are either overplotted or separated into facets. They accomplish the same thing as ridgeline plots but in the case of overplotting there is no sense of change across variables and in the case of faceting they are more difficult to compare. Violin plots are very similar to the ridgeline plot, especially the half violin. Full violin plots would take up substantially more space than the ridgeline plot.&lt;/p&gt;
+&lt;div id=&#34;the-ridgeline-plots&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The Ridgeline Plot(s)&lt;/h2&gt;
+&lt;div id=&#34;danceability-by-decade&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Danceability by Decade&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Filter to only include data after 1960
+decadeplot &amp;lt;- ggplot(track_data %&amp;gt;% filter(year &amp;gt;= &amp;quot;1960&amp;quot;), aes(x = danceability, y = decade, fill = DecadeDanceability)) +
+  geom_density_ridges(scale = 4, alpha = 0.9, color = &amp;quot;red4&amp;quot;) +
+  scale_y_discrete(expand = c(0, 0)) +
+  scale_x_continuous(expand = c(0, 0)) +
+  coord_cartesian(clip = &amp;quot;off&amp;quot;) + # to avoid clipping of the top bit of the top curve
+  scale_fill_viridis(option = &amp;quot;inferno&amp;quot;) +
+  theme_minimal() +
+  labs(fill = &amp;quot;Mean Decade\nDanceability\nScore&amp;quot;,
+       title = &amp;quot;1980&amp;#39;s &amp;amp; 90&amp;#39;s: The Most Danceable Decades?&amp;quot;,
+       subtitle = &amp;#39;How does the &amp;quot;danceability&amp;quot; of music change over time?&amp;#39;,
+       x = &amp;quot;Song Danceability Score&amp;quot;,
+       y = &amp;quot;Decade&amp;quot;) +
+  theme(axis.title.y = element_text(hjust = 0.25)) # Move y lable to be in the center of the y-axis labels, not the whole y-axis
+decadeplot&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/project/the-ridgeline-plot/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;danceability-by-year-faceted-by-decade&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Danceability by Year: Faceted by Decade&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(track_data %&amp;gt;% filter(year &amp;gt;= &amp;quot;1960&amp;quot;), aes(x = danceability, y = year, fill = YearDanceability)) +
+  geom_density_ridges(scale = 4, alpha = 0.9, color = &amp;quot;red4&amp;quot;) + 
+  facet_wrap(~ decade, scales = &amp;quot;free_y&amp;quot;, nrow = 1) + # Need free_y scale otherwise the plots would not be aligned
+  scale_y_discrete(expand = c(0,0,0, 4)) + # The facet labels were covering the top of the top curve so I introduced some padding
+  scale_x_continuous(expand = c(0, 0)) +
+  coord_cartesian(clip = &amp;quot;off&amp;quot;) + # to avoid clipping of the top bit of the top curve
+  scale_fill_viridis(option = &amp;quot;inferno&amp;quot;) +
+  theme_minimal() +
+  labs(fill = &amp;quot;Mean Year\nDanceability\nScore&amp;quot;,
+       title = &amp;quot;1980&amp;#39;s &amp;amp; 90&amp;#39;s: The Most Danceable Decades?&amp;quot;,
+       subtitle = &amp;#39;How does the &amp;quot;danceability&amp;quot; of music change over time?&amp;#39;,
+       x = &amp;quot;Song Danceability Score&amp;quot;,
+       y = &amp;quot;Year&amp;quot;) +
+  theme(strip.background = element_rect(color = &amp;quot;white&amp;quot;, fill = &amp;quot;lightgray&amp;quot;), # Format the facel labels
+        axis.title.y = element_text(hjust = 0.35)) # Change the justification of the y-axis label&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/project/the-ridgeline-plot/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;1152&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;danceability-by-year&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Danceability by Year&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(track_data %&amp;gt;% filter(decade &amp;gt;= &amp;quot;1960&amp;quot;), aes(x = danceability, y = year, fill = YearDanceability)) +
+  geom_density_ridges(scale = 4, alpha = 0.9, color = &amp;quot;red4&amp;quot;) + 
+  scale_y_discrete(expand = c(0, 0)) +
+  scale_x_continuous(expand = c(0, 0)) +
+  coord_cartesian(clip = &amp;quot;off&amp;quot;) + # to avoid clipping of the top bit of the top curve
+  scale_fill_viridis(option = &amp;quot;inferno&amp;quot;) +
+  theme_minimal() +
+  labs(fill = &amp;quot;Mean Year\nDanceability\nScore&amp;quot;,
+       title = &amp;quot;1980&amp;#39;s &amp;amp; 90&amp;#39;s: The Most Danceable Decades?&amp;quot;,
+       subtitle = &amp;#39;How does the &amp;quot;danceability&amp;quot; of music change over time?&amp;#39;,
+       x = &amp;quot;Song Danceability Score&amp;quot;,
+       y = &amp;quot;Year&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/project/the-ridgeline-plot/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;576&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Resting Heart Rate after Pulmonary Embolism</title>
+      <link>/post/hr-after-pe/</link>
+      <pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/post/hr-after-pe/</guid>
+      <description>
+
+
+&lt;div id=&#34;the-data-personal-fitbit-heart-rate-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Data: Personal Fitbit Heart Rate Data&lt;/h3&gt;
+&lt;p&gt;I’ve been wearing a Fitbit for nearly two years at this point and as a result, I have a lot of data on my heart rate, sleep, and activity. Fitbit allows you to &lt;a href=&#34;https://help.fitbit.com/articles/en_US/Help_article/1133&#34;&gt;export all of your data fairly easily&lt;/a&gt;. I then did some basic data wrangling to isolate my “before PE” and “after PE” heart rate data.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-visualization-how-was-my-heart-rate-affected-by-my-embolism&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Visualization: How was my heart rate affected by my embolism?&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/post/HR-after-PE/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;As the plot states, I had a pulmonary embolism last July. Being the data nerd that I am, ever since my embolism I have been obsessed with tracking my heart rate using my Fitbit. Here I used color to separate my heart rate data from before my PE to my heart rate after my PE It’s clear that my heart rate has been elevated following my PE.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-details-how-the-plot-was-made&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Details: How the Plot was Made&lt;/h3&gt;
+&lt;p&gt;This plot was made in ggplot2 using &lt;code&gt;geom_line()&lt;/code&gt;. The theme used is &lt;code&gt;ggplot2::theme_light()&lt;/code&gt; with some simple tweaks. The color palette was made using the &lt;a href=&#34;https://github.com/dill/beyonce&#34;&gt;&lt;code&gt;beyonce&lt;/code&gt; package&lt;/a&gt;. Here I pulled two colors from the #78 color palette:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/HR-after-PE/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;288&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(fitbit, aes(x = Week, y = BPM, group = `Heart Rate`, color = `Heart Rate`)) +
+  geom_line(size = 1) +
+  labs(y = &amp;quot;Resting Heart Rate (BPM)&amp;quot;,
+       title = &amp;quot;Resting Heart Rate after Pulmonary Embolism&amp;quot;,
+       subtitle = &amp;quot;In July 2019 I had a pulmonary embolism (PE). My heart rate increased as a result. \nHere is my resting heart rate six months before my PE and six months after my PE.&amp;quot;) +
+  scale_x_continuous(expand = c(0.01,0.01), 
+                     breaks = seq(0, 26, 5)) +
+  theme_light() +
+  theme(panel.border = element_blank(),
+        plot.title = element_text(face = &amp;quot;bold&amp;quot;, size = 15)) +
+  scale_color_manual(values = beyonce_palette(78)[c(2,4)])&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The lifespan of MoMA artists</title>
+      <link>/post/lifespan-of-moma-artists/</link>
+      <pubDate>Wed, 08 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/post/lifespan-of-moma-artists/</guid>
+      <description>
+
+
+&lt;div id=&#34;the-data-the-new-york-moma-collection&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Data: The New York MoMA Collection&lt;/h3&gt;
+&lt;p&gt;From &lt;em&gt;Data Is Plural&lt;/em&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This July, the Museum of Modern Art published a dataset containing 120,000 artworks from its catalog, joining the UK’s Tate, the Smithsonian’s Cooper Hewitt, and other forward-thinking museums. The MoMA data contains the names of the artwork and artist, the dates created and acquired, and the medium — but no images. Related: Artist Jer Thorp encourages you to “perform” the data. Also related: Every museum in the United States. (&lt;a href=&#34;https://twitter.com/popovichn&#34;&gt;h/t Nadja Popovich&lt;/a&gt;)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The data can be found &lt;a href=&#34;https://github.com/MuseumofModernArt/collection&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-visualization-is-there-a-difference-in-lifespan-between-male-and-female-artists&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Visualization: Is there a difference in lifespan between male and female artists?&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/post/moma/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;This plot looks at the lifespans of the artists represented in the MoMA collection of paintings. The distribution of lifespans for males and females are overalayed with the average lifespan for each gender. Through this visualization we can see that male and female artists had similar lifespans with the average lifespan for both gender being around 75 years of age.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-details-how-the-plot-was-made&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Details: How the Plot was Made&lt;/h3&gt;
+&lt;p&gt;This plot was made in ggplot2 using &lt;code&gt;geom_density()&lt;/code&gt;. To add the vertical lines I used &lt;code&gt;geom_vline()&lt;/code&gt;, setting the x-intercept to the average lifespan, calculated elsewhere. The text and arrow were created using the &lt;code&gt;annotate()&lt;/code&gt; function with &lt;code&gt;geom = &#34;text&#34;&lt;/code&gt; and &lt;code&gt;geom = &#34;curve&#34;&lt;/code&gt;. The theme for this plot is &lt;code&gt;theme_fivethirtyeight()&lt;/code&gt; from the &lt;code&gt;ggthemes&lt;/code&gt; package, with some modifications to the legend and axes.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;moma_life &amp;lt;- moma %&amp;gt;% 
+  mutate(Lifespan = artist_death_year - artist_birth_year) %&amp;gt;% 
+  filter(!is.na(Lifespan)) %&amp;gt;%
+  filter(!is.na(artist_gender))
+
+# Calculate the average lifespans for each gender
+avgmale &amp;lt;- moma_life %&amp;gt;% filter(artist_gender == &amp;quot;Male&amp;quot;)
+avgmale &amp;lt;- mean(avgmale$Lifespan)
+avgfemale &amp;lt;- moma_life %&amp;gt;% filter(artist_gender == &amp;quot;Female&amp;quot;)
+avgfemale &amp;lt;- mean(avgfemale$Lifespan)
+
+# Set color palette
+colorgender &amp;lt;- c(&amp;quot;Male&amp;quot; = &amp;quot;lightseagreen&amp;quot;, 
+               &amp;quot;Female&amp;quot; = &amp;quot;indianred1&amp;quot;)
+
+# The plot
+ggplot(data = moma_life, aes(fill = artist_gender, x = Lifespan)) +
+  geom_density(alpha = 0.6, size = 1) +
+  coord_cartesian(xlim = c(27,102)) +
+  geom_vline(xintercept = avgmale, size = 1, color = &amp;quot;turquoise4&amp;quot;) +
+  geom_vline(xintercept = avgfemale, size = 1, color = &amp;quot;indianred1&amp;quot;) +
+  theme_fivethirtyeight() +
+  scale_fill_manual(values = colorgender) +
+  theme(legend.position = c(0.115, 0.95), 
+        legend.title = element_blank(),
+        legend.background = element_rect(),
+        legend.margin = margin(c(0,0,7,0)),
+        axis.title = element_text()) +
+  labs(title = &amp;quot;The lifespan of MoMA artists&amp;quot;,
+       subtitle = &amp;quot;Here we see the distribution of lifepans for male and female artists \nrepresented in the MoMA collection&amp;quot;,
+       x = &amp;quot;Lifespan (Years)&amp;quot;,
+       y = &amp;quot;Frequency of Occurrence&amp;quot;) +
+  annotate(x = 77, y = 0.004, geom = &amp;quot;text&amp;quot;,
+           label = &amp;quot;average \nlifespans&amp;quot;, 
+           color = &amp;quot;grey20&amp;quot;, size = 4,
+           hjust = 0, fontface = 2, lineheight = 0.8) +
+  annotate(geom = &amp;quot;curve&amp;quot;, size = 1, color = &amp;quot;grey20&amp;quot;,
+           x = 80.5, y = 0.006, xend = 76, yend = 0.009,
+           arrow = arrow(length = unit(3, &amp;quot;mm&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

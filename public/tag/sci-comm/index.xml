@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sci comm | Jennifer Jahncke</title>
+    <link>/tag/sci-comm/</link>
+      <atom:link href="/tag/sci-comm/index.xml" rel="self" type="application/rss+xml" />
+    <description>sci comm</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 28 May 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/logo.JPEG</url>
+      <title>sci comm</title>
+      <link>/tag/sci-comm/</link>
+    </image>
+    
+    <item>
+      <title>Immunohistochemistry: Adding Color to the Brain</title>
+      <link>/project/immunohistochemistry/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      <guid>/project/immunohistochemistry/</guid>
+      <description>
+
+
+&lt;p&gt;Have you ever wondered how we make these bright and beautiful images of proteins in the brain? It’s done using a technique called immunohistochemistry, which we also call IHC or immuno. The technique used antibodies to label proteins in fixed tissue.&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&#34;collage.jpg&#34; style=&#34;width:80.0%&#34; /&gt;
+&lt;/center&gt;
+&lt;p&gt;First, I preserve the brain using formaldehyde. This “fixes” the proteins in place. I then embed the brain in a block of agar and slice it into thin sections. There are several ways to do this but I use a vibrating razor blade.&lt;/p&gt;
+&lt;video width=&#34;400&#34; style=&#34;display:block; margin:0 auto;&#34; controls&gt;
+&lt;source src=&#34;vibratome.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;/video&gt;
+&lt;p&gt;Now I split up my sections into different wells. Each well will contain a different combination of antibodies so that I can label different proteins.&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&#34;12-well-plate.JPG&#34; style=&#34;width:80.0%&#34; /&gt;
+&lt;/center&gt;
+&lt;p&gt;The combination of antibodies matters. I need a primary antibody, which recognizes my protein of interest, and a secondary antibody which latches on to the primary antibody. The secondary antibody contains a fluorescent “tag”. This tag is what the microscope sees.&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&#34;primary.jpg&#34; style=&#34;width:80.0%&#34; /&gt;
+&lt;/center&gt;
+&lt;p&gt;In order to look at multiple proteins in the same tissue section, I can use other fluorescent tags that emit different wavelengths of light.&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&#34;primary%20and%20secondary.jpg&#34; style=&#34;width:80.0%&#34; /&gt;
+&lt;/center&gt;
+&lt;p&gt;You’ll notice that all of my images only have 3-4 different colors in them. That’s because we need to be able to separate the fluorescent tags. If the emitted light of two tags have wavelengths that are too close together we cannot tell them apart.&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&#34;all%20spectra%20ex%20em.PNG&#34; style=&#34;width:90.0%&#34; /&gt;
+&lt;/center&gt;
+&lt;p&gt;Okay, so I have my antibodies where I want them. Now I mount the tissue sections onto microscope slides and they’re ready to be imaged on the microscope!&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&#34;slide-on-scope.JPG&#34; style=&#34;width:60.0%&#34; /&gt;
+&lt;/center&gt;
+&lt;p&gt;The microscope images one “channel” of fluorescence at a time. In this case I used 4 different antibodies for 4 different proteins. (The numbers in the parentheses are the wavelengths of the emitted light from the fluorescent tag.)&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&#34;single%20channels.jpg&#34; style=&#34;width:100.0%&#34; /&gt;
+&lt;/center&gt;
+&lt;p&gt;Now I can overlay the images on one another to get that beautiful merged image. The coloring in the merged image doesn’t necessarily correspond to the fluorescent tags I used. I can use any color combination I want. These four images are all the same micrograph.&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&#34;merge.jpg&#34; style=&#34;width:90.0%&#34; /&gt;
+&lt;/center&gt;
+&lt;p&gt;And that’s it! Each step has additional intricacies that I glossed over for the sake of simplicity. There are also a number of different microscopy methods that could be used. These images were all taken using a Zeiss Axio Imager equipped with an apotome system.&lt;/p&gt;
+&lt;p&gt;Wanna talk about it? &lt;a href=&#34;https://twitter.com/thejenjay/status/1262832430886469632?s=20&#34;&gt;Hit up my Twitter thread&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Microscope Me Up: Purkinje Cells</title>
+      <link>/project/microscope-me-up-purkinje-cells/</link>
+      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/project/microscope-me-up-purkinje-cells/</guid>
+      <description>
+
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Soph Talks Science: Cellfie of the Month Sept 2019</title>
+      <link>/project/soph-talks-science-sep-2019/</link>
+      <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
+      <guid>/project/soph-talks-science-sep-2019/</guid>
+      <description>
+
+
+
+</description>
+    </item>
+    
+  </channel>
+</rss>

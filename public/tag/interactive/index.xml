@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>interactive | Jennifer Jahncke</title>
+    <link>/tag/interactive/</link>
+      <atom:link href="/tag/interactive/index.xml" rel="self" type="application/rss+xml" />
+    <description>interactive</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 28 May 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/logo.JPEG</url>
+      <title>interactive</title>
+      <link>/tag/interactive/</link>
+    </image>
+    
+    <item>
+      <title>Mobility During COVID19</title>
+      <link>/post/mobility-during-covid19/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      <guid>/post/mobility-during-covid19/</guid>
+      <description>
+
+
+&lt;p&gt;The whole world is on lockdown due to the SARS-CoV-2 pandemic that began in 2019 and continues to grow today. As lockdown orders have been issued, the way people move about their hometowns have changed. More people are working from home and only grocery shopping every couple of weeks. &lt;a href=&#34;https://www.apple.com/covid19&#34;&gt;Apple&lt;/a&gt; has made available trends in mobility in major cities and countries as measured through usage of the Apple Maps application. Data is available from January 2020 onwards and can be accessed through the &lt;a href=&#34;https://kjhealy.github.io/covdata/&#34;&gt;&lt;code&gt;covdata&lt;/code&gt; R package&lt;/a&gt;. Below is an interactive widget to view the mobility trends for individual countries. (The app can also be found &lt;a href=&#34;https://jennifer-jahncke.shinyapps.io/Mobility-During-COVID19/&#34;&gt;here&lt;/a&gt;.)&lt;/p&gt;
+&lt;iframe height=&#34;1500&#34; width=&#34;100%&#34; frameborder=&#34;no&#34; src=&#34;https://jennifer-jahncke.shinyapps.io/Mobility-During-COVID19/&#34;&gt;
+&lt;/iframe&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>art and science | Jennifer Jahncke</title>
+    <link>/tag/art-and-science/</link>
+      <atom:link href="/tag/art-and-science/index.xml" rel="self" type="application/rss+xml" />
+    <description>art and science</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 08 May 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/logo.JPEG</url>
+      <title>art and science</title>
+      <link>/tag/art-and-science/</link>
+    </image>
+    
+    <item>
+      <title>Arc Length</title>
+      <link>/project/arc-length/</link>
+      <pubDate>Fri, 08 May 2020 00:00:00 +0000</pubDate>
+      <guid>/project/arc-length/</guid>
+      <description>
+
+
+&lt;p&gt;Math is everywhere. Here, the wilted shrub forms an arc. Draw a triangle with the tangent line as the hypotenuse, &lt;span class=&#34;math inline&#34;&gt;\(\Delta x\)&lt;/span&gt; as the base, and &lt;span class=&#34;math inline&#34;&gt;\(\Delta y\)&lt;/span&gt; as the height. The length of the hypotenuse represents an approximation for the length of that portion of the curve. By adding up all of those small hypotenuses, you can calculate the area of the whole arc. Tangent lines represent a linear approximation for a curve, but only near the point where it hits the curve. Even two tangent lines that touch the curve at fairly close points diverge to an extreme extent as you move away from the points around which they’re centered. It’s only through the use of infinite tangent lines that we can accurately measure an arc in this way.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
