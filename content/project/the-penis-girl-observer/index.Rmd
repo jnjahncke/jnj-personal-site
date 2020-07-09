@@ -75,7 +75,7 @@ Self isolation during the COVID19 pandemic lockdown has impacted us all differen
 
 # PG Territory
 
-The territory here is going to be heavily impacted by the fact that I have not been systemmatically collecting tags and thus there are going to be more tags in the areas that I frequent and I'll miss tags in areas that I don't explore. The initial pattern that I noticed was that PG tags were most densely concentrated in SE Portland, less dense in NE Portland, and almost none in North Portland. Then I started noticing more around the riverfront and bleeding into the west side more and more. There is a high concentration of tags on Steel Bridge though I have also found tacks on Hawthorne Bridge and Burnside Bridge, just less concentrated.
+The territory here is going to be heavily impacted by the fact that I have not been systemmatically collecting tags and thus there are going to be more tags in the areas that I frequent and I'll miss tags in areas that I don't explore. The initial pattern that I noticed was that PG tags were most densely concentrated in SE Portland, less dense in NE Portland, and almost none in North Portland. Then I started noticing more around the riverfront and bleeding into the west side more and more. There is a high concentration of tags on Steel Bridge though I have also found tags on Hawthorne Bridge and Burnside Bridge, just less concentrated.
 
 ```{r fig.width=10, fig.height=6, results = FALSE}
 # Map Portland, OR
