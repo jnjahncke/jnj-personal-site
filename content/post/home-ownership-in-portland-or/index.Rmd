@@ -1,0 +1,103 @@
+---
+title: Home Ownership in Portland, OR
+author: ''
+date: '2020-06-02'
+slug: home-ownership-in-portland-or
+categories: []
+tags:
+  - data viz
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-06-02T09:44:19-07:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: yes
+projects: []
+---
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(sf)
+library(readxl)
+```
+
+
+### The Data: Portland, OR 2010 Census Data
+
+Portland provides open access [maps and GIS data](http://www.civicapps.org/datasets) as well as [census data](https://www.portlandoregon.gov/civic/56897). Here I chose to focus on data from each Portland neighborhood describing the number of individuals who either own their housing versus rent their housing. For the map I am also using data describing the layout of the city neighborhoods and the Willamette River.
+
+### The Visualization: Percent of Housing Units that are Owned, by Neighborhood
+
+```{r echo = FALSE, message = FALSE, warning = FALSE, results='hide'}
+pdx_boundaries <- st_read("data/Neighborhoods__Regions_-shp")
+river_boundaries <- st_read("data/Willamette_Columbia_River_Ordinary_High_Water-shp")
+
+# Percent of population that owns (vs rents) housing in each neighborhood
+pdx_population <- read_excel("data/Census_2010_Data_Cleanedup.xlsx",
+                             sheet = "Census_2010_Neighborhoods", 
+                             range = "A5:CW100") %>% 
+  mutate(Neighborhood = as.factor(Neighborhood)) %>% 
+  select(Neighborhood, `Population in owner occupied housing units`, `Population in renter occupied housing units`) %>% 
+  rename("Owned" = 2,
+         "Rented" = 3) %>% 
+  mutate(Total = Owned + Rented) %>% 
+  mutate(`Percent Owned` = Owned*100/Total) %>% 
+  mutate(Neighborhood=recode(Neighborhood,
+    "ARGAY" = "ARGAY TERRACE",
+    "BROOKLYN" = "BROOKLYN ACTION CORPS",
+    "BUCKMAN" = "BUCKMAN COMMUNITY ASSOCIATION",
+    "CENTENNIAL" = "CENTENNIAL COMMUNITY ASSOCIATION",
+    "CULLY" = "CULLY ASSOCIATION OF NEIGHBORS",
+    "CENTENNIAL" = "CENTENNIAL COMMUNITY ASSOCIATION",
+    "DOWNTOWN" = "PORTLAND DOWNTOWN",
+    "GOOSE HOLLOW" = "GOOSE HOLLOW FOOTHILLS LEAGUE",
+    "HAYDEN ISLAND" = "HAYDEN ISLAND NEIGHBORHOOD NETWORK",
+    "HOSFORD-ABERNETHY" = "HOSFORD-ABERNETHY NEIGHBORHOOD DISTRICT ASSN.",
+    "IRVINGTON" = "IRVINGTON COMMUNITY ASSOCIATION",
+    "LLOYD DISTRICT" = "LLOYD DISTRICT COMMUNITY ASSOCIATION",
+    "NORTHWEST DISTRICT" = "NORTHWEST DISTRICT ASSOCIATION",
+    "OLD TOWN-CHINATOWN" = "OLD TOWN COMMUNITY ASSOCIATION",
+    "PARKROSE HEIGHTS" = "PARKROSE HEIGHTS ASSOCIATION OF NEIGHBORS",
+    "PEARL" = "PEARL DISTRICT",
+    "SABIN" = "SABIN COMMUNITY ASSOCIATION",
+    "SELLWOOD-MORELAND" = "SELLWOOD-MORELAND IMPROVEMENT LEAGUE",
+    "SOUTHWEST HILLS" = "SOUTHWEST HILLS RESIDENTIAL LEAGUE",
+    "SUMNER" = "SUMNER ASSOCIATION OF NEIGHBORS",
+    "SUNDERLAND" = "SUNDERLAND ASSOCIATION OF NEIGHBORS",
+    "WILKES" = "WILKES COMMUNITY GROUP"
+))
+
+boundaries_with_pop <- left_join(pdx_boundaries, pdx_population, by=c("NAME"="Neighborhood"))
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+boundaries_with_pop %>% ggplot() + 
+  geom_sf(aes(fill=`Percent Owned`), color = "black") +
+  scale_fill_gradient2(midpoint = 50,
+                        low="blue", mid="white", high="red") +
+  geom_sf(data=river_boundaries, fill="blue", color = "transparent") +
+  labs(title = "Percent of Housing Units that are Owned (Not Rented), \nby Neighborhood",
+       fill = "% Owned") +
+  theme_minimal()
+```
+
+Here I am using color to indicate the percent of housing units that are owned in a given neighborhood. With this color scale, red indicates that more units are owned than rented and blue indicates that more units are rented than owned. White indicates that an equal number of units are owned and rented. As you can see, in the neighborhoods surroundng the downtown area/city center, more units are rented than owned but in the majority of other neighborhoods the opposite is true.
+
+### The Details: How the Plot was Made
+
+This plot was made using `ggplot2` with `geom_sf` from the `sf` package. The data is organized into shp/shapefile folders and imported using `st_read()` (also part of `sf`). This results in an information-rich dataframe that makes these kinds of plots easy to create.
+
+```{r eval = FALSE}
+boundaries_with_pop %>% ggplot() + 
+  geom_sf(aes(fill=`Percent Owned`), color = "black") + # plot the neighborhoods
+  scale_fill_gradient2(midpoint = 50,
+                        low="blue", mid="white", high="red") + # specify the gradient color scale
+  geom_sf(data=river_boundaries, fill="blue", color = "transparent") + # plot the river
+  labs(title = "Percent of Housing Units that are Owned (Not Rented), \nby Neighborhood",
+       fill = "% Owned") +
+  theme_minimal()
+```
+

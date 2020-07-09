@@ -1,0 +1,23 @@
+---
+title: Gradient Field
+author: ''
+date: '2020-05-28'
+slug: gradient-field
+categories: []
+tags:
+  - science around us
+summary: ''
+authors: []
+external_link: ''
+image:
+  caption: 'Gradient Field, by Jennifer Jahncke'
+  focal_point: ''
+  preview_only: no
+url_code: ''
+url_pdf: ''
+url_slides: ''
+url_video: ''
+slides: ''
+---
+
+To help us visualize 3D functions, there are methods to bring the function down a dimension to give you a little taste of how it’s behaving. One of these methods is gradient fields. Gradient fields represent the maximum rate of change of a 3D function at a point in space. You know those maps of mountain ranges that have all the concentric curves representing altitude? It’s kind of like that, but with some extra info. (Those maps are a little closer to contour maps, which are another method for visualizing three dimensional functions in two dimensions.) Calculating a vector field involves taking a given three dimensional function and calculating “grad f” – yielding a general vector equation. Each coordinate you plug into grad f will give you a little vector describing the behavior of that point. Calculating a bunch of these vectors gives you a pretty vector field.

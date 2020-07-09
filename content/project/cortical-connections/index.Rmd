@@ -1,0 +1,23 @@
+---
+title: Cortical Connections
+author: ''
+date: '2020-05-11'
+slug: cortical-connections
+categories: []
+tags:
+  - science around us
+summary: ''
+authors: []
+external_link: ''
+image:
+  caption: 'Cortical Connections, by Jennifer Jahncke'
+  focal_point: ''
+  preview_only: no
+url_code: ''
+url_pdf: ''
+url_slides: ''
+url_video: ''
+slides: ''
+---
+
+The cortex of a human brain is complicated. It's broken into 6 layers, of which several are broken down further into sublayers. Layer 4 receives primary input from lower brain areas. The other areas are all talking to each other or shipping information out or receiving information from higher areas. Without all of these feedback/feedforward connections we would be left unable to make inferences about the world. Let's say you were looking at a nice, round penny. Primary visual cortex (V1), located at the back of the forebrain, is shipping information up the assembly line about the orientation of each the coins edges. A higher area receives that information and sends a query back down to V1: "circle?" V1 shouts back in agreement, the prediction checks out. Right now the coin is still just an abstract shape - what is it's significance? Let's send it up to a higher area. This new area scans for clues and sends back down a new query: "penny?" V1 checks it out...yes! Now we send the information all around the brain to pull out associations and understand the context and form new commands. The information will probably make a stop in the prefrontal cortex to ask what we're doing with the penny. It might also stop in motor cortex to coordinate movements to interact with the coin. This is all a gross oversimplification of Predictive Coding. The basic idea is that through all of these interconnected brain regions communicating with each other, we are able to parse out information about the world that we would otherwise be blind to if limited to just one processing region. 

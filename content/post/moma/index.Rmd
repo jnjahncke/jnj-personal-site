@@ -1,0 +1,134 @@
+---
+title: The lifespan of MoMA artists
+author: ''
+date: '2020-04-08'
+slug: lifespan-of-moma-artists
+categories: []
+tags: ['data viz']
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-05-08T21:00:58-07:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: yes
+projects: []
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+```{r load-packages, include=FALSE}
+library(readr)
+library(tidyverse)
+library(ggthemes)
+library(janitor)
+library(ggthemes)
+library(extrafont)
+```
+
+### The Data: The New York MoMA Collection
+
+From *Data Is Plural*:
+
+> This July, the Museum of Modern Art published a dataset containing 120,000 artworks from its catalog, joining the UK’s Tate, the Smithsonian’s Cooper Hewitt, and other forward-thinking museums. The MoMA data contains the names of the artwork and artist, the dates created and acquired, and the medium — but no images. Related: Artist Jer Thorp encourages you to “perform” the data. Also related: Every museum in the United States. ([h/t Nadja Popovich](https://twitter.com/popovichn))
+
+The data can be found [here](https://github.com/MuseumofModernArt/collection).
+
+
+### The Visualization: Is there a difference in lifespan between male and female artists?
+
+```{r}
+moma <- read.csv("artworks-cleaned.csv")
+```
+
+```{r}
+moma_life <- moma %>% mutate(Lifespan = artist_death_year - artist_birth_year) %>% filter(!is.na(Lifespan)) %>% filter(!is.na(artist_gender))
+
+avgmale <- moma_life %>% filter(artist_gender == "Male")
+avgmale <- mean(avgmale$Lifespan)
+avgfemale <- moma_life %>% filter(artist_gender == "Female")
+avgfemale <- mean(avgfemale$Lifespan)
+
+colorgender <- c("Male" = "lightseagreen", 
+               "Female" = "indianred1")
+
+ggplot(data = moma_life, aes(fill = artist_gender, x = Lifespan)) +
+  geom_density(alpha = 0.6, size = 1) +
+  coord_cartesian(xlim = c(27,102)) +
+  geom_vline(xintercept = avgmale, size = 1, color = "turquoise4") +
+  geom_vline(xintercept = avgfemale, size = 1, color = "indianred1") +
+  theme_fivethirtyeight() +
+  scale_fill_manual(values = colorgender) +
+  theme(legend.position = c(0.115, 0.95), 
+        legend.title = element_blank(),
+        legend.background = element_rect(),
+        legend.margin = margin(c(0,0,7,0)),
+        #legend.direction = "vertical",
+        axis.title = element_text()) +
+  labs(title = "The lifespan of MoMA artists",
+       subtitle = "Here we see the distribution of lifepans for male and female artists \nrepresented in the MoMA collection",
+       x = "Lifespan (Years)",
+       y = "Frequency of Occurrence") +
+  annotate(x = 77, y = 0.004, geom = "text",
+           label = "average \nlifespans", 
+           color = "grey20", size = 4,
+           hjust = 0, fontface = 2, lineheight = 0.8) +
+  annotate(geom = "curve", size = 1, color = "grey20",
+           x = 80.5, y = 0.006, xend = 76, yend = 0.009,
+           arrow = arrow(length = unit(3, "mm")))
+  
+```
+
+This plot looks at the lifespans of the artists represented in the MoMA collection of paintings. The distribution of lifespans for males and females are overalayed with the average lifespan for each gender. Through this visualization we can see that male and female artists had similar lifespans with the average lifespan for both gender being around 75 years of age.
+
+### The Details: How the Plot was Made
+
+This plot was made in ggplot2 using `geom_density()`. To add the vertical lines I used `geom_vline()`, setting the x-intercept to the average lifespan, calculated elsewhere. The text and arrow were created using the `annotate()` function with `geom = "text"` and `geom = "curve"`. The theme for this plot is `theme_fivethirtyeight()` from the `ggthemes` package, with some modifications to the legend and axes. 
+
+```{r eval = FALSE, echo = TRUE}
+moma_life <- moma %>% 
+  mutate(Lifespan = artist_death_year - artist_birth_year) %>% 
+  filter(!is.na(Lifespan)) %>%
+  filter(!is.na(artist_gender))
+
+# Calculate the average lifespans for each gender
+avgmale <- moma_life %>% filter(artist_gender == "Male")
+avgmale <- mean(avgmale$Lifespan)
+avgfemale <- moma_life %>% filter(artist_gender == "Female")
+avgfemale <- mean(avgfemale$Lifespan)
+
+# Set color palette
+colorgender <- c("Male" = "lightseagreen", 
+               "Female" = "indianred1")
+
+# The plot
+ggplot(data = moma_life, aes(fill = artist_gender, x = Lifespan)) +
+  geom_density(alpha = 0.6, size = 1) +
+  coord_cartesian(xlim = c(27,102)) +
+  geom_vline(xintercept = avgmale, size = 1, color = "turquoise4") +
+  geom_vline(xintercept = avgfemale, size = 1, color = "indianred1") +
+  theme_fivethirtyeight() +
+  scale_fill_manual(values = colorgender) +
+  theme(legend.position = c(0.115, 0.95), 
+        legend.title = element_blank(),
+        legend.background = element_rect(),
+        legend.margin = margin(c(0,0,7,0)),
+        axis.title = element_text()) +
+  labs(title = "The lifespan of MoMA artists",
+       subtitle = "Here we see the distribution of lifepans for male and female artists \nrepresented in the MoMA collection",
+       x = "Lifespan (Years)",
+       y = "Frequency of Occurrence") +
+  annotate(x = 77, y = 0.004, geom = "text",
+           label = "average \nlifespans", 
+           color = "grey20", size = 4,
+           hjust = 0, fontface = 2, lineheight = 0.8) +
+  annotate(geom = "curve", size = 1, color = "grey20",
+           x = 80.5, y = 0.006, xend = 76, yend = 0.009,
+           arrow = arrow(length = unit(3, "mm")))
+  
+```
+

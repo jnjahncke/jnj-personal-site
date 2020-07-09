@@ -1,0 +1,132 @@
+---
+title: Danceability Across the Ages
+author: ''
+date: '2020-04-22'
+slug: danceability
+categories: []
+tags: ['data viz']
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-05-08T12:00:08-07:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: yes
+projects: []
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+```{r}
+library(tidyverse)
+library(ggridges)
+library(viridis)
+```
+
+### The Data: Billboard 200 Tracks
+
+This data set is from [Components One's Datasets](https://components.one/datasets/billboard-200/). It's a large database containing data on 340,000 tracks from Billboard 200 albums released from 1963-2019. Included for each track is the following:
+
+
+* Track name
+* Track ID on Spotify
+* Album name
+* Album ID on Spotify
+* Artist name
+* Duration
+* Release date of the album
+* Spotify's EchoNest acoustic data:
+  * Acousticness
+  * Danceability
+  * Energy
+  * Instrumentalness
+  * Liveness
+  * Loudness
+  * Speechiness
+  * Key
+  * Time signature
+  * Valence
+  
+### The Visualization: How has the danceability of music changed over time?
+
+```{r fig.width = 12, fig.height = 5}
+track_data <- read.csv("acoustic_features.csv") # Import data
+# Add "year" and "decade" columns
+track_data <- track_data %>% 
+  mutate(year = substr(as.character(date), 1, 4)) %>%  # Add a colum that contains only the release year (not full date)
+  # Now to split my data into decades I'm going to go through several mutates
+  mutate(year = as.numeric(year)) %>% mutate(decade1 = case_when(year < 2000  ~ "19",
+                                                                 year >= 2000 ~ "20")) %>%
+  mutate(decade2 = substr(year, 3, 4)) %>% 
+  mutate(decade3 = as.numeric(decade2)/10) %>% 
+  mutate(decade4 = substr(decade3, 1, 1)) %>% 
+  mutate(decade4 = as.numeric(decade4)*10) %>% 
+  mutate(decade4 = as.character(decade4)) %>% 
+  mutate(decade5 = case_when(decade4 != '0' ~ decade4,
+                             decade4 == '0' ~ "00")) %>% 
+  mutate(decade = str_c(decade1, decade5, sep = "", collapse = NULL)) %>% 
+  # Now I'll select only the columns I want
+  select(-decade1, -decade2, -decade3, -decade4, -decade5) %>% 
+  filter(!is.na(year), !is.na(decade), !is.na(danceability))
+# Add 's suffix to decade names
+track_data <- track_data %>% mutate(suffix = rep("'s", nrow(track_data))) %>% 
+  unite("decade", c("decade", "suffix"), sep = "")
+
+# Add a new column with the mean danceability score for each decade
+decade_danceability <- track_data %>% 
+  group_by(decade) %>% 
+  summarise("DecadeDanceability" = mean(danceability, na.rm=TRUE))
+track_data <- full_join(track_data, decade_danceability, by = "decade")
+
+# Add a new column with the mean danceability score for each year
+track_data <- track_data %>% mutate(year = as.character(year))
+yearly_dance <- track_data %>% group_by(year) %>% summarise("YearDanceability" = mean(danceability),
+                                                            "YearSD" = sd(danceability))
+track_data <- full_join(track_data, yearly_dance, by = "year")
+
+# The plot
+ggplot(track_data %>% filter(year >= "1960"), aes(x = danceability, y = year, fill = YearDanceability)) +
+  geom_density_ridges(scale = 4, alpha = 0.9, color = "red4") + 
+  facet_wrap(~ decade, scales = "free_y", nrow = 1) + # Need free_y scale otherwise the plots would not be aligned
+  scale_y_discrete(expand = c(0,0,0, 4)) + # The facet labels were covering the top of the top curve so I introduced some padding
+  scale_x_continuous(expand = c(0, 0)) +
+  coord_cartesian(clip = "off") + # to avoid clipping of the top bit of the top curve
+  scale_fill_viridis(option = "inferno") +
+  theme_minimal() +
+  labs(fill = "Mean Year\nDanceability\nScore",
+       title = "1980's & 90's: The Most Danceable Decades?",
+       subtitle = 'How does the "danceability" of music change over time?',
+       x = "Song Danceability Score",
+       y = "Year") +
+  theme(strip.background = element_rect(color = "white", fill = "lightgray"), # Format the facel labels
+        axis.title.y = element_text(hjust = 0.35)) # Change the justification of the y-axis label
+```
+
+Here, color indicates how "danceable" music was for a given year. Immediately, we can tell that the '80s and '90s were the most danceable decades and that 1961 must have been pretty dark days for music.
+
+### The Details: How the Plot was Made
+
+This ridgeline plot was made using the `ggridges` package, which integrates with ggplot. (For more information on the ridgeline plot, [see my post](/project/the-ridgeline-plot/).) Here, I used `geom_density_ridges()` and faceted by decade. The color gradient is the "inferno" palette from `viridis`. The theme is `ggplot:theme_minimal()` with some modifications to the background and facet titles.
+
+```{r eval=FALSE, echo=TRUE}
+ggplot(track_data, aes(x = danceability, y = year, fill = YearDanceability)) +
+  geom_density_ridges(scale = 4, alpha = 0.9) + 
+  facet_wrap(~ decade, scales = "free_y", nrow = 1) + # Need free_y scale otherwise the plots aren't aligned
+  scale_y_discrete(expand = c(0,0,0, 4)) + # The facet labels were covering the top curve so I added padding
+  scale_x_continuous(expand = c(0, 0)) +
+  coord_cartesian(clip = "off") + # to avoid clipping of the top bit of the top curve
+  scale_fill_viridis(option = "inferno") +
+  theme_minimal() +
+  labs(fill = "Mean Year\nDanceability\nScore",
+       title = "1980's & 90's: The Most Danceable Decades?",
+       subtitle = 'How does the "danceability" of music change over time?',
+       x = "Song Danceability Score",
+       y = "Year") +
+  theme(strip.background = element_rect(color = "white", fill = "lightgray"), # Format the facet labels
+        axis.title.y = element_text(hjust = 0.35)) # Change the justification of the y-axis label
+```
+

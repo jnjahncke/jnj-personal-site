@@ -1,0 +1,139 @@
+---
+title: Side Effects of Psychiatric Medications
+author: ''
+date: '2020-06-25'
+slug: side-effects-of-psychiatric-medications
+categories: []
+tags:
+  - data viz
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-06-25T14:24:03-07:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: yes
+projects: []
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+```
+
+```{r}
+library(tidyverse)
+library(ggsci)
+library(knitr)
+```
+
+### The Data: SIDER 4.1 Side Effect Resource
+
+From the [website](http://sideeffects.embl.de/):
+
+> SIDER contains information on marketed medicines and their recorded adverse drug reactions. The information is extracted from public documents and package inserts. The available information include side effect frequency, drug and side effect classifications as well as links to further information, for example drug–target relations.
+
+### The Visualization: What are the most common side effects of psychiatric medications?
+
+```{r}
+drug_names <- read_tsv("drug_names.tsv", col_names=FALSE) %>% 
+  rename(STITCH = X1,
+         Drug = X2)
+
+meddra_freq <- read_tsv("meddra_freq.tsv", col_names=FALSE) %>% 
+  rename(STITCH = X1,
+         CID0 = X2,
+         UMLS = X3,
+         placebo = X4,
+         frequency = X5,
+         freq_lb = X6,
+         freq_ub = X7,
+         MedDra_hierarchy = X8,
+         MedDra_code = X9,
+         MedDra_term = X10) %>% 
+  filter(is.na(placebo)) %>% 
+  select(-CID0, -UMLS, -placebo)
+
+indications <- read_csv("indications-and-drugs.csv")
+
+side_effects <- full_join(meddra_freq, drug_names, by = "STITCH") %>% 
+  filter(MedDra_hierarchy == "PT") %>% 
+  select(-MedDra_hierarchy)
+
+psych_side_effects <- inner_join(side_effects, indications, by = "Drug") %>% distinct()
+
+psych_drugs <- inner_join(side_effects, indications, by = "Drug") %>% 
+  select(-Indication) %>% 
+  distinct()
+```
+
+```{r}
+# What are the top 10 most common side effects?
+top12 <- psych_drugs %>% 
+  filter(freq_lb >=0.1) %>% 
+  group_by(MedDra_term) %>% 
+  summarise(N = n()) %>% 
+  arrange(-N) %>% 
+  head(12) %>% 
+  select(-N) %>% 
+  distinct()
+
+top12_psych <- inner_join(psych_drugs, top12, by = "MedDra_term")
+
+top12_psych <- top12_psych %>% 
+  group_by(STITCH, MedDra_code, MedDra_term, Drug) %>% 
+  summarise(freq_lb = mean(freq_lb),
+            freq_ub = mean(freq_ub))
+```
+
+
+```{r fig.width = 9, fig.height=20}
+top12_psych %>% filter(freq_lb >= 0.1) %>% 
+ggplot(mapping = aes(x = 1, y=freq_lb, fill = MedDra_term)) + 
+  geom_bar(stat = "identity", position = "fill", width = 0.1) +
+  coord_polar(theta="y") +
+  facet_wrap(~Drug, ncol=5) +
+  xlim(c(0.9, 1.05)) +
+  labs(title = "What are the most common side effects of psychiatric medications?",
+       subtitle = " ") +
+  theme_void() +
+  theme(legend.position = "top",
+        legend.title = element_blank(),
+        plot.title = element_text(hjust=0.5, size = 20),
+        plot.margin = margin(t = 20, r = 0, b = 20, l = 0, unit = "pt"),
+        plot.subtitle = element_text(size=1),
+        strip.background = element_rect(colour="black", fill="grey90"),
+        strip.text = element_text(size = 10, vjust=1, hjust=0.5, margin=margin(3,0,3,0,"pt"))) +
+  scale_fill_futurama()
+```
+
+### The Details: How the Plot was Made
+
+This plot was made using `ggplot`. It uses `geom_bar` with `coord_theta` to change the bar to a circle. The color scheme is the Futurama palette from the `ggsci` package. Here is a glimpse of the data:
+
+```{r}
+top12_psych %>% select(STITCH, Drug, everything()) %>% head(10) %>% kable(digits = 3)
+```
+
+And here is the `ggplot` code:
+
+```{r fig.width = 9, fig.height=20, echo = TRUE, eval = FALSE}
+top12_psych %>% filter(freq_lb >= 0.1) %>% 
+ggplot(mapping = aes(x = 1, y=freq_lb, fill = MedDra_term)) + 
+  geom_bar(stat = "identity", position = "fill", width = 0.1) +
+  coord_polar(theta="y") +
+  facet_wrap(~Drug, ncol=5) +
+  xlim(c(0.9, 1.05)) +
+  labs(title = "What are the most common side effects of psychiatric medications?",
+       subtitle = " ") +
+  theme_void() +
+  theme(legend.position = "top",
+        legend.title = element_blank(),
+        plot.title = element_text(hjust=0.5, size = 20),
+        plot.margin = margin(t = 20, r = 0, b = 20, l = 0, unit = "pt"),
+        plot.subtitle = element_text(size=1),
+        strip.background = element_rect(colour="black", fill="grey90"),
+        strip.text = element_text(size = 10, vjust=1, hjust=0.5, margin=margin(3,0,3,0,"pt"))) +
+  scale_fill_futurama()
+```

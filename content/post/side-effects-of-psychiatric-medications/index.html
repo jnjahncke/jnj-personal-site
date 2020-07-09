@@ -1,0 +1,149 @@
+---
+title: Side Effects of Psychiatric Medications
+author: ''
+date: '2020-06-25'
+slug: side-effects-of-psychiatric-medications
+categories: []
+tags:
+  - data viz
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-06-25T14:24:03-07:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: yes
+projects: []
+---
+
+
+
+<div id="the-data-sider-4.1-side-effect-resource" class="section level3">
+<h3>The Data: SIDER 4.1 Side Effect Resource</h3>
+<p>From the <a href="http://sideeffects.embl.de/">website</a>:</p>
+<blockquote>
+<p>SIDER contains information on marketed medicines and their recorded adverse drug reactions. The information is extracted from public documents and package inserts. The available information include side effect frequency, drug and side effect classifications as well as links to further information, for example drug–target relations.</p>
+</blockquote>
+</div>
+<div id="the-visualization-what-are-the-most-common-side-effects-of-psychiatric-medications" class="section level3">
+<h3>The Visualization: What are the most common side effects of psychiatric medications?</h3>
+<p><img src="/post/side-effects-of-psychiatric-medications/index_files/figure-html/unnamed-chunk-4-1.png" width="864" /></p>
+</div>
+<div id="the-details-how-the-plot-was-made" class="section level3">
+<h3>The Details: How the Plot was Made</h3>
+<p>This plot was made using <code>ggplot</code>. It uses <code>geom_bar</code> with <code>coord_theta</code> to change the bar to a circle. The color scheme is the Futurama palette from the <code>ggsci</code> package. Here is a glimpse of the data:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">STITCH</th>
+<th align="left">Drug</th>
+<th align="left">MedDra_code</th>
+<th align="left">MedDra_term</th>
+<th align="right">freq_lb</th>
+<th align="right">freq_ub</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CID100000444</td>
+<td align="left">bupropion</td>
+<td align="left">C0004093</td>
+<td align="left">Asthenia</td>
+<td align="right">0.022</td>
+<td align="right">0.164</td>
+</tr>
+<tr class="even">
+<td align="left">CID100000444</td>
+<td align="left">bupropion</td>
+<td align="left">C0009806</td>
+<td align="left">Constipation</td>
+<td align="right">0.096</td>
+<td align="right">0.096</td>
+</tr>
+<tr class="odd">
+<td align="left">CID100000444</td>
+<td align="left">bupropion</td>
+<td align="left">C0011991</td>
+<td align="left">Diarrhoea</td>
+<td align="right">0.052</td>
+<td align="right">0.052</td>
+</tr>
+<tr class="even">
+<td align="left">CID100000444</td>
+<td align="left">bupropion</td>
+<td align="left">C0012833</td>
+<td align="left">Dizziness</td>
+<td align="right">0.064</td>
+<td align="right">0.064</td>
+</tr>
+<tr class="odd">
+<td align="left">CID100000444</td>
+<td align="left">bupropion</td>
+<td align="left">C0015672</td>
+<td align="left">Fatigue</td>
+<td align="right">0.050</td>
+<td align="right">0.050</td>
+</tr>
+<tr class="even">
+<td align="left">CID100000444</td>
+<td align="left">bupropion</td>
+<td align="left">C0018681</td>
+<td align="left">Headache</td>
+<td align="right">0.191</td>
+<td align="right">0.290</td>
+</tr>
+<tr class="odd">
+<td align="left">CID100000444</td>
+<td align="left">bupropion</td>
+<td align="left">C0027497</td>
+<td align="left">Nausea</td>
+<td align="right">0.096</td>
+<td align="right">0.096</td>
+</tr>
+<tr class="even">
+<td align="left">CID100000444</td>
+<td align="left">bupropion</td>
+<td align="left">C0042963</td>
+<td align="left">Vomiting</td>
+<td align="right">0.046</td>
+<td align="right">0.170</td>
+</tr>
+<tr class="odd">
+<td align="left">CID100000444</td>
+<td align="left">bupropion</td>
+<td align="left">C0043352</td>
+<td align="left">Dry mouth</td>
+<td align="right">0.150</td>
+<td align="right">0.150</td>
+</tr>
+<tr class="even">
+<td align="left">CID100000444</td>
+<td align="left">bupropion</td>
+<td align="left">C0232462</td>
+<td align="left">Decreased appetite</td>
+<td align="right">0.051</td>
+<td align="right">0.051</td>
+</tr>
+</tbody>
+</table>
+<p>And here is the <code>ggplot</code> code:</p>
+<pre class="r"><code>top12_psych %&gt;% filter(freq_lb &gt;= 0.1) %&gt;% 
+ggplot(mapping = aes(x = 1, y=freq_lb, fill = MedDra_term)) + 
+  geom_bar(stat = &quot;identity&quot;, position = &quot;fill&quot;, width = 0.1) +
+  coord_polar(theta=&quot;y&quot;) +
+  facet_wrap(~Drug, ncol=5) +
+  xlim(c(0.9, 1.05)) +
+  labs(title = &quot;What are the most common side effects of psychiatric medications?&quot;,
+       subtitle = &quot; &quot;) +
+  theme_void() +
+  theme(legend.position = &quot;top&quot;,
+        legend.title = element_blank(),
+        plot.title = element_text(hjust=0.5, size = 20),
+        plot.margin = margin(t = 20, r = 0, b = 20, l = 0, unit = &quot;pt&quot;),
+        plot.subtitle = element_text(size=1),
+        strip.background = element_rect(colour=&quot;black&quot;, fill=&quot;grey90&quot;),
+        strip.text = element_text(size = 10, vjust=1, hjust=0.5, margin=margin(3,0,3,0,&quot;pt&quot;))) +
+  scale_fill_futurama()</code></pre>
+</div>

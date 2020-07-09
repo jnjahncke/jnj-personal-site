@@ -1,0 +1,43 @@
+---
+title: Home Ownership in Portland, OR
+author: ''
+date: '2020-06-02'
+slug: home-ownership-in-portland-or
+categories: []
+tags:
+  - data viz
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-06-02T09:44:19-07:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: yes
+projects: []
+---
+
+
+
+<div id="the-data-portland-or-2010-census-data" class="section level3">
+<h3>The Data: Portland, OR 2010 Census Data</h3>
+<p>Portland provides open access <a href="http://www.civicapps.org/datasets">maps and GIS data</a> as well as <a href="https://www.portlandoregon.gov/civic/56897">census data</a>. Here I chose to focus on data from each Portland neighborhood describing the number of individuals who either own their housing versus rent their housing. For the map I am also using data describing the layout of the city neighborhoods and the Willamette River.</p>
+</div>
+<div id="the-visualization-percent-of-housing-units-that-are-owned-by-neighborhood" class="section level3">
+<h3>The Visualization: Percent of Housing Units that are Owned, by Neighborhood</h3>
+<p><img src="/post/home-ownership-in-portland-or/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Here I am using color to indicate the percent of housing units that are owned in a given neighborhood. With this color scale, red indicates that more units are owned than rented and blue indicates that more units are rented than owned. White indicates that an equal number of units are owned and rented. As you can see, in the neighborhoods surroundng the downtown area/city center, more units are rented than owned but in the majority of other neighborhoods the opposite is true.</p>
+</div>
+<div id="the-details-how-the-plot-was-made" class="section level3">
+<h3>The Details: How the Plot was Made</h3>
+<p>This plot was made using <code>ggplot2</code> with <code>geom_sf</code> from the <code>sf</code> package. The data is organized into shp/shapefile folders and imported using <code>st_read()</code> (also part of <code>sf</code>). This results in an information-rich dataframe that makes these kinds of plots easy to create.</p>
+<pre class="r"><code>boundaries_with_pop %&gt;% ggplot() + 
+  geom_sf(aes(fill=`Percent Owned`), color = &quot;black&quot;) + # plot the neighborhoods
+  scale_fill_gradient2(midpoint = 50,
+                        low=&quot;blue&quot;, mid=&quot;white&quot;, high=&quot;red&quot;) + # specify the gradient color scale
+  geom_sf(data=river_boundaries, fill=&quot;blue&quot;, color = &quot;transparent&quot;) + # plot the river
+  labs(title = &quot;Percent of Housing Units that are Owned (Not Rented), \nby Neighborhood&quot;,
+       fill = &quot;% Owned&quot;) +
+  theme_minimal()</code></pre>
+</div>
