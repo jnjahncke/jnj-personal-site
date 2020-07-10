@@ -1,6 +1,0 @@
-"0","# Import GPS data for Penis Girl images
-pgirl_db <- read.xlsx(""pgirl_db.xlsx"")
-"
-"2","Error in read.xlsx(""pgirl_db.xlsx"") : 
-  Please provide a sheet name OR a sheet index.
-"
