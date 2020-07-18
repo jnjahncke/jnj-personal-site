@@ -422,7 +422,7 @@ shootings &lt;- inner_join(shootings, census, by=&quot;Year&quot;) %&gt;%
          B_per = B*1000000/B_pop)</code></pre>
 <p><strong>4. For 2020: calculate the projected numbers.</strong> I’ll do this by (1) calculating the number of days represented in the data and (2) dividing my values by the number of days and multiply by 365.</p>
 <pre class="r"><code># Calculate projected data for 2020
-# How many days of data is represented for 2020 data? Latest date is 05/26/2020
+# How many days of data is represented for 2020 data? Latest date is 06/08/2020
 days &lt;- as.numeric(as.Date(as.character(&quot;2020/06/08&quot;), format=&quot;%Y/%m/%d&quot;)-as.Date(as.character(&quot;2020/01/01&quot;), format=&quot;%Y/%m/%d&quot;))
 
 # Calculate projected shootings for 2020

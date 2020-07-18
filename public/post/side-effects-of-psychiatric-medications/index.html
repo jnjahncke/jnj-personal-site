@@ -711,7 +711,7 @@
 <p>And here is the <code>ggplot</code> code:</p>
 <pre class="r"><code>top12_psych %&gt;% filter(freq_lb &gt;= 0.1) %&gt;% 
 ggplot(mapping = aes(x = 1, y=freq_lb, fill = MedDra_term)) + 
-  geom_bar(stat = &quot;identity&quot;, position = &quot;fill&quot;, width = 0.1) +
+  geom_bar(stat = &quot;identity&quot;, position = &quot;fill&quot;, width = 0.1, color = &quot;black&quot;) +
   coord_polar(theta=&quot;y&quot;) +
   facet_wrap(~Drug, ncol=5) +
   xlim(c(0.9, 1.05)) +

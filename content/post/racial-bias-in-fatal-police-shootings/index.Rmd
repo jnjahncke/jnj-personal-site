@@ -320,7 +320,7 @@ shootings <- inner_join(shootings, census, by="Year") %>%
 
 ```{r echo = TRUE}
 # Calculate projected data for 2020
-# How many days of data is represented for 2020 data? Latest date is 05/26/2020
+# How many days of data is represented for 2020 data? Latest date is 06/08/2020
 days <- as.numeric(as.Date(as.character("2020/06/08"), format="%Y/%m/%d")-as.Date(as.character("2020/01/01"), format="%Y/%m/%d"))
 
 # Calculate projected shootings for 2020

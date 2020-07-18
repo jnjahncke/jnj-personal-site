@@ -91,7 +91,7 @@ top12_psych <- top12_psych %>%
 ```{r fig.width = 9, fig.height=20}
 top12_psych %>% filter(freq_lb >= 0.1) %>% 
 ggplot(mapping = aes(x = 1, y=freq_lb, fill = MedDra_term)) + 
-  geom_bar(stat = "identity", position = "fill", width = 0.1) +
+  geom_bar(stat = "identity", position = "fill", width = 0.1, color = "black") +
   coord_polar(theta="y") +
   facet_wrap(~Drug, ncol=5) +
   xlim(c(0.9, 1.05)) +
@@ -121,7 +121,7 @@ And here is the `ggplot` code:
 ```{r fig.width = 9, fig.height=20, echo = TRUE, eval = FALSE}
 top12_psych %>% filter(freq_lb >= 0.1) %>% 
 ggplot(mapping = aes(x = 1, y=freq_lb, fill = MedDra_term)) + 
-  geom_bar(stat = "identity", position = "fill", width = 0.1) +
+  geom_bar(stat = "identity", position = "fill", width = 0.1, color = "black") +
   coord_polar(theta="y") +
   facet_wrap(~Drug, ncol=5) +
   xlim(c(0.9, 1.05)) +
