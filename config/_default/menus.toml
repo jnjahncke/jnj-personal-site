@@ -3,10 +3,6 @@
 #     desired widget in your `content/home/` folder.
 #   The weight parameter defines the order that the links will appear in.
 
-[[main]]
-  name = "CS 631 Final"
-  url = "#publications"
-  weight = 15
 
 [[main]]
   name = "Projects"

@@ -3,6 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/tag/data-viz/</loc>
+    <lastmod>2020-07-18T12:33:05-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tag/how-to/</loc>
+    <lastmod>2020-07-18T12:33:05-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2020-07-18T12:33:05-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/racial-bias-in-fatal-police-shootings/</loc>
+    <lastmod>2020-07-18T12:33:05-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-07-18T12:33:05-07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/project/</loc>
     <lastmod>2020-07-08T00:00:00+00:00</lastmod>
   </url>
@@ -13,43 +38,8 @@
   </url>
   
   <url>
-    <loc>/tag/data-viz/</loc>
-    <lastmod>2020-06-25T14:24:03-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <lastmod>2020-06-25T14:24:03-07:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/post/side-effects-of-psychiatric-medications/</loc>
     <lastmod>2020-06-25T14:24:03-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2020-06-25T14:24:03-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tag/final/</loc>
-    <lastmod>2020-06-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publication/</loc>
-    <lastmod>2020-06-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publication/fatal-police-shootings/</loc>
-    <lastmod>2020-06-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tag/how-to/</loc>
-    <lastmod>2020-06-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -181,6 +171,10 @@
   
   <url>
     <loc>/publication_types/</loc>
+  </url>
+  
+  <url>
+    <loc>/publication/</loc>
   </url>
   
 </urlset>
