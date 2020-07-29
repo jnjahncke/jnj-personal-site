@@ -10,6 +10,11 @@
   weight = 20
   
 [[main]]
+  name = "Publications"
+  url = "#Publications"
+  weight = 25
+  
+[[main]]
   name = "Posts"
   url = "/post"
   weight = 30

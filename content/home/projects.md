@@ -3,13 +3,10 @@
 widget = "portfolio"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 20  # Order that this section will appear.
+weight = 15  # Order that this section will appear.
 
 title = "Projects"
 subtitle = """ 
-<p style="color:white">
-How To: Data Viz in R - Learn how to create and use visualizations.
-</p>
 <p style="color:white">
 Science Communication - Science for non-scientists.
 </p>
@@ -29,10 +26,6 @@ Science Around Us - Science is all around us. Learn about concepts in mathematic
   # Default filter index (e.g. 0 corresponds to the first `[[filter_button]]` instance below).
   filter_default = 0
   
-  
-  [[content.filter_button]]
-    name = "How To: Data Viz in R"
-    tag = "how to"
     
   [[content.filter_button]]
     name = "Science Communication"

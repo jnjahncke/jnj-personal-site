@@ -556,16 +556,16 @@ ggplot() +
     </item>
     
     <item>
-      <title>Radar Diagrams</title>
-      <link>/project/radar-diagrams/</link>
+      <title>Radar Diagrams: Electrical Properties of Brain Cells</title>
+      <link>/post/radar-diagrams-electrical-properties-of-brain-cells/</link>
       <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>/project/radar-diagrams/</guid>
+      <guid>/post/radar-diagrams-electrical-properties-of-brain-cells/</guid>
       <description>
 &lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Radar plots are also known as spider web or polar plots. These charts are useful for conveying information about multiple quantitative variables using multiple axes, arranged in a circle. In R it is &lt;a href=&#34;https://www.r-bloggers.com/the-grammar-of-graphics-and-radar-charts/&#34;&gt;technically possible to use &lt;code&gt;ggplot2&lt;/code&gt;&lt;/a&gt; to make these kinds of charts but the &lt;code&gt;fmsb&lt;/code&gt; package allows for much easier and more readily customizable charts. (See &lt;a href=&#34;https://cran.r-project.org/web/packages/fmsb/&#34;&gt;fmsb’s CRAN page&lt;/a&gt; and &lt;a href=&#34;https://www.rdocumentation.org/packages/fmsb/versions/0.7.0&#34;&gt;RDocumentation page&lt;/a&gt; for more details.)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/project/radar-diagrams/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;768&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/radar-diagrams-electrical-properties-of-brain-cells/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;768&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;div id=&#34;the-data-neuroelectro-database-of-electrical-properties-of-brain-cells&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;The Data: NeuroElectro Database of Electrical Properties of Brain Cells&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.neuroelectro.org/api/docs/&#34;&gt;NeuroElectro&lt;/a&gt; is a great resource for electrophysiologists in neuroscience. This project extracts information about the electrophysiological properties of neurons from existing literature and integrates it into a centralized database. There are dozens of measurements documented for a large number of cell types in multiple species and preparations.&lt;/p&gt;
@@ -803,7 +803,7 @@ Hippocampus CA3 pyramidal cell
 &lt;p&gt;Now, feed it into &lt;code&gt;fmsb::radarchart()&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(mar=c(0,0,1.2,0)+0.1) # Set the margins
 radarchart(cortexpyramidal, title=&amp;quot;Neocortex pyramidal cell layer 5-6&amp;quot;) # Make the default radar plot&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/project/radar-diagrams/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;480&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/radar-diagrams-electrical-properties-of-brain-cells/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;480&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-embelished-radar-plot&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;The embelished radar plot&lt;/h3&gt;
@@ -849,17 +849,17 @@ for(i in 1:6){
     vlcex=1.2, palcex=0.9, calcex=0.9,
     )
 }&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/project/radar-diagrams/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;768&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/radar-diagrams-electrical-properties-of-brain-cells/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;768&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>
     
     <item>
-      <title>Chord Diagrams</title>
-      <link>/project/chord-diagrams/</link>
+      <title>Chord Diagrams: Religious Composition of Romantic Partners</title>
+      <link>/post/chord-diagrams/</link>
       <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
-      <guid>/project/chord-diagrams/</guid>
+      <guid>/post/chord-diagrams/</guid>
       <description>
 &lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
@@ -1205,7 +1205,7 @@ for(si in get.all.sector.index()) {
     circos.text(mean(xlim), ylim[1], si, facing = &amp;quot;clockwise&amp;quot;, adj = c(0, 0.5),
     niceFacing = TRUE, cex = 1.25, col = &amp;quot;black&amp;quot;, sector.index = si, track.index = 1)
 }&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/project/chord-diagrams/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/chord-diagrams/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;interactive-chord-diagram-using-chorddiag&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Interactive Chord Diagram Using &lt;code&gt;chorddiag&lt;/code&gt;&lt;/h3&gt;
@@ -1851,10 +1851,10 @@ chorddiag(religionmatrix,
     </item>
     
     <item>
-      <title>The Ridgeline Plot</title>
-      <link>/project/the-ridgeline-plot/</link>
+      <title>The Ridgeline Plot: Danceability Across the Ages</title>
+      <link>/post/the-ridgeline-plot/</link>
       <pubDate>Wed, 22 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/project/the-ridgeline-plot/</guid>
+      <guid>/post/the-ridgeline-plot/</guid>
       <description>
 &lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
@@ -1866,7 +1866,7 @@ chorddiag(religionmatrix,
 &lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/wilkelab/ggridges&#34;&gt;Wilke’s Github&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;/project/the-ridgeline-plot/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/the-ridgeline-plot/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;div id=&#34;the-data-billboard-200-tracks&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;The Data: Billboard 200 Tracks&lt;/h1&gt;
 &lt;p&gt;This data set is from &lt;a href=&#34;https://components.one/datasets/billboard-200/&#34;&gt;Components One’s Datasets&lt;/a&gt;. It’s a large database containing data on 340,000 tracks from Billboard 200 albums released from 1963-2019. Included for each track is the following:&lt;/p&gt;
@@ -1894,6 +1894,8 @@ chorddiag(religionmatrix,
 &lt;/ul&gt;
 &lt;div id=&#34;a-glimpse-of-the-data&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;A glimpse of the data:&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)&lt;/code&gt;&lt;/pre&gt;
 &lt;table class=&#34;table table-striped&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -2075,7 +2077,7 @@ decadeplot &amp;lt;- ggplot(track_data %&amp;gt;% filter(year &amp;gt;= &amp;quo
        y = &amp;quot;Decade&amp;quot;) +
   theme(axis.title.y = element_text(hjust = 0.25)) # Move y lable to be in the center of the y-axis labels, not the whole y-axis
 decadeplot&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/project/the-ridgeline-plot/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/the-ridgeline-plot/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;danceability-by-year-faceted-by-decade&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Danceability by Year: Faceted by Decade&lt;/h3&gt;
@@ -2094,7 +2096,7 @@ decadeplot&lt;/code&gt;&lt;/pre&gt;
        y = &amp;quot;Year&amp;quot;) +
   theme(strip.background = element_rect(color = &amp;quot;white&amp;quot;, fill = &amp;quot;lightgray&amp;quot;), # Format the facel labels
         axis.title.y = element_text(hjust = 0.35)) # Change the justification of the y-axis label&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/project/the-ridgeline-plot/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;1152&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/the-ridgeline-plot/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;1152&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;danceability-by-year&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Danceability by Year&lt;/h3&gt;
@@ -2110,7 +2112,7 @@ decadeplot&lt;/code&gt;&lt;/pre&gt;
        subtitle = &amp;#39;How does the &amp;quot;danceability&amp;quot; of music change over time?&amp;#39;,
        x = &amp;quot;Song Danceability Score&amp;quot;,
        y = &amp;quot;Year&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/project/the-ridgeline-plot/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;576&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/the-ridgeline-plot/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;576&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;

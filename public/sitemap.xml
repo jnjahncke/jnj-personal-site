@@ -43,8 +43,8 @@
   </url>
   
   <url>
-    <loc>/project/radar-diagrams/</loc>
-    <lastmod>2020-06-03T00:00:00+00:00</lastmod>
+    <loc>/post/radar-diagrams-electrical-properties-of-brain-cells/</loc>
+    <lastmod>2020-06-03T09:37:10-07:00</lastmod>
   </url>
   
   <url>
@@ -53,8 +53,8 @@
   </url>
   
   <url>
-    <loc>/project/chord-diagrams/</loc>
-    <lastmod>2020-05-28T00:00:00+00:00</lastmod>
+    <loc>/post/chord-diagrams/</loc>
+    <lastmod>2020-05-28T09:31:03-07:00</lastmod>
   </url>
   
   <url>
@@ -113,13 +113,63 @@
   </url>
   
   <url>
-    <loc>/post/danceability/</loc>
-    <lastmod>2020-05-08T12:00:08-07:00</lastmod>
+    <loc>/publication-type/2/</loc>
+    <lastmod>2020-05-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/the-ridgeline-plot/</loc>
-    <lastmod>2020-04-22T00:00:00+00:00</lastmod>
+    <loc>/authors/</loc>
+    <lastmod>2020-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/deborah-k.-park/</loc>
+    <lastmod>2020-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/ivar-s.-stein/</loc>
+    <lastmod>2020-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/jennifer-n.-jahncke/</loc>
+    <lastmod>2020-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/juan-c.-flores/</loc>
+    <lastmod>2020-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/karen-zito/</loc>
+    <lastmod>2020-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication/non-ionotropic-nmda-receptor-signaling/</loc>
+    <lastmod>2020-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication_types/</loc>
+    <lastmod>2020-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication/</loc>
+    <lastmod>2020-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tag/publications/</loc>
+    <lastmod>2020-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/the-ridgeline-plot/</loc>
+    <lastmod>2020-04-22T09:06:16-07:00</lastmod>
   </url>
   
   <url>
@@ -158,7 +208,58 @@
   </url>
   
   <url>
-    <loc>/authors/</loc>
+    <loc>/publication/ephexin5-paper/</loc>
+    <lastmod>2017-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/am-hamilton/</loc>
+    <lastmod>2017-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/dk-park/</loc>
+    <lastmod>2017-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/is-stein/</loc>
+    <lastmod>2017-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/jn-jahncke/</loc>
+    <lastmod>2017-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/jt-lambert/</loc>
+    <lastmod>2017-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/k-zito/</loc>
+    <lastmod>2017-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/lk-parajuli/</loc>
+    <lastmod>2017-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/me-greenberg/</loc>
+    <lastmod>2017-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/o-vivas/</loc>
+    <lastmod>2017-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/ss-margolis/</loc>
+    <lastmod>2017-02-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -167,14 +268,6 @@
   
   <url>
     <loc>/author/jennifer-jahncke/</loc>
-  </url>
-  
-  <url>
-    <loc>/publication_types/</loc>
-  </url>
-  
-  <url>
-    <loc>/publication/</loc>
   </url>
   
 </urlset>
