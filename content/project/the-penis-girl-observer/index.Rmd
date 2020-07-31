@@ -240,3 +240,8 @@ pdx_plot_beanz | pdx_zoom_beanz
 # Conclusion
 
 If you're in Portland...keep an eye out for PG/PC (and Beanz)!!
+
+```{r}
+xfun::optipng(dir = ".")
+```
+
