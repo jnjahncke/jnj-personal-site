@@ -2645,7 +2645,7 @@ ggplot(data = moma_life, aes(fill = artist_gender, x = Lifespan)) +
     </item>
     
     <item>
-      <title>A Thread: Molecular Mechanisms of Non-ionotropic NMDA Receptor Signaling in Dendritic Spine Shrinkage</title>
+      <title>A Thread: Molecular Mechanisms of Non-ionotropic LTD</title>
       <link>/project/a-thread-non-ionotropic-nmda-receptor-signaling/</link>
       <pubDate>Fri, 10 Jan 2020 00:00:00 +0000</pubDate>
       <guid>/project/a-thread-non-ionotropic-nmda-receptor-signaling/</guid>
