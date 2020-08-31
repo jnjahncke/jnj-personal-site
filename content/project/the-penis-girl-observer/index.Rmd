@@ -166,6 +166,9 @@ And then I started seeing some "PC" tags that looked *slightly* different - the 
  
 ![](PC-line.png){width=70%}
 
+*Update 8/30/2020: Turns out that this PC tagger is NOT Penis Girl! These tags are suspected to be by the Portland tagger "Bruce". Bruce's tags are often accompanied by "PC" and/or three diamonds.* ![](bruce.png){width=70%}
+
+
 So I had been sitting with the idea that maybe Penis Girl was multiple people. And then I saw it: a "Penis Crew" tag. Penis *CREW!* The style was consistent with the PG tags so I was confident it was a PG tag. Moreover...PC stands for Penis Crew! **It's multiple people!!**
 
 ![](pcrew.png) 
@@ -237,9 +240,17 @@ pdx_zoom_beanz <- ggplot() +
 pdx_plot_beanz | pdx_zoom_beanz
 ```
 
-# Conclusion
+# Hate for Penis Girl & PG Farewell?
 
-If you're in Portland...keep an eye out for PG/PC (and Beanz)!!
+More frequently I have been seeing tags insinuating hate for PG. I often see PG tags painted over or crossed out by other taggers. Most notably, some taggers are calling PG a "snitch."
+
+<p align="center"> ![](snitch.png){width=70%} </p>
+
+And then I saw it...a farewell from Penis Girl?
+
+<p align="center"> ![](bye.png){width=50%} </p>
+
+Let's keep our eyes peeled and see if this really is the end of PG.
 
 ```{r}
 xfun::optipng(dir = ".")
