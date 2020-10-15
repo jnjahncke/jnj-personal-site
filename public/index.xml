@@ -13,6 +13,48 @@
     </image>
     
     <item>
+      <title>Avocado Prices in the US</title>
+      <link>/post/avocado-prices/</link>
+      <pubDate>Wed, 14 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/post/avocado-prices/</guid>
+      <description>
+
+
+&lt;div id=&#34;the-data-avocado-prices&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Data: Avocado Prices&lt;/h3&gt;
+&lt;p&gt;This data was found on &lt;a href=&#34;https://www.kaggle.com/timmate/avocado-prices-2020#&#34;&gt;Kaggle&lt;/a&gt;, originally pulled from the Hass Avocado Board website in 2018 and then updated in 2020.&lt;/p&gt;
+&lt;p&gt;From the Hass Avocado Board:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The table below represents weekly 2018 retail scan data for National retail volume (units) and price. Retail scan data comes directly from retailers’ cash registers based on actual retail sales of Hass avocados. Starting in 2013, the table below reflects an expanded, multi-outlet retail data set. Multi-outlet reporting includes an aggregation of the following channels: grocery, mass, club, drug, dollar and military. The Average Price (of avocados) in the table reflects a per unit (per avocado) cost, even when multiple units (avocados) are sold in bags. The Product Lookup codes (PLU’s) in the table are only for Hass avocados. Other varieties of avocados (e.g. greenskins) are not included in this table.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-visualization-how-do-avocado-sales-vary-across-the-us&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Visualization: How do avocado sales vary across the US?&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/post/avocado-prices/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;This plot not only looks at avocado sales in different regions, it also shows the number of avocados sold by avocado size. While this type of visualization does not give numerical readout, it does provide a quick glance at trends. The most striking trend may be that more small/medium avocados are sold than large/extra large avocados.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-details-how-the-plot-was-made&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Details: How the Plot was Made&lt;/h3&gt;
+&lt;p&gt;This plot was made in ggplot2 using &lt;code&gt;geom_tile()&lt;/code&gt;. The theme is &lt;code&gt;theme_classic()&lt;/code&gt; with some minor modifications to the title/subtitle. One point that needs to be made is that the data was cleaned such that it was tidy and I then used &lt;code&gt;summarise()&lt;/code&gt; to get the volume sold numbers that I feed into ggplot.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(data = avocado_summary, mapping = aes(x = size, y = geography, fill = num_sold)) + 
+  geom_tile() +
+  theme_classic() +
+  scale_fill_gradient(low = &amp;quot;white&amp;quot;, high = &amp;quot;red&amp;quot;) +
+  scale_x_discrete(labels = c(&amp;quot;Small/Medium&amp;quot;, &amp;quot;Large&amp;quot;, &amp;quot;Extra Large&amp;quot;)) +
+  theme(plot.title.position = &amp;quot;plot&amp;quot;,
+        plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5),
+        legend.title = element_text(hjust = 0)) +
+  labs(title = &amp;quot;Number of Hass Avocados Sold in U.S. by Region&amp;quot;,
+       subtitle = &amp;quot;Total number of avocados sold from 2015-2020.&amp;quot;,
+       x = &amp;quot;Avocado Size&amp;quot;, 
+       y = &amp;quot;&amp;quot;, 
+       fill = &amp;quot;Number Sold \n(log scale)&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Resume</title>
       <link>/resume/</link>
       <pubDate>Wed, 29 Jul 2020 00:00:00 +0000</pubDate>
