@@ -26,6 +26,12 @@ social:
 - icon: linkedin
   icon_pack: fab
   link: https://www.linkedin.com/in/jennifer-jahncke-0825267b/
+- icon: google
+  icon_pack: fab
+  link: https://scholar.google.com/citations?user=_p3kcPQAAAAJ&hl=en
+- icon: orcid
+  icon_pack: fab
+  link: https://orcid.org/0000-0003-2319-6109
 superuser: true
 title: Jennifer Jahncke
 
