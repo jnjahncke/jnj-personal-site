@@ -13,6 +13,155 @@
     </image>
     
     <item>
+      <title>Limits</title>
+      <link>/project/limits/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>/project/limits/</guid>
+      <description>
+
+
+&lt;p&gt;I used to tutor calculus. People really struggle with limits and asymptotes. Asymptotes occur where your function is approaching either positive or negative infinity. This happens when the function is “undefined”. An example of this is if there is some x value that would force the function to divide by zero. You can’t divide by zero. It’s undefined. So you get an asymptote and an infinite limit. Limits help you visualize a function by better understanding how it behaves. You need to check the behavior on both sides of an asymptote - what is the limit when you approach from the left? From the right? They don’t necessarily match and whether or not they do will tell you about the shape of your function. In my picture above, the function in question is barreling down to negative infinity at its asymptote. It looks like the curves on either side of the asymptote will fall down together infinitely until they meet at some “infinity”. Keep in mind that infinity is not a number - it’s more like a direction. Those curves will never touch. They’ll get close - infinitely close - but they will never ever touch.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Where&#39;s Waldo?</title>
+      <link>/post/wheres-waldo/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>/post/wheres-waldo/</guid>
+      <description>
+
+
+&lt;div id=&#34;the-data-wheres-waldo&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Data: Where’s Waldo?&lt;/h3&gt;
+&lt;p&gt;This data was found on &lt;a href=&#34;https://docs.google.com/spreadsheets/d/1wZhPLMCHKJvwOkP4juclhjFgqIY8fQFMemwKL2c64vk/edit#gid=0&amp;amp;range=C291&#34;&gt;Data Is Plural&lt;/a&gt;, originally posted January 2017.&lt;/p&gt;
+&lt;p&gt;From Data Is Plural:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In 2015, computer scientist Randy Olson tried computing “the optimal search strategy for finding Waldo” in the seven original Where’s Waldo? books. In doing so, he transcribed a 2013 Slate chart of Waldo’s locations (itself transcribed from those seven original books). The resulting data set contains 68 rows — one for each Waldo — and four columns: book, page, x coordinate, and y coordinate.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You can download the CSV from Randy Olson’s website archives &lt;a href=&#34;http://www.randalolson.com/wp-content/uploads/wheres-waldo-locations.csv&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-visualization-wheres-waldo&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Visualization: Where’s Waldo?&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/post/wheres-waldo/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;816&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-details-how-the-visualization-was-made&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Details: How the Visualization was Made&lt;/h3&gt;
+&lt;p&gt;For this visualization, I used the following packages:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(ggimage)
+library(ggrepel)
+library(patchwork)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;data-wrangling&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Data Wrangling&lt;/h4&gt;
+&lt;p&gt;Here’s a glimpse at the data set as provided:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;waldo_pos &amp;lt;- read.csv(&amp;quot;wheres-waldo-locations.csv&amp;quot;)
+head(waldo_pos)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   Book Page        X        Y
+## 1    5   10 0.625000 7.708333
+## 2    7    1 4.944444 6.569444
+## 3    1   11 5.430556 6.402778
+## 4    1   10 5.902778 6.083333
+## 5    2    3 5.430556 5.444444
+## 6    5    3 4.791667 5.444444&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The data set is very basic and didn’t really require any tidying, but I needed to add three columns: (1) the name of my Waldo .png file (more on this later), (2) the actual name of each book (since the data is provided as the book &lt;em&gt;number&lt;/em&gt;), and (3) the hex code for the main color of each book cover. To get the hex codes I googled the books, pulled the cover images into photoshop, eyedropped the color, and recorded the corresponding hex. I then used &lt;code&gt;forcats::fct_relevel()&lt;/code&gt; from {tidyverse} to manually define the factor levels of each book according to the book number/title.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;waldo_pos &amp;lt;- waldo_pos %&amp;gt;% mutate(icon = rep(&amp;quot;waldo.png&amp;quot;, nrow(waldo_pos)))
+waldo_pos &amp;lt;- waldo_pos %&amp;gt;% 
+  mutate(BookName = case_when(Book == 1 ~ &amp;quot;Where&amp;#39;s Waldo?&amp;quot;,
+                          Book == 2 ~ &amp;quot;Where&amp;#39;s Waldo Now?&amp;quot;,
+                          Book == 3 ~ &amp;quot;The Great Waldo Search&amp;quot;,
+                          Book == 4 ~ &amp;quot;Where&amp;#39;s Waldo in Hollywood?&amp;quot;,
+                          Book == 5 ~ &amp;quot;Where&amp;#39;s Waldo? The Wonder Book&amp;quot;,
+                          Book == 6 ~ &amp;quot;Where&amp;#39;s Waldo? The Great Picture Hunt!&amp;quot;,
+                          Book == 7 ~ &amp;quot;Where&amp;#39;s Waldo? The Incredible Paper Chase&amp;quot;),
+         ColorHex = case_when(Book == 1 ~ &amp;quot;#8fdce4&amp;quot;,
+                              Book == 2 ~ &amp;quot;#d62e45&amp;quot;,
+                              Book == 3 ~ &amp;quot;#f5e321&amp;quot;,
+                              Book == 4 ~ &amp;quot;#006da9&amp;quot;,
+                              Book == 5 ~ &amp;quot;#ffec01&amp;quot;,
+                              Book == 6 ~ &amp;quot;#ef3834&amp;quot;,
+                              Book == 7 ~ &amp;quot;#ffdd00&amp;quot;))
+
+waldo_pos$BookName &amp;lt;- waldo_pos$BookName %&amp;gt;% 
+  fct_relevel(c(&amp;quot;Where&amp;#39;s Waldo?&amp;quot;, &amp;quot;Where&amp;#39;s Waldo Now?&amp;quot;, &amp;quot;The Great Waldo Search&amp;quot;, &amp;quot;Where&amp;#39;s Waldo in Hollywood?&amp;quot;, &amp;quot;Where&amp;#39;s Waldo? The Wonder Book&amp;quot;, &amp;quot;Where&amp;#39;s Waldo? The Great Picture Hunt!&amp;quot;, &amp;quot;Where&amp;#39;s Waldo? The Incredible Paper Chase&amp;quot;))
+
+head(waldo_pos)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   Book Page        X        Y      icon
+## 1    5   10 0.625000 7.708333 waldo.png
+## 2    7    1 4.944444 6.569444 waldo.png
+## 3    1   11 5.430556 6.402778 waldo.png
+## 4    1   10 5.902778 6.083333 waldo.png
+## 5    2    3 5.430556 5.444444 waldo.png
+## 6    5    3 4.791667 5.444444 waldo.png
+##                                    BookName ColorHex
+## 1            Where&amp;#39;s Waldo? The Wonder Book  #ffec01
+## 2 Where&amp;#39;s Waldo? The Incredible Paper Chase  #ffdd00
+## 3                            Where&amp;#39;s Waldo?  #8fdce4
+## 4                            Where&amp;#39;s Waldo?  #8fdce4
+## 5                        Where&amp;#39;s Waldo Now?  #d62e45
+## 6            Where&amp;#39;s Waldo? The Wonder Book  #ffec01&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;creating-the-visualization&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Creating the Visualization&lt;/h4&gt;
+&lt;p&gt;This visualization is created by making two visualizations and combining them using {patchwork}. (If you don’t know patchwork you should definitely &lt;a href=&#34;https://patchwork.data-imaginist.com/&#34;&gt;read up on it&lt;/a&gt;! I use it constantly.) The first visualization, the main one, is the “scatter plot” using a Waldo icon as the points. To do this I use the {&lt;a href=&#34;https://mran.microsoft.com/snapshot/2018-05-23/web/packages/ggimage/vignettes/ggimage.html&#34;&gt;ggimage&lt;/a&gt;} package. I found a Waldo icon online that had a transparent background:&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;waldo.png&#34; style=&#34;width:20.0%&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;I saved the icon as “waldo.png” - this is why I needed that &lt;code&gt;icon&lt;/code&gt; column in my dataframe! I then used &lt;code&gt;ggimage::geom_image()&lt;/code&gt; inside &lt;code&gt;ggplot()&lt;/code&gt; just like I would use &lt;code&gt;geom_point()&lt;/code&gt; but with the image provided in the aesthetics using &lt;code&gt;aes(image = icon)&lt;/code&gt;. What else did I do?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I used &lt;code&gt;ggrepel::geom_label_repel()&lt;/code&gt; to add the page number labels. I prefer &lt;code&gt;geom_label_repel()&lt;/code&gt; over &lt;code&gt;geom_label()&lt;/code&gt; because it ensures that the labels don’t overlap.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;I used &lt;code&gt;facet_wrap()&lt;/code&gt; to plot the 7 books separately. This is why it was important that I specified the factor levels earlier - to ensure that the books were in the proper order. If I had not done that they would have been presented alphabetically. One other tweak I made withing the &lt;code&gt;facet_wrap()&lt;/code&gt; function was to use &lt;code&gt;labeller = label_wrap_gen()&lt;/code&gt; to make the book titles wrap if they were too long to fit in the strip width.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;I wanted the backgrounds of the facets to correspond to the colors of the book covers. I took a short cut here. It is not trivial to set the panel background colors to be different within a &lt;code&gt;facet_wrap&lt;/code&gt;. (You can easily change them all to be the &lt;em&gt;same&lt;/em&gt; color using &lt;code&gt;theme(panel.background = element_rect(fill = &#34;red&#34;)&lt;/code&gt;.) The short cuz I took was to use &lt;code&gt;geom_rect()&lt;/code&gt; to draw a rectangle under the &lt;code&gt;geom_image()&lt;/code&gt; layer. I set the fill of the rectangle to be the hex codes in my &lt;code&gt;ColorHex&lt;/code&gt; column and used &lt;code&gt;scale_fill_identity()&lt;/code&gt; to tell ggplot that the cell values were to be interpreted as color coding information, not factors.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;waldo_plot &amp;lt;- waldo_pos %&amp;gt;% 
+  ggplot(aes(x = X, y = Y)) +
+  geom_rect(aes(fill = ColorHex), xmin = -1, xmax = 14, ymin = -1, ymax = 8.5, alpha = 0.2) +
+  geom_image(aes(image = icon), size = 0.2) +
+  geom_label_repel(aes(label = Page), size = 3) +
+  facet_wrap(~BookName, labeller = label_wrap_gen()) +
+  scale_fill_identity() +
+  labs(x = &amp;quot;X Coordinate on Page&amp;quot;, y = &amp;quot;Y Coordinate on Page&amp;quot;,
+       title = &amp;quot;Where&amp;#39;s Waldo: A Cheat Sheet&amp;quot;,
+       subtitle = &amp;quot;The position of Waldo on each page of the 7 primary Where&amp;#39;s Waldo books.&amp;quot;,
+       caption = &amp;quot;Jennifer Jahncke @thejenjay&amp;quot;) +
+  theme_bw() +
+  theme(panel.grid = element_line(color = &amp;quot;black&amp;quot;),
+        strip.background = element_rect(color = &amp;quot;black&amp;quot;, fill = &amp;quot;white&amp;quot;, size = 1),
+        strip.text = element_text(size = 14),
+        plot.title = element_text(size = 18),
+        plot.subtitle = element_text(size = 14),
+        plot.background = element_rect(fill = &amp;quot;lightcyan&amp;quot;),
+        panel.border = element_rect(color = &amp;quot;black&amp;quot;, size = 1))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/wheres-waldo/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;816&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Okay but now there’s that big empty space in the bottom corner and I want to fill it with a caption describing the data. Here is where {patchwork} comes in. I created a “plot” that is just a blank canvas with my desired caption printed on it using &lt;code&gt;geom_text()&lt;/code&gt;. I used &lt;code&gt;str_wrap(label = , width = )&lt;/code&gt; to make my text wrap into a “paragraph” of a specified width (given in characters).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;inset &amp;lt;- ggplot() +
+  geom_rect(aes(xmin = 0, xmax = 4.5, ymin = -0.25, ymax = 0.25), fill = &amp;quot;transparent&amp;quot;) +
+  geom_text(aes(x = 0, y = 0.12, label = &amp;quot;From Data Is Plural:&amp;quot;), hjust = 0) +
+  
+  geom_text(aes(x = 0, y = 0, 
+                label = str_wrap(&amp;#39;&amp;quot;In 2015, computer scientist Randy Olson tried computing “the optimal search strategy for finding Waldo” in the seven original Where’s Waldo? books. In doing so, he transcribed a 2013 Slate chart of Waldo’s locations (itself transcribed from those seven original books). The resulting dataset contains 68 rows — one for each Waldo — and four columns: book, page, x coordinate, and y coordinate.&amp;quot;&amp;#39;, width = 70)), 
+            hjust = 0) +
+  
+  geom_text(aes(x = 0, y = -0.14, 
+                label = str_wrap(&amp;quot;The Waldo icon demonstrates the coordinates of Waldo&amp;#39;s position. The text label indicates which page to find him on.&amp;quot;, width = 70)), 
+            hjust = 0) +
+  coord_cartesian(xlim = c(-0.05, 4.5), ylim = c(-0.2,  0.2)) +
+  theme_void()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Which brings me to my final visualization! I specified the size of the visualization using code chunk options. (&lt;code&gt;{r fig.width=8.5, fig.height=12}&lt;/code&gt;). The inset is placed using &lt;code&gt;patchwork::inset_element()&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;waldo_plot + inset_element(inset, 
+                           left = 0.32, 
+                           bottom = 0, 
+                           right = 1, 
+                           top = 0.38)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/wheres-waldo/index_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;816&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Avocado Prices in the US</title>
       <link>/post/avocado-prices/</link>
       <pubDate>Wed, 14 Oct 2020 00:00:00 +0000</pubDate>

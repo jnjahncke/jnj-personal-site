@@ -18,6 +18,17 @@ date_format = "Jan 2006"
 #   Leave other parameters empty if not required.
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 
+
+[[item]]
+  organization = "NIH/NINDS"
+  organization_url = ""
+  title = "Ruth L. Kirschstein National Research Service Award"
+  url = "https://researchtraining.nih.gov/programs/fellowships/F31"
+  certificate_url = ""
+  date_start = "2020-09-28"
+  date_end = ""
+  description = ""
+
 [[item]]
   organization = "National Science Foundation"
   organization_url = ""
