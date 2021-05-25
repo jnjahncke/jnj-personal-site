@@ -5,12 +5,126 @@
     <link>/tag/data-viz/</link>
       <atom:link href="/tag/data-viz/index.xml" rel="self" type="application/rss+xml" />
     <description>data viz</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 24 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 25 May 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/logo.JPEG</url>
       <title>data viz</title>
       <link>/tag/data-viz/</link>
     </image>
+    
+    <item>
+      <title>Sick With Mono</title>
+      <link>/post/sick-with-mono/</link>
+      <pubDate>Tue, 25 May 2021 00:00:00 +0000</pubDate>
+      <guid>/post/sick-with-mono/</guid>
+      <description>
+
+
+&lt;div id=&#34;the-data-heart-rate-and-temperature-measurements-while-sick&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Data: Heart Rate and Temperature Measurements While Sick&lt;/h3&gt;
+&lt;p&gt;Somehow I managed to get mono during a global pandemic at the age of 28. While I was sick I kept track of my temperature just using an oral thermometer, noting the time and temperature. My heart rate data comes from my Fitbit and represents my resting heart rate for the day. Here’s a glimpse of the data (first 10 rows):&lt;/p&gt;
+&lt;style&gt;
+  .col2 {
+    columns: 2 200px;         /* number of columns and width in pixels*/
+    -webkit-columns: 2 200px; /* chrome, safari */
+    -moz-columns: 2 200px;    /* firefox */
+  }
+  .col3 {
+    columns: 3 100px;
+    -webkit-columns: 3 100px;
+    -moz-columns: 3 100px;
+  }
+&lt;/style&gt;
+&lt;div class=&#34;col2&#34;&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;temps&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 10 x 3
+##    Date       Time                 Temp
+##    &amp;lt;date&amp;gt;     &amp;lt;dttm&amp;gt;              &amp;lt;dbl&amp;gt;
+##  1 2021-05-11 1899-12-31 19:48:00 101. 
+##  2 2021-05-11 1899-12-31 20:41:00 101. 
+##  3 2021-05-12 1899-12-31 08:13:00  98.2
+##  4 2021-05-12 1899-12-31 13:38:00 100. 
+##  5 2021-05-12 1899-12-31 16:42:00  98.6
+##  6 2021-05-12 1899-12-31 18:29:00 100. 
+##  7 2021-05-12 1899-12-31 19:22:00 101. 
+##  8 2021-05-12 1899-12-31 19:39:00 101. 
+##  9 2021-05-12 1899-12-31 20:09:00 101. 
+## 10 2021-05-12 1899-12-31 20:37:00 101.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;hr&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 10 x 2
+##    Date          HR
+##    &amp;lt;date&amp;gt;     &amp;lt;dbl&amp;gt;
+##  1 2021-05-01    76
+##  2 2021-05-02    74
+##  3 2021-05-03    74
+##  4 2021-05-04    75
+##  5 2021-05-05    75
+##  6 2021-05-06    78
+##  7 2021-05-07    78
+##  8 2021-05-08    77
+##  9 2021-05-09    79
+## 10 2021-05-10    81&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Why does the time column have dates from the year 1899? Probably an Excel thing. Doesn’t matter for my purposes, I’ll only use the HH:MM:SS data from that column.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-visualization-how-does-my-heart-rate-and-temperature-change-over-time&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Visualization: How does my heart rate and temperature change over time?&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/post/sick-with-mono/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;1008&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-details-how-the-plot-was-made&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The Details: How the Plot was Made&lt;/h3&gt;
+&lt;p&gt;For this visualization we need to load the following packages: &lt;code&gt;tidyverse&lt;/code&gt;, &lt;code&gt;lubridate&lt;/code&gt;, &lt;code&gt;patchwork&lt;/code&gt;, &lt;code&gt;extrafont&lt;/code&gt;, &lt;code&gt;showtext&lt;/code&gt;. &lt;code&gt;lubridate&lt;/code&gt; will help us handle working with datetime. (FAQ: Isn’t &lt;code&gt;lubridate&lt;/code&gt; a part of &lt;code&gt;tidyverse&lt;/code&gt;? Yes but. Yes, it gets installed when you install &lt;code&gt;tidyverse&lt;/code&gt;. BUT it isn’t one of the “core” &lt;code&gt;tidyverse&lt;/code&gt; packages that gets loaded when you load &lt;code&gt;tidyverse&lt;/code&gt; so you need to load it separately.) &lt;code&gt;patchwork&lt;/code&gt; will be used to combine the two plots. &lt;code&gt;extrafont&lt;/code&gt; and &lt;code&gt;showtext&lt;/code&gt; are for the font used in the plot title.&lt;/p&gt;
+&lt;p&gt;I had to fiddle with chunk options a bit to get the font to display in rmarkdown. Here’s what I did (&lt;a href=&#34;https://cran.rstudio.com/web/packages/showtext/vignettes/introduction.html&#34;&gt;source&lt;/a&gt;):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Load &lt;code&gt;extrafont&lt;/code&gt; and &lt;code&gt;showtext&lt;/code&gt;.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;Import the desired font from Google Fonts using &lt;code&gt;font_add_google(&#34;Merriweather&#34;)&lt;/code&gt;.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;showtext_auto(enable = TRUE)&lt;/code&gt; to automatically render the fonts.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;In the setup chunk include &lt;code&gt;fig_retina = 1&lt;/code&gt; so that the fonts in the HTML output render at the correct size.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;In the chunk(s) where you are displaying the visualization include &lt;code&gt;fig.showtext = TRUE&lt;/code&gt; in the chunk options.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here is the code for the two plots separately:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp_plot &amp;lt;- temps %&amp;gt;% ggplot(aes(x = Time, y = Temp, color = Date, group = Date)) +
+  geom_hline(yintercept = 100, lty = &amp;quot;dashed&amp;quot;, color = &amp;quot;red&amp;quot;) +
+    geom_hline(yintercept = 98.6, lty = &amp;quot;dashed&amp;quot;, color = &amp;quot;black&amp;quot;) +
+  geom_point(size = 3) +
+  coord_cartesian(ylim = c(98,102)) +
+  scale_color_viridis_c(option = &amp;quot;A&amp;quot;, trans = &amp;quot;date&amp;quot;, end = 0.95) +
+  scale_x_datetime(date_labels = &amp;quot;%I %p&amp;quot;, date_breaks = &amp;quot;2 hours&amp;quot;) +
+  labs(x = &amp;quot;Time of Day&amp;quot;, y = &amp;quot;Temperature (F)&amp;quot;) +
+  theme_classic() +
+  theme(plot.background = element_rect(fill = &amp;quot;grey95&amp;quot;, color = &amp;quot;grey95&amp;quot;),
+        panel.background = element_rect(fill = &amp;quot;grey95&amp;quot;),
+        legend.background = element_rect(fill = &amp;quot;grey95&amp;quot;))
+
+hr_plot &amp;lt;- hr %&amp;gt;%
+  ggplot(aes(x = Date, y = HR, color = Date)) +
+  geom_point(size = 3) +
+  geom_line(size = 1) +
+  scale_color_viridis_c(option = &amp;quot;A&amp;quot;, trans = &amp;quot;date&amp;quot;, end = 0.95) +
+  scale_x_date(date_labels = &amp;quot;%b \n %d&amp;quot;, date_breaks = &amp;quot;3 days&amp;quot;) +
+  labs(x = &amp;quot;Date&amp;quot;, y = &amp;quot;Heart Rate (bpm)&amp;quot;) +
+  theme_classic() +
+  theme(plot.background = element_rect(fill = &amp;quot;grey95&amp;quot;, color = &amp;quot;grey95&amp;quot;),
+        panel.background = element_rect(fill = &amp;quot;grey95&amp;quot;),
+        legend.background = element_rect(fill = &amp;quot;grey95&amp;quot;),
+        legend.position = &amp;quot;none&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(&lt;a href=&#34;https://help.gnome.org/users/gthumb/stable/gthumb-date-formats.html.en&#34;&gt;Here&lt;/a&gt; is where I learned about datetime formats.)&lt;/p&gt;
+&lt;p&gt;Next, I used patchwork to arrange the plots and add/format the title. With patchwork you can create a layout just by adding and/or dividing the plots. I also need to point out here that my code chunk options are the following for this chunk: &lt;code&gt;{r fig.height=5, fig.width=10.5, fig.showtext = TRUE}&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hr_plot + temp_plot + plot_layout(widths = c(3.5,7)) + 
+  plot_annotation(title = &amp;quot;I Got Mono and Graphed It&amp;quot;, 
+                  subtitle = &amp;quot;My heart rate and body temperature during the two weeks I was out sick.&amp;quot;,
+                  theme = theme(plot.title = element_text(family = &amp;quot;Merriweather&amp;quot;, size = 20, hjust = 0.07),
+                                plot.subtitle = element_text(family = &amp;quot;Merriweather&amp;quot;, hjust = 0.095),
+                                plot.background = element_rect(fill = &amp;quot;grey95&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/sick-with-mono/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;1008&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Why the weird &lt;code&gt;hjust&lt;/code&gt; values? The default justification is left, all the way at the border of the plot, but I wanted the text to start closer to the y-axis so I scooted the text over a bit using &lt;code&gt;hjust.&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Where&#39;s Waldo?</title>
@@ -101,7 +215,7 @@ head(waldo_pos)&lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;li&gt;I used &lt;code&gt;facet_wrap()&lt;/code&gt; to plot the 7 books separately. This is why it was important that I specified the factor levels earlier - to ensure that the books were in the proper order. If I had not done that they would have been presented alphabetically. One other tweak I made withing the &lt;code&gt;facet_wrap()&lt;/code&gt; function was to use &lt;code&gt;labeller = label_wrap_gen()&lt;/code&gt; to make the book titles wrap if they were too long to fit in the strip width.&lt;br /&gt;
 &lt;/li&gt;
-&lt;li&gt;I wanted the backgrounds of the facets to correspond to the colors of the book covers. I took a short cut here. It is not trivial to set the panel background colors to be different within a &lt;code&gt;facet_wrap&lt;/code&gt;. (You can easily change them all to be the &lt;em&gt;same&lt;/em&gt; color using &lt;code&gt;theme(panel.background = element_rect(fill = &#34;red&#34;)&lt;/code&gt;.) The short cuz I took was to use &lt;code&gt;geom_rect()&lt;/code&gt; to draw a rectangle under the &lt;code&gt;geom_image()&lt;/code&gt; layer. I set the fill of the rectangle to be the hex codes in my &lt;code&gt;ColorHex&lt;/code&gt; column and used &lt;code&gt;scale_fill_identity()&lt;/code&gt; to tell ggplot that the cell values were to be interpreted as color coding information, not factors.&lt;/li&gt;
+&lt;li&gt;I wanted the backgrounds of the facets to correspond to the colors of the book covers. I took a short cut here. It is not trivial to set the panel background colors to be different within a &lt;code&gt;facet_wrap&lt;/code&gt;. (You can easily change them all to be the &lt;em&gt;same&lt;/em&gt; color using &lt;code&gt;theme(panel.background = element_rect(fill = &#34;red&#34;)&lt;/code&gt;.) The short cut I took was to use &lt;code&gt;geom_rect()&lt;/code&gt; to draw a rectangle under the &lt;code&gt;geom_image()&lt;/code&gt; layer. I set the fill of the rectangle to be the hex codes in my &lt;code&gt;ColorHex&lt;/code&gt; column and used &lt;code&gt;scale_fill_identity()&lt;/code&gt; to tell ggplot that the cell values were to be interpreted as color coding information, not factors.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;waldo_plot &amp;lt;- waldo_pos %&amp;gt;% 
   ggplot(aes(x = X, y = Y)) +

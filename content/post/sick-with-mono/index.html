@@ -1,0 +1,136 @@
+---
+# Documentation: https://sourcethemes.com/academic/docs/managing-content/
+
+title: "Sick With Mono"
+author: ''
+date: '2021-05-25'
+slug: sick-with-mono
+tags: ['data viz']
+subtitle: ''
+summary: ''
+authors: []
+categories: []
+lastmod: '2021-05-25T10:06:10-07:00'
+featured: false
+
+# Featured image
+# To use, add an image named `featured.jpg/png` to your page's folder.
+# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
+image:
+  caption: ""
+  focal_point: ""
+  preview_only: true
+
+# Projects (optional).
+#   Associate this post with one or more of your projects.
+#   Simply enter your project's folder or file name without extension.
+#   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
+#   Otherwise, set `projects = []`.
+projects: []
+---
+
+
+
+<div id="the-data-heart-rate-and-temperature-measurements-while-sick" class="section level3">
+<h3>The Data: Heart Rate and Temperature Measurements While Sick</h3>
+<p>Somehow I managed to get mono during a global pandemic at the age of 28. While I was sick I kept track of my temperature just using an oral thermometer, noting the time and temperature. My heart rate data comes from my Fitbit and represents my resting heart rate for the day. Here’s a glimpse of the data (first 10 rows):</p>
+<style>
+  .col2 {
+    columns: 2 200px;         /* number of columns and width in pixels*/
+    -webkit-columns: 2 200px; /* chrome, safari */
+    -moz-columns: 2 200px;    /* firefox */
+  }
+  .col3 {
+    columns: 3 100px;
+    -webkit-columns: 3 100px;
+    -moz-columns: 3 100px;
+  }
+</style>
+<div class="col2">
+<pre><code>## [1] &quot;temps&quot;</code></pre>
+<pre><code>## # A tibble: 10 x 3
+##    Date       Time                 Temp
+##    &lt;date&gt;     &lt;dttm&gt;              &lt;dbl&gt;
+##  1 2021-05-11 1899-12-31 19:48:00 101. 
+##  2 2021-05-11 1899-12-31 20:41:00 101. 
+##  3 2021-05-12 1899-12-31 08:13:00  98.2
+##  4 2021-05-12 1899-12-31 13:38:00 100. 
+##  5 2021-05-12 1899-12-31 16:42:00  98.6
+##  6 2021-05-12 1899-12-31 18:29:00 100. 
+##  7 2021-05-12 1899-12-31 19:22:00 101. 
+##  8 2021-05-12 1899-12-31 19:39:00 101. 
+##  9 2021-05-12 1899-12-31 20:09:00 101. 
+## 10 2021-05-12 1899-12-31 20:37:00 101.</code></pre>
+<pre><code>## [1] &quot;hr&quot;</code></pre>
+<pre><code>## # A tibble: 10 x 2
+##    Date          HR
+##    &lt;date&gt;     &lt;dbl&gt;
+##  1 2021-05-01    76
+##  2 2021-05-02    74
+##  3 2021-05-03    74
+##  4 2021-05-04    75
+##  5 2021-05-05    75
+##  6 2021-05-06    78
+##  7 2021-05-07    78
+##  8 2021-05-08    77
+##  9 2021-05-09    79
+## 10 2021-05-10    81</code></pre>
+</div>
+<p>Why does the time column have dates from the year 1899? Probably an Excel thing. Doesn’t matter for my purposes, I’ll only use the HH:MM:SS data from that column.</p>
+</div>
+<div id="the-visualization-how-does-my-heart-rate-and-temperature-change-over-time" class="section level3">
+<h3>The Visualization: How does my heart rate and temperature change over time?</h3>
+<p><img src="/post/sick-with-mono/index_files/figure-html/unnamed-chunk-5-1.png" width="1008" /></p>
+</div>
+<div id="the-details-how-the-plot-was-made" class="section level3">
+<h3>The Details: How the Plot was Made</h3>
+<p>For this visualization we need to load the following packages: <code>tidyverse</code>, <code>lubridate</code>, <code>patchwork</code>, <code>extrafont</code>, <code>showtext</code>. <code>lubridate</code> will help us handle working with datetime. (FAQ: Isn’t <code>lubridate</code> a part of <code>tidyverse</code>? Yes but. Yes, it gets installed when you install <code>tidyverse</code>. BUT it isn’t one of the “core” <code>tidyverse</code> packages that gets loaded when you load <code>tidyverse</code> so you need to load it separately.) <code>patchwork</code> will be used to combine the two plots. <code>extrafont</code> and <code>showtext</code> are for the font used in the plot title.</p>
+<p>I had to fiddle with chunk options a bit to get the font to display in rmarkdown. Here’s what I did (<a href="https://cran.rstudio.com/web/packages/showtext/vignettes/introduction.html">source</a>):</p>
+<ul>
+<li>Load <code>extrafont</code> and <code>showtext</code>.<br />
+</li>
+<li>Import the desired font from Google Fonts using <code>font_add_google("Merriweather")</code>.<br />
+</li>
+<li>Run <code>showtext_auto(enable = TRUE)</code> to automatically render the fonts.<br />
+</li>
+<li>In the setup chunk include <code>fig_retina = 1</code> so that the fonts in the HTML output render at the correct size.<br />
+</li>
+<li>In the chunk(s) where you are displaying the visualization include <code>fig.showtext = TRUE</code> in the chunk options.</li>
+</ul>
+<p>Here is the code for the two plots separately:</p>
+<pre class="r"><code>temp_plot &lt;- temps %&gt;% ggplot(aes(x = Time, y = Temp, color = Date, group = Date)) +
+  geom_hline(yintercept = 100, lty = &quot;dashed&quot;, color = &quot;red&quot;) +
+    geom_hline(yintercept = 98.6, lty = &quot;dashed&quot;, color = &quot;black&quot;) +
+  geom_point(size = 3) +
+  coord_cartesian(ylim = c(98,102)) +
+  scale_color_viridis_c(option = &quot;A&quot;, trans = &quot;date&quot;, end = 0.95) +
+  scale_x_datetime(date_labels = &quot;%I %p&quot;, date_breaks = &quot;2 hours&quot;) +
+  labs(x = &quot;Time of Day&quot;, y = &quot;Temperature (F)&quot;) +
+  theme_classic() +
+  theme(plot.background = element_rect(fill = &quot;grey95&quot;, color = &quot;grey95&quot;),
+        panel.background = element_rect(fill = &quot;grey95&quot;),
+        legend.background = element_rect(fill = &quot;grey95&quot;))
+
+hr_plot &lt;- hr %&gt;%
+  ggplot(aes(x = Date, y = HR, color = Date)) +
+  geom_point(size = 3) +
+  geom_line(size = 1) +
+  scale_color_viridis_c(option = &quot;A&quot;, trans = &quot;date&quot;, end = 0.95) +
+  scale_x_date(date_labels = &quot;%b \n %d&quot;, date_breaks = &quot;3 days&quot;) +
+  labs(x = &quot;Date&quot;, y = &quot;Heart Rate (bpm)&quot;) +
+  theme_classic() +
+  theme(plot.background = element_rect(fill = &quot;grey95&quot;, color = &quot;grey95&quot;),
+        panel.background = element_rect(fill = &quot;grey95&quot;),
+        legend.background = element_rect(fill = &quot;grey95&quot;),
+        legend.position = &quot;none&quot;)</code></pre>
+<p>(<a href="https://help.gnome.org/users/gthumb/stable/gthumb-date-formats.html.en">Here</a> is where I learned about datetime formats.)</p>
+<p>Next, I used patchwork to arrange the plots and add/format the title. With patchwork you can create a layout just by adding and/or dividing the plots. I also need to point out here that my code chunk options are the following for this chunk: <code>{r fig.height=5, fig.width=10.5, fig.showtext = TRUE}</code>.</p>
+<pre class="r"><code>hr_plot + temp_plot + plot_layout(widths = c(3.5,7)) + 
+  plot_annotation(title = &quot;I Got Mono and Graphed It&quot;, 
+                  subtitle = &quot;My heart rate and body temperature during the two weeks I was out sick.&quot;,
+                  theme = theme(plot.title = element_text(family = &quot;Merriweather&quot;, size = 20, hjust = 0.07),
+                                plot.subtitle = element_text(family = &quot;Merriweather&quot;, hjust = 0.095),
+                                plot.background = element_rect(fill = &quot;grey95&quot;)))</code></pre>
+<p><img src="/post/sick-with-mono/index_files/figure-html/unnamed-chunk-7-1.png" width="1008" /></p>
+<p>Why the weird <code>hjust</code> values? The default justification is left, all the way at the border of the plot, but I wanted the text to start closer to the y-axis so I scooted the text over a bit using <code>hjust.</code></p>
+</div>
