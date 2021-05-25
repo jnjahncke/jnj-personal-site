@@ -137,7 +137,7 @@ Here is the code for the two plots separately:
 ```{r echo = TRUE, eval = FALSE}
 temp_plot <- temps %>% ggplot(aes(x = Time, y = Temp, color = Date, group = Date)) +
   geom_hline(yintercept = 100, lty = "dashed", color = "red") +
-    geom_hline(yintercept = 98.6, lty = "dashed", color = "black") +
+  geom_hline(yintercept = 98.6, lty = "dashed", color = "black") +
   geom_point(size = 3) +
   coord_cartesian(ylim = c(98,102)) +
   scale_color_viridis_c(option = "A", trans = "date", end = 0.95) +

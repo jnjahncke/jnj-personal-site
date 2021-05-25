@@ -100,7 +100,7 @@ projects: []
 <p>Here is the code for the two plots separately:</p>
 <pre class="r"><code>temp_plot &lt;- temps %&gt;% ggplot(aes(x = Time, y = Temp, color = Date, group = Date)) +
   geom_hline(yintercept = 100, lty = &quot;dashed&quot;, color = &quot;red&quot;) +
-    geom_hline(yintercept = 98.6, lty = &quot;dashed&quot;, color = &quot;black&quot;) +
+  geom_hline(yintercept = 98.6, lty = &quot;dashed&quot;, color = &quot;black&quot;) +
   geom_point(size = 3) +
   coord_cartesian(ylim = c(98,102)) +
   scale_color_viridis_c(option = &quot;A&quot;, trans = &quot;date&quot;, end = 0.95) +
