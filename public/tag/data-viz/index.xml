@@ -89,7 +89,7 @@
 &lt;p&gt;Here is the code for the two plots separately:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp_plot &amp;lt;- temps %&amp;gt;% ggplot(aes(x = Time, y = Temp, color = Date, group = Date)) +
   geom_hline(yintercept = 100, lty = &amp;quot;dashed&amp;quot;, color = &amp;quot;red&amp;quot;) +
-    geom_hline(yintercept = 98.6, lty = &amp;quot;dashed&amp;quot;, color = &amp;quot;black&amp;quot;) +
+  geom_hline(yintercept = 98.6, lty = &amp;quot;dashed&amp;quot;, color = &amp;quot;black&amp;quot;) +
   geom_point(size = 3) +
   coord_cartesian(ylim = c(98,102)) +
   scale_color_viridis_c(option = &amp;quot;A&amp;quot;, trans = &amp;quot;date&amp;quot;, end = 0.95) +

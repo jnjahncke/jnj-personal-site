@@ -13,6 +13,79 @@
     </image>
     
     <item>
+      <title>Introduction Into Web Scraping with Portland Burger Week</title>
+      <link>/post/portland-burger-week-2021/portland-burger-week-2021/</link>
+      <pubDate>Tue, 03 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>/post/portland-burger-week-2021/portland-burger-week-2021/</guid>
+      <description>
+
+
+&lt;p&gt;I take the Portland food weeks very seriously. My partner and I make a list of our must-trys and then I make out plan of attack. We usually hit up 2-3 places a night until we’ve exhausted all the places that we wanted to try. Burger Week is coming up in a couple weeks and I wanted to streamline things a bit: I wanted a spreadsheet of all of the burgers. I knew that web scraping in R was a thing but honestly I had always been a bit intimidated. I had some free time on my hands and figured: now is the time to learn. So I googled a few tutorials and dove straight in. It wound up being so much easier than I thought it would be. Let’s learn together.&lt;/p&gt;
+&lt;p&gt;The tutorial I wound up reading in most detail is &lt;a href=&#34;https://www.analyticsvidhya.com/blog/2017/03/beginners-guide-on-web-scraping-in-r-using-rvest-with-hands-on-knowledge/&#34;&gt;this one&lt;/a&gt;. The reason I liked this tutorial is that it turned me on to this nifty little tool to kinda cheat a little - it’s a Chrome extension called &lt;a href=&#34;https://selectorgadget.com/&#34;&gt;SelectorGadget&lt;/a&gt; that makes finding the relevant CSS elements easy peasy.&lt;/p&gt;
+&lt;p&gt;Step 1: install the SelectorGadget extension &lt;a href=&#34;https://chrome.google.com/webstore/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Step 2: In R, install &lt;code&gt;{rvest}&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install.packages(&amp;quot;rvest&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Step 3: Have R read in your website of interest - mine is the &lt;a href=&#34;https://www.portlandmercury.com/sponsored/burgerweek2021&#34;&gt;Portland 2021 Burger Week list&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(rvest)
+library(tidyverse)
+url &amp;lt;- &amp;#39;https://www.portlandmercury.com/sponsored/burgerweek2021&amp;#39;
+webpage &amp;lt;- read_html(url)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Step 4: Now go to your website and activate SelectorGadget. Click on the element you want to scrape. For me, I did the restaurant names first. Scroll through the whole page and make sure the only things highlighted green/yellow are things you want. If there are any other elements highlighted, click on them and they will turn red/be excluded.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;restaurant-name.JPG&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The SelectorGadget tells me that the CSS element that I want is &lt;code&gt;.headline a&lt;/code&gt;. Back in R, lets use that to scrape the restaurant names. Use &lt;code&gt;html_nodes()&lt;/code&gt; to scrape the element and &lt;code&gt;html_text2()&lt;/code&gt; to read the text.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;restaurant &amp;lt;- html_nodes(webpage,&amp;#39;.headline a&amp;#39;) %&amp;gt;% html_text2()
+restaurant&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;New Seasons&amp;quot;                       &amp;quot;Bar Bar&amp;quot;                          
+##  [3] &amp;quot;Boke Bowl&amp;quot;                         &amp;quot;Bread &amp;amp; Ink Cafe&amp;quot;                 
+##  [5] &amp;quot;BrunchBox&amp;quot;                         &amp;quot;Church&amp;quot;                           
+##  [7] &amp;quot;Danwei Canting&amp;quot;                    &amp;quot;Farmer and the Beast&amp;quot;             
+##  [9] &amp;quot;Fills&amp;quot;                             &amp;quot;Fuller&amp;#39;s Burger Shack&amp;quot;            
+## [11] &amp;quot;Haymaker&amp;quot;                          &amp;quot;Holler&amp;quot;                           
+## [13] &amp;quot;Holy Goat&amp;quot;                         &amp;quot;HOME, A BAR&amp;quot;                      
+## [15] &amp;quot;Hop Capital Brewing PDX&amp;quot;           &amp;quot;Landmark Saloon&amp;quot;                  
+## [17] &amp;quot;Laurelwood Public House &amp;amp; Brewery&amp;quot; &amp;quot;Local 66 Bar and Grill&amp;quot;           
+## [19] &amp;quot;Loyal Legion&amp;quot;                      &amp;quot;Mad Greek Deli&amp;quot;                   
+## [21] &amp;quot;Mighty Moe&amp;#39;s Tanker&amp;quot;               &amp;quot;Moreland Ale House&amp;quot;               
+## [23] &amp;quot;Next Level Burger&amp;quot;                 &amp;quot;Nick&amp;#39;s Famous Coney Island&amp;quot;       
+## [25] &amp;quot;Paymaster Lounge&amp;quot;                  &amp;quot;Piccone&amp;#39;s Corner&amp;quot;                 
+## [27] &amp;quot;Ponderosa Lounge &amp;amp; Grill&amp;quot;          &amp;quot;Portland Burger&amp;quot;                  
+## [29] &amp;quot;Rocky&amp;#39;s Sports And Spirits&amp;quot;        &amp;quot;Salvador Molly&amp;#39;s&amp;quot;                 
+## [31] &amp;quot;show bar&amp;quot;                          &amp;quot;Steakadelphia&amp;quot;                    
+## [33] &amp;quot;Sunny&amp;#39;s Diner&amp;quot;                     &amp;quot;West Coast Grocery Company&amp;quot;       
+## [35] &amp;quot;Ya Hala&amp;quot;                           &amp;quot;Yur&amp;#39;s Bar and Grill&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Step 5: Do the same for the rest of the elements you want and you’re good to go! Here’s my code in entirety:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(rvest)
+
+url &amp;lt;- &amp;#39;https://www.portlandmercury.com/sponsored/burgerweek2021&amp;#39;
+webpage &amp;lt;- read_html(url)
+
+restaurant &amp;lt;- html_nodes(webpage,&amp;#39;.headline a&amp;#39;) %&amp;gt;% html_text2()
+burger_name &amp;lt;- html_nodes(webpage, &amp;#39;.blog-body p:nth-child(1)&amp;#39;) %&amp;gt;% html_text2()
+description &amp;lt;- html_nodes(webpage, &amp;#39;.blog-body p:nth-child(2)&amp;#39;) %&amp;gt;% html_text2()
+address_hours &amp;lt;- html_nodes(webpage, &amp;#39;p:nth-child(5) , p:nth-child(4)&amp;#39;) %&amp;gt;% html_text2()
+
+# ugh sometimes address is 4th...sometimes it&amp;#39;s 5th...must filter.
+address_hours &amp;lt;- as.tibble(address_hours) %&amp;gt;% filter(grepl(&amp;quot;Address/Hours of Availability&amp;quot;,value)) %&amp;gt;% pull()
+
+burger_week &amp;lt;- tibble(restaurant = restaurant,
+                      burger_name = burger_name,
+                      description = description,
+                      address_hours = address_hours)
+# cleaning
+burger_week &amp;lt;- burger_week %&amp;gt;% 
+  separate(burger_name, into = c(&amp;quot;trash&amp;quot;, &amp;quot;burger_name&amp;quot;), sep = &amp;quot;:&amp;quot;, extra = &amp;quot;merge&amp;quot;) %&amp;gt;% 
+  separate(description, into = c(&amp;quot;trash&amp;quot;, &amp;quot;description&amp;quot;), sep = &amp;quot;:&amp;quot;, extra = &amp;quot;merge&amp;quot;) %&amp;gt;%
+  separate(address_hours, into = c(&amp;quot;trash&amp;quot;, &amp;quot;address_hours&amp;quot;), sep = &amp;quot;:&amp;quot;, extra = &amp;quot;merge&amp;quot;) %&amp;gt;%
+  select(restaurant, burger_name, description, address_hours)
+
+write_csv(x = burger_week, path = &amp;quot;burger_week_2021.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can find the resultant .csv file on my &lt;a href=&#34;https://github.com/jnjahncke/food-weeks/tree/main/burger%20week%202021&#34;&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Happy scraping!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Sick With Mono</title>
       <link>/post/sick-with-mono/</link>
       <pubDate>Tue, 25 May 2021 00:00:00 +0000</pubDate>
@@ -89,7 +162,7 @@
 &lt;p&gt;Here is the code for the two plots separately:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp_plot &amp;lt;- temps %&amp;gt;% ggplot(aes(x = Time, y = Temp, color = Date, group = Date)) +
   geom_hline(yintercept = 100, lty = &amp;quot;dashed&amp;quot;, color = &amp;quot;red&amp;quot;) +
-    geom_hline(yintercept = 98.6, lty = &amp;quot;dashed&amp;quot;, color = &amp;quot;black&amp;quot;) +
+  geom_hline(yintercept = 98.6, lty = &amp;quot;dashed&amp;quot;, color = &amp;quot;black&amp;quot;) +
   geom_point(size = 3) +
   coord_cartesian(ylim = c(98,102)) +
   scale_color_viridis_c(option = &amp;quot;A&amp;quot;, trans = &amp;quot;date&amp;quot;, end = 0.95) +

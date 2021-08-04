@@ -3,12 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/tag/data-viz/</loc>
-    <lastmod>2021-05-25T10:06:10-07:00</lastmod>
+    <loc>/post/portland-burger-week-2021/portland-burger-week-2021/</loc>
+    <lastmod>2021-08-03T16:40:44-07:00</lastmod>
   </url>
   
   <url>
     <loc>/post/</loc>
+    <lastmod>2021-08-03T16:40:44-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tag/data-viz/</loc>
     <lastmod>2021-05-25T10:06:10-07:00</lastmod>
   </url>
   
