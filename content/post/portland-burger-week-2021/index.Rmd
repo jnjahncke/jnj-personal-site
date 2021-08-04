@@ -40,7 +40,9 @@ webpage <- read_html(url)
 
 Step 4: Now go to your website and activate SelectorGadget. Click on the element you want to scrape. For me, I did the restaurant names first. Scroll through the whole page and make sure the only things highlighted green/yellow are things you want. If there are any other elements highlighted, click on them and they will turn red/be excluded.
 
-![](restaurant-name.JPG){width=50%}
+
+<center> ![](restaurant-name.png){width=70%} </center>
+
 
 The SelectorGadget tells me that the CSS element that I want is `.headline a`. Back in R, lets use that to scrape the restaurant names. Use `html_nodes()` to scrape the element and `html_text2()` to read the text. 
 

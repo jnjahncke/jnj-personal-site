@@ -14,9 +14,9 @@
     
     <item>
       <title>Introduction Into Web Scraping with Portland Burger Week</title>
-      <link>/post/portland-burger-week-2021/portland-burger-week-2021/</link>
+      <link>/post/portland-burger-week-2021/</link>
       <pubDate>Tue, 03 Aug 2021 00:00:00 +0000</pubDate>
-      <guid>/post/portland-burger-week-2021/portland-burger-week-2021/</guid>
+      <guid>/post/portland-burger-week-2021/</guid>
       <description>
 
 
@@ -31,7 +31,9 @@ library(tidyverse)
 url &amp;lt;- &amp;#39;https://www.portlandmercury.com/sponsored/burgerweek2021&amp;#39;
 webpage &amp;lt;- read_html(url)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Step 4: Now go to your website and activate SelectorGadget. Click on the element you want to scrape. For me, I did the restaurant names first. Scroll through the whole page and make sure the only things highlighted green/yellow are things you want. If there are any other elements highlighted, click on them and they will turn red/be excluded.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;restaurant-name.JPG&#34; style=&#34;width:50.0%&#34; /&gt;&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&#34;restaurant-name.png&#34; style=&#34;width:70.0%&#34; /&gt;
+&lt;/center&gt;
 &lt;p&gt;The SelectorGadget tells me that the CSS element that I want is &lt;code&gt;.headline a&lt;/code&gt;. Back in R, lets use that to scrape the restaurant names. Use &lt;code&gt;html_nodes()&lt;/code&gt; to scrape the element and &lt;code&gt;html_text2()&lt;/code&gt; to read the text.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;restaurant &amp;lt;- html_nodes(webpage,&amp;#39;.headline a&amp;#39;) %&amp;gt;% html_text2()
 restaurant&lt;/code&gt;&lt;/pre&gt;

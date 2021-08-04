@@ -30,7 +30,9 @@ library(tidyverse)
 url &lt;- &#39;https://www.portlandmercury.com/sponsored/burgerweek2021&#39;
 webpage &lt;- read_html(url)</code></pre>
 <p>Step 4: Now go to your website and activate SelectorGadget. Click on the element you want to scrape. For me, I did the restaurant names first. Scroll through the whole page and make sure the only things highlighted green/yellow are things you want. If there are any other elements highlighted, click on them and they will turn red/be excluded.</p>
-<p><img src="restaurant-name.JPG" style="width:50.0%" /></p>
+<center>
+<img src="restaurant-name.png" style="width:70.0%" />
+</center>
 <p>The SelectorGadget tells me that the CSS element that I want is <code>.headline a</code>. Back in R, lets use that to scrape the restaurant names. Use <code>html_nodes()</code> to scrape the element and <code>html_text2()</code> to read the text.</p>
 <pre class="r"><code>restaurant &lt;- html_nodes(webpage,&#39;.headline a&#39;) %&gt;% html_text2()
 restaurant</code></pre>
