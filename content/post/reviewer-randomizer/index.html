@@ -1,0 +1,147 @@
+---
+title: 'Application Season: Randomly Assigning Reviewers'
+author: ''
+date: '2022-11-01'
+slug: reviewer-randomizer
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2022-11-01T12:16:25-07:00'
+featured: no
+draft: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+<p>My PI recently proposed a little side project for me: could I use my recently refreshed python skills to write a little code that would take in a list of applicants and a list of reviewers and randomly assign 3 reviewers to each applicant? He had been doing this manually and figured I would be able to automate it. This sounded like a simple project but I knew I would also need to figure out how he could run it using a web interface since he has never coded and I didn’t want him to have to install python and run code from the command line. I went with a jupyter notebook that can be freely edited using Google Colab. Let’s get into it:</p>
+<p>This is supposed to be quick and easy. Not fancy. So I’m hard coding applicants and reviewers as well as the number of reviewers to be assigned to each applicant. The idea is that my PI can just copy-paste names from an excel file into the jupyter notebook and run the code.</p>
+<p>First, we load packages:</p>
+<pre class="python"><code>from random import randrange # for generating random assignments
+from math import ceil # for calculating the number of applicants/reviewer
+from google.colab import files # to enable file downloads so we can export .csv files</code></pre>
+<p>Next, input applicants, reviewers, and number of eyes we want on each application:</p>
+<pre class="python"><code># Number of people assigned to each applicant.
+eyes = 3
+
+# Input list of reviewers. Need 3 quotation marks at beginning and end of list only. Each reviewer should be on a new line.
+reviewers = &quot;&quot;&quot;Gary
+Tianyi
+Kevin
+Larry
+Henrique
+Eric
+Kelly
+Haining
+John&quot;&quot;&quot;
+reviewers = reviewers.replace(&quot;\t&quot;, &quot; &quot;).split(&quot;\n&quot;)
+
+# Input list of applicants. Need 3 quotation marks at beginning and end of list only. Each reviewer should be on a new line.
+applicants = &quot;&quot;&quot;A   B
+C   D
+E   F
+G   H
+I   J
+K   L
+M   N
+O   P
+Q   R
+S   T
+U   V
+W   X
+Y   Z&quot;&quot;&quot;
+applicants = applicants.replace(&quot;\t&quot;, &quot; &quot;).split(&quot;\n&quot;)</code></pre>
+<p>Now we can run through the script. Output tables will be printed to standard out and written to a .csv file that will download from the browser.</p>
+<pre class="python"><code>reviewer_num = len(reviewers) # number of reviewers
+applicant_num = len(applicants) # number of applicants
+max_num = ceil(applicant_num * eyes / reviewer_num) # the maximum number of applicants a reviewer should have to review
+
+# build up empty lists/dictionaries to be fleshed out in the for loop
+reviewer_counts = {} # keep track of how many students each reviewer is assigned
+reviewer_dict = {} # keep a list of each applicant assigned to each reviewer
+applicant_dict = {} # keep a list of each reviewer assigned to each applicant
+for reviewer in reviewers: # build reviewer dictionaries
+    reviewer_counts[reviewer] = 0
+    reviewer_dict[reviewer] = []
+
+# save table of applicant: reviewers
+with open(&quot;applicants_reviewers.csv&quot;,&quot;w&quot;) as output:
+  output.write(&quot;Applicant,Reviewers&quot; + &quot;,&quot;*(eyes-1) + &quot;\n&quot;) # column headers
+  print(&quot;Applicant\tReviewers&quot;)
+  for applicant in applicants: # loop through applicants
+      applicant_dict[applicant] = [] # make a dictionary entry for the applicant
+      rev_list = [] # assign a temporary &quot;reviewer list&quot; variable
+      line = applicant # assign a temporary string variable to be written at the end of the loop
+      for x in range(eyes):
+          temp = reviewers[randrange(reviewer_num)] # pull a random reviewer
+          # if the reviewer is already in the reviewer list
+          # or if the reviewer is already reviewing the max number of applicants
+          # try a new reviewer
+          while temp in rev_list or reviewer_counts[temp] &gt;= max_num:
+              temp = reviewers[randrange(reviewer_num)]
+          # once we&#39;re happy with the list:
+          rev_list.append(temp) # add the reviewer to the temporary reviewer list
+          reviewer_counts[temp] += 1 # increase the reviewer&#39;s work load by 1
+          reviewer_dict[temp].append(applicant) # add the applicant to the reviewer&#39;s dictionary entry
+          applicant_dict[applicant].append(temp) # add the reviewer to the applicant&#39;s dictionary entry
+          line += &quot;,&quot; + temp # add the reviewer to the output line to be printed/written
+      output.write(line + &quot;\n&quot;)
+      print(line.replace(&quot;,&quot;,&quot;\t&quot;))
+files.download(&quot;applicants_reviewers.csv&quot;)</code></pre>
+<pre><code>## Applicant    Reviewers</code></pre>
+<pre><code>## A B  Tianyi  Kevin   Eric
+## C D  John    Gary    Eric
+## E F  Kelly   Gary    Tianyi
+## G H  Tianyi  John    Haining
+## I J  Gary    Kelly   Kevin
+## K L  Kelly   Kevin   Gary
+## M N  John    Larry   Tianyi
+## O P  Larry   Gary    Eric
+## Q R  Eric    Tianyi  John
+## S T  Kelly   Henrique    Haining
+## U V  Henrique    Kevin   Kelly
+## W X  John    Kevin   Larry
+## Y Z  Larry   Henrique    Haining</code></pre>
+<p>Check the distribution of labor - how many applicants is each reviewer reviewing?:</p>
+<pre class="python"><code>for reviewer, count in reviewer_counts.items():
+    print(f&quot;{reviewer}\t{count}&quot;)</code></pre>
+<pre><code>## Gary 5
+## Tianyi   5
+## Kevin    5
+## Larry    4
+## Henrique 3
+## Eric 4
+## Kelly    5
+## Haining  3
+## John 5</code></pre>
+<p>Finally, maybe we want the reviewer-applicant table in a different format:</p>
+<pre class="python"><code># save table of reviewer: applicants
+with open(&quot;reviewer_applicants.csv&quot;,&quot;w&quot;) as output:
+  output.write(&quot;Reviewer,Applicants&quot; + &quot;,&quot;*(max_num-1) + &quot;\n&quot;)
+  print(&quot;Reviewer\tApplicants&quot;)
+  for reviewer in reviewer_dict:
+      line = reviewer
+      for applicant in reviewer_dict[reviewer]:
+        line += &quot;,&quot; + applicant
+      while line.count(&quot;,&quot;) &lt; max_num:
+        line += &quot;,&quot;
+      output.write(line + &quot;\n&quot;)
+      print(line.replace(&quot;,&quot;,&quot;\t&quot;))
+files.download(&quot;reviewer_applicants.csv&quot;)</code></pre>
+<pre><code>## Reviewer Applicants</code></pre>
+<pre><code>## Gary C D E F I J K L O P
+## Tianyi   A B E F G H M N Q R
+## Kevin    A B I J K L U V W X
+## Larry    M N O P W X Y Z 
+## Henrique S T U V Y Z     
+## Eric A B C D O P Q R 
+## Kelly    E F I J K L S T U V
+## Haining  G H S T Y Z     
+## John C D G H M N Q R W X</code></pre>
+<p>When you run the code from the jupyter notebook your browser will prompt you to download the two output files. The downside of using an editable notebook is that if the user doesn’t know what they’re doing and breaks the notebook they are unlikely to be able to fix it. To help with this, everything is <a href="https://github.com/jnjahncke/reviewer_randomizer">hosted on my github</a> - including a copy of the notebook that is not publicly editable. I’m sure tweaks will be made down the line but this first draft gets the job done!</p>
