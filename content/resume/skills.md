@@ -23,13 +23,13 @@ subtitle = ""
  [[feature]]
    icon = "code"
    icon-pack = "fas"
-   name = "Matlab/Python/VBA"
-   description = "Basic usage"
+   name = "Python"
+   description = ""
    
 [[feature]]
   icon = "adobe"
   icon_pack = "fab"
-  name = "Illustrator"
+  name = "Illustrator/Photoshop"
   description = ""  
  
 [[feature]]
