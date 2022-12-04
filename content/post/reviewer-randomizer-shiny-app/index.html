@@ -1,0 +1,311 @@
+---
+title: Reviewer Randomizer Shiny App
+author: ''
+date: '2022-12-04'
+slug: reviewer-randomizer-shiny-app
+categories: []
+tags:
+  - interactive
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2022-12-04T13:15:35-08:00'
+featured: no
+draft: no
+image:
+  caption: ''
+  focal_point: 'Top'
+  preview_only: yes
+projects: []
+---
+
+
+
+<p>Last month I wrote a simple python script to help my graduate program to randomly assign reviewers to applicants during application season. Since writing that script I have (1) updated the script to make sure each applicant has at most one trainee reviewer and make sure that the division of labor is distributed equally and (2) built a python shiny app that I’ve deployed on shinyapps.io to make running my script more user friendly. Below is my shiny app (also usable at <a href="https://jennifer-jahncke.shinyapps.io/reviewer_randomizer/" class="uri">https://jennifer-jahncke.shinyapps.io/reviewer_randomizer/</a>). And below that is a writeup of how I underwent making the app.</p>
+<iframe height="1500" width="100%" frameborder="no" src="https://jennifer-jahncke.shinyapps.io/reviewer_randomizer/">
+</iframe>
+<div id="the-making-of-my-shiny-app" class="section level1 tabset tabset-fade">
+<h1>The making of my shiny app</h1>
+<p>To view the final files, see my <a href="https://github.com/jnjahncke/reviewer_randomizer/tree/main/rr_shiny_app">github</a>. See tabs below for a how-to.</p>
+<div id="updates-to-reviewer-randomizer" class="section level2">
+<h2>Updates to Reviewer Randomizer</h2>
+<p>First, load the packages we’ll need:</p>
+<pre class="python"><code>from random import randrange
+from math import floor
+import re</code></pre>
+<p>For the app the inputs are a list of reviewers, a list of applicants, and the number of reviewers to be assigned to each applicant (“eyes”). With the new rules I needed, the randomization will fail at times when it backs itself into a corner where it can no longer make reviewer assignment that adhere to the limitations that (1) the same reviewer isn’t assigned to an appliant multiple times, (2) at most one trainee is assigned as a reviewer per applicant, and (3) the division of labor for reviewers is evenly distributed. Because of this, I wrote the randomizer as a function and included a break if it is stuck in a loop. Here is that function:</p>
+<pre class="python"><code>def assign_reviewer(reviewers, applicants, eyes):
+    
+    # make it so that any form of white space is permitted
+    # split at each newline
+    reviewers = reviewers.replace(&quot;\t&quot;, &quot; &quot;).split(&quot;\n&quot;)
+    applicants = applicants.replace(&quot;\t&quot;,&quot; &quot;).split(&quot;\n&quot;)
+    
+    # remove white space on either side of each entry
+    reviewers = [x.rstrip().lstrip() for x in reviewers]
+    applicants = [x.rstrip().lstrip() for x in applicants]
+
+    ## ---------------------------- ##
+    ## Calculate assignment lengths ##
+    ## ---------------------------- ##
+    reviewer_num = len(reviewers) # count number of reviewers
+    applicant_num = len(applicants) # count number of applicants
+    
+    # what is the minimum number of applicants to be assigned to each reviewer?
+    min_num = floor(applicant_num * eyes / reviewer_num)
+    # and how many reviewers are going to be assigned one more than the min num?
+    remainder = (applicant_num * eyes) % reviewer_num
+    
+    # how many reviewers will be assigned the max_num, how many min_num?
+    assign_max = remainder
+    assign_min = reviewer_num - remainder
+
+    ## ---------------------------- ##
+    ## Build up empty lists/dicts   ##
+    ## ---------------------------- ##
+    reviewer_counts = {} # keep track of how many students each reviewer is assigned
+    reviewer_dict = {} # keep a list of each applicant assigned to each reviewer
+    reviewer_list = [] # list of all reviewers
+    faculty_list = [] # subset list of faculty reviewers
+    trainee_list = [] # subset list of trainee (non-faculty) reviewers
+    
+    # parse reviewer names, roles; build up reviewer lists/dictionaries
+    for reviewer in reviewers:
+        # parse name, role
+        for found in re.finditer(r&quot;^([\S\s]+)\s(\S+)$&quot;,reviewer):
+            # found.group(1) = reviewer name
+            # found.group(2) = reviewer role
+            reviewer_counts[found.group(1).rstrip()] = 0
+            reviewer_dict[found.group(1).rstrip()] = []
+            reviewer_list.append(found.group(1).rstrip())
+            
+            # assign to faculty_list or trainee_list
+            if found.group(2).lower().lstrip().rstrip() == &quot;faculty&quot;:
+                faculty_list.append(found.group(1).rstrip())
+            else:
+                trainee_list.append(found.group(1).rstrip())
+
+    # assign reviewer to either be assigned the max or min number of applicants
+    # based on calculations above
+    max_list = reviewer_list[:assign_max]
+    min_list = reviewer_list[assign_max:]
+    
+    applicant_dict = {} # keep a list of each reviewer assigned to each applicant
+    applicant_counts = {} # keep track of how many reviewers have been assigned
+    for applicant in applicants:
+        applicant_counts[applicant] = 0
+        applicant_dict[applicant] = []
+
+    ## ------------------------------ ##
+    ## Assign applicants to reviewers ##
+    ## ------------------------------ ##
+    
+    # trainees first
+    i = 0 # use i to keep track of the number of attempts the randomizer makes
+    for trainee in trainee_list:
+        rev_list = []
+        if trainee in min_list:
+            assign_num = min_num
+        elif trainee in max_list:
+            assign_num = min_num + 1
+        while len(reviewer_dict[trainee]) &lt; assign_num: 
+            i += 1
+            temp = applicants[randrange(applicant_num)]
+            while temp in rev_list or applicant_counts[temp] != 0:
+                i += 1
+                temp = applicants[randrange(applicant_num)]
+                # if randomizer is stuck in a loop, exit the function
+                if i &gt; applicant_num * len(trainee_list) * eyes * 10:
+                   return(False) 
+            # once an applicant has the number of reviewers they need, remove them from the list of applicants
+            if applicant_counts[temp] == eyes:
+                applicants.remove(temp)
+                applicant_num = len(applicants)
+            rev_list.append(temp)
+            applicant_counts[temp] += 1
+            reviewer_counts[trainee] += 1
+            applicant_dict[temp].append(trainee)
+            reviewer_dict[trainee].append(temp)
+
+    # faculty
+    i = 0
+    for faculty in faculty_list:
+        rev_list = []
+        if faculty in min_list:
+            assign_num = min_num
+        elif faculty in max_list:
+            assign_num = min_num + 1
+        while len(reviewer_dict[faculty]) &lt; assign_num: 
+            i += 1
+            temp = applicants[randrange(applicant_num)]
+            while temp in rev_list or applicant_counts[temp] == eyes:
+                i += 1
+                temp = applicants[randrange(applicant_num)]
+                if i &gt; applicant_num * len(reviewer_list) * eyes * 10:
+                   return(False)
+            if applicant_counts[temp] == eyes:
+                applicants.remove(temp)
+                applicant_num = len(applicants)
+            rev_list.append(temp)
+            applicant_counts[temp] += 1
+            reviewer_counts[faculty] += 1
+            applicant_dict[temp].append(faculty)
+            reviewer_dict[faculty].append(temp)
+    return(applicant_dict, reviewer_dict)</code></pre>
+<p>This function will return <code>False</code> if it gets stuck in a loop and will return <code>applicant_dict</code> and <code>reviewer_dict</code> if successful. Therefore, to run the function such that it’ll be successful every time, I call:</p>
+<pre class="python"><code>attempt = False
+while attempt == False:
+    attempt = assign_reviewer(reviewers, applicants, eyes)
+applicant_dict, reviewer_dict = attempt</code></pre>
+<p>I can then format <code>applicant_dict</code> and <code>reviewer_dict</code> nicely as tables or .txt files. These two dictionaries contain the same information except <code>applicant_dict</code> is in the format <code>{applicant:[assigned reviewers]}</code> and <code>reviewer_dict</code> is in the format <code>{reviewer:[assigned applicants]}</code></p>
+</div>
+<div id="installing-shiny-for-python" class="section level2">
+<h2>Installing Shiny for Python</h2>
+<p>This was my first time using shiny for python so I had to install it and link it to my shinyapps.io account using <code>rsconnect</code>. Steps for installing shiny can be found on <a href="https://shiny.rstudio.com/py/docs/get-started.html">the shiny for python docs page</a>.</p>
+<p>Install shiny a create an app from the command line:</p>
+<pre class="eval"><code>pip install shiny
+shiny create rr_shiny_app</code></pre>
+<p>This will make a directory called <code>rr_shiny_app</code> that contains a python file named <code>app.py</code>. If you navigate into that directory (<code>cd rr_shiny_app</code>) you can run the app locally using <code>shiny run --reload</code>.</p>
+<p>More on linking to your shinyapps.io account once we get to the deployment step.</p>
+</div>
+<div id="writing-the-shiny-app" class="section level2">
+<h2>Writing the Shiny App</h2>
+<p>This was my second time using shiny and my first time using shiny for python so I had som (re)learning to do. I found the <a href="https://shiny.rstudio.com/py/gallery/">gallery of apps</a> hosted on shinylive helpful to get me going.</p>
+<p>First, load the packages we’ll need:</p>
+<pre class="python"><code>from shiny import * 
+from random import randrange
+from math import floor
+import pandas as pd
+import re
+
+# import the randomizer function I wrote in reviewer_randomizer.py, saved in the same directory
+from reviewer_randomizer import *</code></pre>
+<p>And design the shiny app page layout, inputs, and outputs:</p>
+<pre class="python"><code>app_ui = ui.page_fixed(
+    # title
+    ui.h2(&quot;Reviewer Randomizer&quot;),
+    
+    # introductory paragraph
+    ui.p(&quot;Enter a list of reviewers (and their role), a list of applicants, and the number of reviewers to be assigned to each applicant. Applicants will be randomly assigned such that they only have at maximum one non-faculty reviewer.&quot;),
+    
+    # layout: one row with three columns of widths 5, 5, and 2 (must add up to 12)
+    ui.row(
+      
+        # column 1: entry form for reviewers
+        ui.column(5,ui.input_text_area(&quot;reviewers&quot;,&quot;Reviewers:&quot;,&quot;&quot;&quot;Kevin Wright\tFaculty
+Kelly Monk\tFaculty
+Jennifer Jahncke\tStudent&quot;&quot;&quot;,rows=20)),
+
+        # column 2: entry form for applicants
+        ui.column(5, ui.input_text_area(&quot;applicants&quot;,&quot;Applicants:&quot;,&quot;&quot;&quot;Beyonce Knowles
+Taylor Swift
+Ryan Reynolds&quot;&quot;&quot;,rows=20)),
+        
+        # column 3: number of reviewers to be assigned to each applicant
+        ui.column(2,ui.input_text_area(&quot;eyes&quot;,&quot;Number of Reviewers per Applicant:&quot;,3,rows=1))),
+        
+    # text to appear above the &quot;go&quot; button
+    ui.p(&quot;FYI: This can take a few minutes.&quot;),
+    
+    # the &quot;go&quot; button
+    ui.input_action_button(&quot;go&quot;, &quot;Go!&quot;, class_=&quot;btn-success&quot;),
+    
+    # define outputs: (1) applicants:reviewer table and (2) reviewer:applicants text block
+    # these will be called as functions app_rev() and rev_app() below server()
+    ui.output_table(&quot;app_rev&quot;),
+    ui.output_text_verbatim(&quot;rev_app&quot;)
+)</code></pre>
+<p>Now, use the inputs to feed into the randomizer function and generate outputs:</p>
+<pre class="python"><code># define server() function
+def server(input, output, session):
+    
+    # use reactive.Calc to manipulate inputs and store output,
+    # here I use it to call the randomizer and define the applicant_dict and reviewer_dict dictionaries
+    @reactive.Calc
+    # make it so it doesn&#39;t run until you hit the go button
+    @reactive.event(lambda: input.go(), ignore_none=False)
+    def assignment():
+        reviewers = input.reviewers()
+        applicants = input.applicants()
+        eyes = int(input.eyes())
+
+        attempt = False
+        while attempt == False:
+            attempt = assign_reviewer(reviewers, applicants, eyes)
+        applicant_dict, reviewer_dict = attempt
+        return(applicant_dict, reviewer_dict)
+
+    # define the first output: applicant:dict table
+    @output
+    @render.table
+    def app_rev():
+        
+        applicant_dict = assignment()[0]
+        eyes = int(input.eyes())
+
+        students = list(applicant_dict.keys())
+
+        # create list of table column names as Reviewer 1, Reviewer 2, etc.
+        revs = [&quot;Reviewer &quot;] * eyes
+        nums = [str(x) for x in range(1,eyes+1)]
+        rev_names = [x+y for x,y in zip(revs,nums)]
+        
+        col_name_dict = {}
+        for x in range(eyes):
+            col_name_dict[x] = rev_names[x]
+
+        # create table from the applicant_dict dictionary
+        result = pd.DataFrame(applicant_dict.items(),
+                columns = [&quot;Applicant&quot;, &quot;Reviewers&quot;])
+        # split column containing reviewer list into multiple columns
+        result = pd.concat([result, pd.DataFrame(result.Reviewers.tolist())],
+                axis = 1)
+        # name said columns using names created above
+        result = result.rename(col_name_dict, axis=1)
+        # remove the column containing the reviewer list
+        result = result.drop(labels=&quot;Reviewers&quot;, axis=1)
+
+        return(result)
+    
+    @output
+    @render.text
+    def rev_app():
+
+        reviewer_dict = assignment()[1]
+        
+        # iterate through reviewer_dict and print results to text block
+        result = &quot;&quot;
+        for reviewer in reviewer_dict:
+            result += reviewer + &quot;\n&quot;
+            for applicant in reviewer_dict[reviewer]:
+                result += &quot;\t&quot; + applicant + &quot;\n&quot;
+
+        return(result)</code></pre>
+<p>And finally, the most important part: run the app</p>
+<pre class="python"><code>app = App(app_ui, server)</code></pre>
+</div>
+<div id="deploying-the-shiny-app" class="section level2">
+<h2>Deploying the Shiny App</h2>
+<p>In the directory containing my <code>app.py</code> file I will need three files for my app:</p>
+<ol style="list-style-type: decimal">
+<li><code>app.py</code> - the script containing my shiny app</li>
+<li><code>reviewer_randomizer.py</code> - the script containing my custom randomizer function</li>
+<li><code>requirements.txt</code> - a text file containing a list of python packages that shinyapps.io is going to have to import for my app to run.</li>
+</ol>
+<p>The <code>requirements.txt</code> file took me a while to get the correct list of functions. I first only listed <code>jinja2</code>, which is required by pandas but not automatically installed. However when I deployed my app the logs told me it couldn’t find <code>shiny</code> so I added <code>shiny</code> to the list. But <em>then</em> when I deployed my app it told me it couldn’t find <code>pandas</code> so I then added <code>pandas</code> after <code>jinja2</code>. This wound up being the winning combination. So now my final <code>requirements.txt</code> document reads:</p>
+<pre class="python"><code>shiny
+jinja2
+pandas</code></pre>
+<p>Okay but how do you actually go about deploying the app? First, you need to install <code>rsconnect</code>:</p>
+<pre class="python"><code>pip install rsconnect-python</code></pre>
+<p>Next, you have to connect to your shinyapps.io account (I already had one, you may need to make one). And you’ll need the information listed in your tokens. To find your token, click on your name in the top right of the webpage and click “tokens”. Create a token for you machine I click “show”. Go to the “with python” tab and make sure you hit “show secret” to show the secret part. Copy that text and run it on that command line. Mine looks like this</p>
+<pre class="python"><code>rsconnect add \
+      --account jennifer-jahncke \
+      --name jennifer-jahncke \
+      --token stringofnumbersandletters \
+      --secret stringofnumbersandletters</code></pre>
+<p>And NOW we can deploy the app from the command line using <code>rsconnect deploy shiny /path/to/app_name --name [NAME] --title app_name</code>. For me, this looks like:</p>
+<pre class="python"><code>rsconnect deploy shiny ./rr_shiny_app --name jennifer-jahncke --title reviewer_randomizer</code></pre>
+<p>Make sure the only things in your app folder are the files needed for the app. For me that’s the three files listed above. Honestly this took me a long time of messing around to figure out. Don’t get discouraged and good luck!</p>
+</div>
+</div>
