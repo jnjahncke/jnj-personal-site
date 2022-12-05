@@ -30,7 +30,7 @@ Last month I wrote a simple python script to help my graduate program to randoml
 
 # The making of my shiny app
 
-To view the final files, see my [github](https://github.com/jnjahncke/reviewer_randomizer/tree/main/rr_shiny_app). See tabs below for a how-to.
+To view the final files, see my [github](https://github.com/jnjahncke/reviewer_randomizer/tree/main/rr_shiny_app). See sections below for a how-to.
 
 ## Updates to Reviewer Randomizer
 
@@ -193,7 +193,7 @@ More on linking to your shinyapps.io account once we get to the deployment step.
 
 ## Writing the Shiny App
 
-This was my second time using shiny and my first time using shiny for python so I had som (re)learning to do. I found the [gallery of apps](https://shiny.rstudio.com/py/gallery/) hosted on shinylive helpful to get me going.
+This was my second time using shiny and my first time using shiny for python so I had some (re)learning to do. I found the [gallery of apps](https://shiny.rstudio.com/py/gallery/) hosted on shinylive helpful to get me going.
 
 First, load the packages we'll need:
 
@@ -331,7 +331,7 @@ In the directory containing my `app.py` file I will need three files for my app:
 2. `reviewer_randomizer.py` - the script containing my custom randomizer function
 3. `requirements.txt` - a text file containing a list of python packages that shinyapps.io is going to have to import for my app to run.
 
-The `requirements.txt` file took me a while to get the correct list of functions. I first only listed `jinja2`, which is required by pandas but not automatically installed. However when I deployed my app the logs told me it couldn't find `shiny` so I added `shiny` to the list. But *then* when I deployed my app it told me it couldn't find `pandas` so I then added `pandas` after `jinja2`. This wound up being the winning combination. So now my final `requirements.txt` document reads:
+The `requirements.txt` file took me a while to get the correct list of packages. I first only listed `jinja2`, which is required by pandas but not automatically installed. However when I deployed my app the logs told me it couldn't find `shiny` so I added `shiny` to the list. But *then* when I deployed my app it told me it couldn't find `pandas` so I then added `pandas` after `jinja2`. This wound up being the winning combination. So now my final `requirements.txt` document reads:
 
 ```{python eval = FALSE}
 shiny
@@ -361,4 +361,4 @@ And NOW we can deploy the app from the command line using `rsconnect deploy shin
 rsconnect deploy shiny ./rr_shiny_app --name jennifer-jahncke --title reviewer_randomizer
 ```
 
-Make sure the only things in your app folder are the files needed for the app. For me that's the three files listed above. Honestly this took me a long time of messing around to figure out. Don't get discouraged and good luck!
+Make sure the only things in your app folder are the files needed for the app. For me that's the three fileblogs listed above. Honestly this took me a long time of messing around to figure out. Don't get discouraged and good luck!
