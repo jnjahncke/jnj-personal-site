@@ -34,7 +34,7 @@ The data can be found [here](https://github.com/MuseumofModernArt/collection).
 
 
 
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="staticunnamed-chunk-2-1.png" width="672" />
 
 This plot looks at the lifespans of the artists represented in the MoMA collection of paintings. The distribution of lifespans for males and females are overalayed with the average lifespan for each gender. Through this visualization we can see that male and female artists had similar lifespans with the average lifespan for both gender being around 75 years of age.
 
