@@ -24,9 +24,6 @@ projects: []
 
 
 
-```
-## Warning: package 'knitr' was built under R version 4.2.3
-```
 
 
 
@@ -46,20 +43,20 @@ Despite the frequency with which incidents of police brutality occurs in the US,
 
 ```
 ## # A tibble: 5,401 × 12
-##    name    date       armed   age gender race  city  state threa…¹ flee  body_…²
-##    <chr>   <date>     <fct> <dbl> <fct>  <fct> <chr> <fct> <fct>   <fct> <lgl>  
-##  1 Tim El… 2015-01-02 gun      53 M      A     Shel… WA    attack  Not … FALSE  
-##  2 Lewis … 2015-01-02 gun      47 M      W     Aloha OR    attack  Not … FALSE  
-##  3 John P… 2015-01-03 unar…    23 M      H     Wich… KS    other   Not … FALSE  
-##  4 Matthe… 2015-01-04 toy …    32 M      W     San … CA    attack  Not … FALSE  
-##  5 Michae… 2015-01-04 nail…    39 M      H     Evans CO    attack  Not … FALSE  
-##  6 Kennet… 2015-01-04 gun      18 M      W     Guth… OK    attack  Not … FALSE  
-##  7 Kennet… 2015-01-05 gun      22 M      H     Chan… AZ    attack  Car   FALSE  
-##  8 Brock … 2015-01-06 gun      35 M      W     Assa… KS    attack  Not … FALSE  
-##  9 Autumn… 2015-01-06 unar…    34 F      W     Burl… IA    other   Not … TRUE   
-## 10 Leslie… 2015-01-06 toy …    47 M      B     Knox… PA    attack  Not … FALSE  
-## # … with 5,391 more rows, 1 more variable: signs_of_mental_illness <lgl>, and
-## #   abbreviated variable names ¹​threat_level, ²​body_camera
+##    name       date       armed   age gender race  city  state threat_level flee 
+##    <chr>      <date>     <fct> <dbl> <fct>  <fct> <chr> <fct> <fct>        <fct>
+##  1 Tim Elliot 2015-01-02 gun      53 M      A     Shel… WA    attack       Not …
+##  2 Lewis Lee… 2015-01-02 gun      47 M      W     Aloha OR    attack       Not …
+##  3 John Paul… 2015-01-03 unar…    23 M      H     Wich… KS    other        Not …
+##  4 Matthew H… 2015-01-04 toy …    32 M      W     San … CA    attack       Not …
+##  5 Michael R… 2015-01-04 nail…    39 M      H     Evans CO    attack       Not …
+##  6 Kenneth J… 2015-01-04 gun      18 M      W     Guth… OK    attack       Not …
+##  7 Kenneth A… 2015-01-05 gun      22 M      H     Chan… AZ    attack       Car  
+##  8 Brock Nic… 2015-01-06 gun      35 M      W     Assa… KS    attack       Not …
+##  9 Autumn St… 2015-01-06 unar…    34 F      W     Burl… IA    other        Not …
+## 10 Leslie Sa… 2015-01-06 toy …    47 M      B     Knox… PA    attack       Not …
+## # ℹ 5,391 more rows
+## # ℹ 2 more variables: body_camera <lgl>, signs_of_mental_illness <lgl>
 ```
 
 While the Washington Post data allows us to see raw number of shootings that occur, if we want to see how Black and White people are differentially targeted by police we are going to need to calculate the *proportion* of Black/White people that are shot. To do this I need data on the population size of Black and White people living in the US. I got this data from the US Census Bureau.
@@ -119,7 +116,7 @@ While the Washington Post data allows us to see raw number of shootings that occ
 ## generated.
 ```
 
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" width="432" />
+<img src="staticunnamed-chunk-5-1.png" width="432" />
 
 ### Intended Audience
 
@@ -361,7 +358,7 @@ census
 ##  8  2013  246.  41.7 245590000  41710000 
 ##  9  2012  245.  41.3 244510000  41260000 
 ## 10  2011  243.  40.8 243380000  40810000 
-## # … with 11 more rows
+## # ℹ 11 more rows
 ```
 
 **3.  Combine the census data with the shooting data.**  
@@ -476,7 +473,7 @@ ggplot() +
              size=5, shape = 21, color = "black")
 ```
 
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="staticunnamed-chunk-15-1.png" width="672" />
 
 There's a lot that I want to change:  
 
@@ -537,4 +534,4 @@ ggplot() +
        caption = "*Data current as of June 8, 2020")
 ```
 
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-16-1.png" width="432" style="display: block; margin: auto;" />
+<img src="staticunnamed-chunk-16-1.png" width="432" style="display: block; margin: auto;" />

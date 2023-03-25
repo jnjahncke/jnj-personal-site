@@ -164,7 +164,7 @@ shootings_long <- shootings_long %>% filter(Year != "2020")
 shootings_long[11,1] = "2020"; shootings_long[12,1] = "2020"
 ```
 
-```{r fig.height = 6, fig.width = 4.5}
+```{r fig.height = 6, fig.width = 4.5, fig.path = "static"}
 mycolors <- c("W_per" = "#fed2b7", "B_per" = "#55160d")
 
 ggplot() +
@@ -360,7 +360,7 @@ shootings_long
 
 **6.  Build the plot in `ggplot`.** A dumbbell plot can be made in `ggplot` using a combination of `geom_segment()` and `geom_point()`. Let's look at the most basic version. Note that I'm using data from `shootings` for `geom_segment()` and data from `shootings_long` for `geom_point()`. Note that I'm already implementing some customizations. I've specified the size of line to use for the segment. I've also specified the size, shape, and outline color for the points.
 
-```{r echo=TRUE}
+```{r echo=TRUE, fig.path = "static"}
 ggplot() +
   geom_segment(data = shootings, 
                mapping = aes(x=W_per, xend=B_per, y=Year, yend=Year), 
@@ -381,7 +381,7 @@ There's a lot that I want to change:
 
 See the final code and visualization:
 
-```{r echo=TRUE, fig.height = 6, fig.width = 4.5, fig.align='center'}
+```{r echo=TRUE, fig.height = 6, fig.width = 4.5, fig.align='center', fig.path = "static"}
 mycolors <- c("W_per" = "#fed2b7", "B_per" = "#55160d")
 
 ggplot() +
