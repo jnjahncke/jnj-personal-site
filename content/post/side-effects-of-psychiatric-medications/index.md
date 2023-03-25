@@ -21,9 +21,6 @@ projects: []
 
 
 
-```
-## Warning: package 'knitr' was built under R version 4.2.3
-```
 
 ### The Data: SIDER 4.1 Side Effect Resource
 
@@ -34,11 +31,19 @@ From the [website](http://sideeffects.embl.de/):
 ### The Visualization: What are the most common side effects of psychiatric medications?
 
 
+```
+## Warning in inner_join(side_effects, indications, by = "Drug"): Detected an unexpected many-to-many relationship between `x` and `y`.
+## Detected an unexpected many-to-many relationship between `x` and `y`.
+## ℹ Row 805 of `x` matches multiple rows in `y`.
+## ℹ Row 54 of `y` matches multiple rows in `x`.
+## ℹ If a many-to-many relationship is expected, set `relationship =
+##   "many-to-many"` to silence this warning.
+```
 
 
 
 
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="864" />
+<img src="staticunnamed-chunk-4-1.png" width="864" />
 
 ### The Details: How the Plot was Made
 
