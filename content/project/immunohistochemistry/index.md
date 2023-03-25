@@ -55,7 +55,7 @@ Okay, so I have my antibodies where I want them. Now I mount the tissue sections
 
 The microscope images one "channel" of fluorescence at a time. In this case I used 4 different antibodies for 4 different proteins. (The numbers in the parentheses are the wavelengths of the emitted light from the fluorescent tag.)
 
-![](single%20channels.jpg){width="100%"}
+![](single%20channels.jpg)
 
 Now I can overlay the images on one another to get that beautiful merged image. The coloring in the merged image doesn't necessarily correspond to the fluorescent tags I used. I can use any color combination I want. These four images are all the same micrograph.
 
