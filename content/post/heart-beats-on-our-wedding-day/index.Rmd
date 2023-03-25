@@ -364,8 +364,10 @@ image_plt
 Now that I have the two separate components (`pltA` and `image_plt`), I used `patchwork` to stitch them together and add a title. I technically made the title as a subtitle but that was just so that I could adjust the theme of the title-title without affecting the titles of the subgraphs. This was lazy - really the titles of the subgraphs should be subtitles and the title of the overall graph should be a title but because of how I had put the graphs together prior to getting to this part I just used this workaround. And here is the final graph!
 
 ```{r fig.height=5, fig.width=9, fig.showtext = TRUE}
-pltA / image_plt + plot_layout(heights = c(3,2)) + plot_annotation(subtitle = toupper("Heart Beats on Our Wedding Day")) & theme(plot.background = element_rect(fill = "#1E3D42", color = "#1E3D42"),
-      plot.subtitle = element_text(family = "Codystar", color = "#F3EFEF", size = 33, hjust = 0.5, vjust = -1.5, face = "bold"))
+pltA / image_plt + plot_layout(heights = c(3,2)) + 
+  plot_annotation(subtitle = toupper("Heart Beats on Our Wedding Day")) & 
+  theme(plot.background = element_rect(fill = "#1E3D42", color = "#1E3D42"),
+        plot.subtitle = element_text(family = "Codystar", color = "#F3EFEF", size = 33, hjust = 0.5, vjust = -1.5, face = "bold"))
 ```
 
 ```{r echo = FALSE}

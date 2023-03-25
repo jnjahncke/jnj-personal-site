@@ -376,8 +376,10 @@ Now that I have the two separate components (`pltA` and `image_plt`), I used `pa
 
 
 ```r
-pltA / image_plt + plot_layout(heights = c(3,2)) + plot_annotation(subtitle = toupper("Heart Beats on Our Wedding Day")) & theme(plot.background = element_rect(fill = "#1E3D42", color = "#1E3D42"),
-      plot.subtitle = element_text(family = "Codystar", color = "#F3EFEF", size = 33, hjust = 0.5, vjust = -1.5, face = "bold"))
+pltA / image_plt + plot_layout(heights = c(3,2)) + 
+  plot_annotation(subtitle = toupper("Heart Beats on Our Wedding Day")) & 
+  theme(plot.background = element_rect(fill = "#1E3D42", color = "#1E3D42"),
+        plot.subtitle = element_text(family = "Codystar", color = "#F3EFEF", size = 33, hjust = 0.5, vjust = -1.5, face = "bold"))
 ```
 
 <img src="staticunnamed-chunk-10-1.png" width="864" />
