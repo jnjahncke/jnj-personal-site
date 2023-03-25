@@ -33,7 +33,11 @@ library(stringr)
 library(xlsx)
 ```
 
-<p align="center"> ![](the-pg-observer.jpg) </p>
+<p align="center">
+
+![](the-pg-observer.jpg)
+
+</p>
 
 ```{r}
 # Import GPS data for Penis Girl images
@@ -77,7 +81,7 @@ Self isolation during the COVID19 pandemic lockdown has impacted us all differen
 
 The territory here is going to be heavily impacted by the fact that I have not been systemmatically collecting tags and thus there are going to be more tags in the areas that I frequent and I'll miss tags in areas that I don't explore. The initial pattern that I noticed was that PG tags were most densely concentrated in SE Portland, less dense in NE Portland, and almost none in North Portland. Then I started noticing more around the riverfront and bleeding into the west side more and more. There is a high concentration of tags on Steel Bridge though I have also found tags on Hawthorne Bridge and Burnside Bridge, just less concentrated.
 
-```{r fig.width=10, fig.height=6, results = FALSE}
+```{r fig.width=10, fig.height=6, results = FALSE, fig.path="static"}
 # Map Portland, OR
 
 # Import PDX GIS data
@@ -139,65 +143,82 @@ n.pgirl <- pgirl_db %>% filter(pgirl == TRUE) %>% nrow()
 n.bubble <- pgirl_db %>% filter(bubble == TRUE) %>% nrow()
 ```
 
-
 Most of the PG tags are just "normal" text with a few distinguishing characteristics: the loop on the "P", the "N" that almost looks like a "U" sometimes, and the curl on the "L". They also always write the "e" as lowercase whereas all the other letters are uppercase. Some of the PG tags are in a bigger "bubble" text style. In this case the "R" has a face. This style is much less common (`r n.bubble` out of `r n.pgirl` PG tags are in the bubble style).
 
-<p align="center"> ![](style.png) </p>
+<p align="center">
 
+![](style.png)
+
+</p>
 
 # Recurring Patterns: Is "Penis Girl" more than one person?
 
 Pretty early on I started to notice that PG tags were more than just "Penis Girl". There were recurring symbols accompanying the tag. I began to wonder if maybe Penis Girl is more than just one "Girl". These tags vary from tag to tag. Could be some kind of signature? Below are the recurring symbols:
 
-<div align="center"> 
+::: {align="center"}
 ### The "circle A" anarchy symbol
- 
-![](circle-A.png){width=70%}
- 
-### ATF  
 
-![](ATF.png){width=70%}
- 
-### PC  
+![](circle-A.png)
 
-![](PC.png){width=70%}
- 
+### ATF
+
+![](ATF.png)
+
+### PC
+
+![](PC.png)
+
 And then I started seeing some "PC" tags that looked *slightly* different - the "C" had a little line on it. Was this PC the same PC? (I still don't know.)
- 
-![](PC-line.png){width=70%}
 
-*Update 8/30/2020: Turns out that this PC tagger is NOT Penis Girl! These tags are suspected to be by the Portland tagger "Bruce". Bruce's tags are often accompanied by "PC" and/or diamonds, often in clusters of three.* ![](bruce.png){width=70%}
+![](PC-line.png)
 
+*Update 8/30/2020: Turns out that this PC tagger is NOT Penis Girl! These tags are suspected to be by the Portland tagger "Bruce". Bruce's tags are often accompanied by "PC" and/or diamonds, often in clusters of three.* ![](bruce.png)
 
 So I had been sitting with the idea that maybe Penis Girl was multiple people. And then I saw it: a "Penis Crew" tag. Penis *CREW!* The style was consistent with the PG tags so I was confident it was a PG tag. Moreover...PC stands for Penis Crew! **It's multiple people!!**
 
-![](pcrew.png) 
-</div>
+![](pcrew.png)
+
 
 # Occassional Added Flair
 
 Sometimes a PG tag is more than just "Penis Girl" or "PC" or whatever. Here are some spotted tags with a little something extra to them. Hard to pick a favorite.
 
-<p align="center"> ![](sprinkles.png) </p>
+<p align="center">
 
-#  The PG Copycat
+![](sprinkles.png)
+
+</p>
+
+# The PG Copycat
 
 More recently I have started spotting tags where the style is not consistent with *the* PG style. The "P" is wrong. The capitalization is wrong. They're just wrong. Is there a copycat out there? Or is there a new member of the Penis Crew that is not conforming to style standards??
 
-<p align="center"> ![](pg-copycat.png) </p>
+<p align="center">
+
+![](pg-copycat.png)
+
+</p>
 
 # What about Beanz?
 
 As I mentioned above, there are very few PG tags in North Portland. There is, however a high density of Beanz tags in North Portland.
 
-<p align="center"> ![](Beanz/beanz.png) </p>
+<p align="center">
+
+![](Beanz/beanz.png)
+
+</p>
 
 Is there a territory war between PG and Beanz? When I saw this tag in North Portland I started to think that maybe (maybe) there was.
 
-<p align="center"> ![](Beanz/IMG_9145 PC beanz.JPG){width=50%} </p>
- 
+<p align="center">
+
+![](Beanz/IMG_9145%20PC%20beanz.JPG)
+
+</p>
+
 So far I've only spotted Beanz in North Portland, where there are almost no PG tags.
- 
+
 ```{r fig.width=10, fig.height=5}
 # Add Beanz
 
@@ -234,15 +255,24 @@ pdx_plot_beanz | pdx_zoom_beanz
 
 More frequently I have been seeing tags insinuating hate for PG. I often see PG tags painted over or crossed out by other taggers. Most notably, some taggers are calling PG a "snitch."
 
-<p align="center"> ![](snitch.png){width=70%} </p>
+<p align="center">
+
+![](snitch.png)
+
+</p>
 
 And then I saw it...a farewell from Penis Girl?
 
-<p align="center"> ![](bye.png){width=50%} </p>
+<p align="center">
+
+![](bye.png)
+
+</p>
 
 Let's keep our eyes peeled and see if this really is the end of PG.
+
+***Update March 2023:** I've received several messages about PG over the past couple of years and I love that y'all are as obsessed with PG as I am. I have been actively trying to not obsess over new PG tags since it consumed my brain and my phone storage during early pandemic days. I have learned even more yet about PG/PC that I'm just going to keep to myself so as to not obsess over keeping this page current. But I will give a couple updates: (1) PG themselves did in fact find me ages ago and we chatted on Instagram and it was like meeting a celebrity and (2) PG appears to be mostly active in Hawaii these days. I would like to believe that they moved to Hawaii but come back to PDX every now and again to give us some fresh tags. Also, as a P.S.: there is a tag just off off N. Mississippi (corner of Shaver and Michigan) featuring Penis Girl, Vagina Boy, and Confused Enby and it really feels like a special find.*
 
 ```{r}
 xfun::optipng(dir = ".")
 ```
-
