@@ -73,7 +73,7 @@ pdx_population <- read_excel("data/Census_2010_Data_Cleanedup.xlsx",
 boundaries_with_pop <- left_join(pdx_boundaries, pdx_population, by=c("NAME"="Neighborhood"))
 ```
 
-```{r echo = FALSE, message = FALSE, warning = FALSE}
+```{r echo = FALSE, message = FALSE, warning = FALSE, fig.path="static"}
 boundaries_with_pop %>% ggplot() + 
   geom_sf(aes(fill=`Percent Owned`), color = "black") +
   scale_fill_gradient2(midpoint = 50,
@@ -90,7 +90,7 @@ Here I am using color to indicate the percent of housing units that are owned in
 
 This plot was made using `ggplot2` with `geom_sf` from the `sf` package. The data is organized into shp/shapefile folders and imported using `st_read()` (also part of `sf`). This results in an information-rich dataframe that makes these kinds of plots easy to create.
 
-```{r eval = FALSE}
+```{r eval = FALSE, fig.path="static"}
 boundaries_with_pop %>% ggplot() + 
   geom_sf(aes(fill=`Percent Owned`), color = "black") + # plot the neighborhoods
   scale_fill_gradient2(midpoint = 50,
