@@ -28,10 +28,9 @@ This data was found on [Data Is Plural](https://docs.google.com/spreadsheets/d/1
 
 From Data Is Plural:
 
-> In 2015, computer scientist Randy Olson tried computing “the optimal search strategy for finding Waldo” in the seven original Where’s Waldo? books. In doing so, he transcribed a 2013 Slate chart of Waldo’s locations (itself transcribed from those seven original books). The resulting data set contains 68 rows — one for each Waldo — and four columns: book, page, x coordinate, and y coordinate.
+> In 2015, computer scientist Randy Olson tried computing "the optimal search strategy for finding Waldo" in the seven original Where's Waldo? books. In doing so, he transcribed a 2013 Slate chart of Waldo's locations (itself transcribed from those seven original books). The resulting data set contains 68 rows --- one for each Waldo --- and four columns: book, page, x coordinate, and y coordinate.
 
 You can download the CSV from Randy Olson's website archives [here](http://www.randalolson.com/wp-content/uploads/wheres-waldo-locations.csv).
-
 
 ### The Visualization: Where's Waldo?
 
@@ -39,8 +38,7 @@ You can download the CSV from Randy Olson's website archives [here](http://www.r
 
 
 
-
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="816" />
+<img src="staticunnamed-chunk-3-1.png" width="816" />
 
 ### The Details: How the Visualization was Made
 
@@ -53,7 +51,6 @@ library(ggimage)
 library(ggrepel)
 library(patchwork)
 ```
-
 
 #### Data Wrangling
 
@@ -74,7 +71,6 @@ head(waldo_pos)
 ## 5    2    3 5.430556 5.444444
 ## 6    5    3 4.791667 5.444444
 ```
-
 
 The data set is very basic and didn't really require any tidying, but I needed to add three columns: (1) the name of my Waldo .png file (more on this later), (2) the actual name of each book (since the data is provided as the book *number*), and (3) the hex code for the main color of each book cover. To get the hex codes I googled the books, pulled the cover images into photoshop, eyedropped the color, and recorded the corresponding hex. I then used `forcats::fct_relevel()` from {tidyverse} to manually define the factor levels of each book according to the book number/title.
 
@@ -125,14 +121,16 @@ head(waldo_pos)
 This visualization is created by making two visualizations and combining them using {patchwork}. (If you don't know patchwork you should definitely [read up on it](https://patchwork.data-imaginist.com/)! I use it constantly.) The first visualization, the main one, is the "scatter plot" using a Waldo icon as the points. To do this I use the {[ggimage](https://mran.microsoft.com/snapshot/2018-05-23/web/packages/ggimage/vignettes/ggimage.html)} package. I found a Waldo icon online that had a transparent background:
 
 <p align="center">
-![](waldo.png){width=20%}
+
+<img src="waldo.png" width="20%" height="20%">
+
 </p>
 
 I saved the icon as "waldo.png" - this is why I needed that `icon` column in my dataframe! I then used `ggimage::geom_image()` inside `ggplot()` just like I would use `geom_point()` but with the image provided in the aesthetics using `aes(image = icon)`. What else did I do?
 
-*  I used `ggrepel::geom_label_repel()` to add the page number labels. I prefer `geom_label_repel()` over `geom_label()` because it ensures that the labels don't overlap.  
-*  I used `facet_wrap()` to plot the 7 books separately. This is why it was important that I specified the factor levels earlier - to ensure that the books were in the proper order. If I had not done that they would have been presented alphabetically. One other tweak I made withing the `facet_wrap()` function was to use `labeller = label_wrap_gen()` to make the book titles wrap if they were too long to fit in the strip width.  
-*  I wanted the backgrounds of the facets to correspond to the colors of the book covers. I took a short cut here. It is not trivial to set the panel background colors to be different within a `facet_wrap`. (You can easily change them all to be the *same* color using `theme(panel.background = element_rect(fill = "red")`.) The short cut I took was to use `geom_rect()` to draw a rectangle under the `geom_image()` layer. I set the fill of the rectangle to be the hex codes in my `ColorHex` column and used `scale_fill_identity()` to tell ggplot that the cell values were to be interpreted as color coding information, not factors.  
+-   I used `ggrepel::geom_label_repel()` to add the page number labels. I prefer `geom_label_repel()` over `geom_label()` because it ensures that the labels don't overlap.\
+-   I used `facet_wrap()` to plot the 7 books separately. This is why it was important that I specified the factor levels earlier - to ensure that the books were in the proper order. If I had not done that they would have been presented alphabetically. One other tweak I made withing the `facet_wrap()` function was to use `labeller = label_wrap_gen()` to make the book titles wrap if they were too long to fit in the strip width.\
+-   I wanted the backgrounds of the facets to correspond to the colors of the book covers. I took a short cut here. It is not trivial to set the panel background colors to be different within a `facet_wrap`. (You can easily change them all to be the *same* color using `theme(panel.background = element_rect(fill = "red")`.) The short cut I took was to use `geom_rect()` to draw a rectangle under the `geom_image()` layer. I set the fill of the rectangle to be the hex codes in my `ColorHex` column and used `scale_fill_identity()` to tell ggplot that the cell values were to be interpreted as color coding information, not factors.
 
 
 ```r
@@ -157,7 +155,7 @@ waldo_plot <- waldo_pos %>%
         panel.border = element_rect(color = "black", size = 1))
 ```
 
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-1.png" width="816" />
+<img src="staticunnamed-chunk-8-1.png" width="816" />
 
 Okay but now there's that big empty space in the bottom corner and I want to fill it with a caption describing the data. Here is where {patchwork} comes in. I created a "plot" that is just a blank canvas with my desired caption printed on it using `geom_text()`. I used `str_wrap(label = , width = )` to make my text wrap into a "paragraph" of a specified width (given in characters).
 
@@ -189,4 +187,4 @@ waldo_plot + inset_element(inset,
                            top = 0.38)
 ```
 
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-10-1.png" width="816" />
+<img src="staticunnamed-chunk-10-1.png" width="816" />
