@@ -35,7 +35,7 @@ From the Hass Avocado Board:
 
 
 
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="480" />
+<img src="staticunnamed-chunk-2-1.png" width="480" />
 
 This plot not only looks at avocado sales in different regions, it also shows the number of avocados sold by avocado size. While this type of visualization does not give numerical readout, it does provide a quick glance at trends. The most striking trend may be that more small/medium avocados are sold than large/extra large avocados.
 
