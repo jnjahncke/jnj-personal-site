@@ -25,7 +25,7 @@ library(curl)
 library(skimr)
 library(tidyverse)
 library(circlize)
-library(chorddiag)
+# library(chorddiag)
 library(janitor)
 library(kableExtra); options(knitr.table.format = "html")
 ```
@@ -153,7 +153,7 @@ Another way to represent relationships between groups is through a Sankey or All
 
 ### Static Chord Diagram Using `circlize`
 
-```{r fig.width = 8, fig.height = 8}
+```{r fig.width = 8, fig.height = 8, fig.path="static"}
 # Define colors
 gridcolors <- c(Baptist = "#F8766D",
                 Buddhist = "#E18A00",
@@ -226,38 +226,38 @@ for(si in get.all.sector.index()) {
 }
 ```
 
-### Interactive Chord Diagram Using `chorddiag`
+<!-- ### Interactive Chord Diagram Using `chorddiag` -->
 
-For `chorddiag` the data needs to be organized as a matrix, but the subsequent coding for the diagram is much simpler.
+<!-- For `chorddiag` the data needs to be organized as a matrix, but the subsequent coding for the diagram is much simpler. -->
 
-```{r echo = FALSE, message = FALSE, warning = FALSE}
-religion_16_tabyl <- religion_16 %>% tabyl(Respondent, Partner)
+<!-- ```{r echo = FALSE, message = FALSE, warning = FALSE} -->
+<!-- religion_16_tabyl <- religion_16 %>% tabyl(Respondent, Partner) -->
 
-religionmelt <- religion_16_tabyl %>% reshape2::melt()
+<!-- religionmelt <- religion_16_tabyl %>% reshape2::melt() -->
 
-religionmatrix <- matrix(religionmelt$value %>% unlist(),
-                         byrow = TRUE,
-                         nrow = 13, ncol = 13)
-religions <- religion_16_tabyl$Respondent %>% unlist()
-dimnames(religionmatrix) <- list(Respondent = religions,
-                                 Partner = religions)
+<!-- religionmatrix <- matrix(religionmelt$value %>% unlist(), -->
+<!--                          byrow = TRUE, -->
+<!--                          nrow = 13, ncol = 13) -->
+<!-- religions <- religion_16_tabyl$Respondent %>% unlist() -->
+<!-- dimnames(religionmatrix) <- list(Respondent = religions, -->
+<!--                                  Partner = religions) -->
 
-religionmatrix %>% 
-  kable() %>% 
-  kable_styling(bootstrap_options = "condensed") %>% 
-  column_spec(1, bold = T)
-```
+<!-- religionmatrix %>%  -->
+<!--   kable() %>%  -->
+<!--   kable_styling(bootstrap_options = "condensed") %>%  -->
+<!--   column_spec(1, bold = T) -->
+<!-- ``` -->
 
-```{r fig.height=8, fig.width=9, warning = FALSE, message = FALSE}
-# Define colors
-diagcolors <- c("#F8766D", "#E18A00", "#BE9C00", "#8CAB00", "#24B700", "#00BE70", "#00C1AB", "#00BBDA", "#00ACFC", "#8B93FF", "#D575FE", "#F962DD", "#FF65AC")
+<!-- ```{r fig.height=8, fig.width=9, warning = FALSE, message = FALSE} -->
+<!-- # Define colors -->
+<!-- diagcolors <- c("#F8766D", "#E18A00", "#BE9C00", "#8CAB00", "#24B700", "#00BE70", "#00C1AB", "#00BBDA", "#00ACFC", "#8B93FF", "#D575FE", "#F962DD", "#FF65AC") -->
 
-# Create the chord diagram
-chorddiag(religionmatrix, 
-          type = "directional",
-          groupColors = diagcolors, 
-          groupnamePadding = 5, groupnameFontsize = 18,
-          chordedgeColor = "",
-          showTicks = FALSE,
-          showZeroTooltips = FALSE)
-```
+<!-- # Create the chord diagram -->
+<!-- chorddiag(religionmatrix,  -->
+<!--           type = "directional", -->
+<!--           groupColors = diagcolors,  -->
+<!--           groupnamePadding = 5, groupnameFontsize = 18, -->
+<!--           chordedgeColor = "", -->
+<!--           showTicks = FALSE, -->
+<!--           showZeroTooltips = FALSE) -->
+<!-- ``` -->
