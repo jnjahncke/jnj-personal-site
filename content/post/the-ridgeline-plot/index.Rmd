@@ -20,7 +20,7 @@ projects: []
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.path = "static", message = FALSE, warning = FALSE)
 options(knitr.table.format = "html")
 ```
 
