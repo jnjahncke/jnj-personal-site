@@ -2,7 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
-blogdown
+.DS_Store
+/blogdown
 Thumbs.db
-public/
+/public/
 Project Hugo Site.Rproj

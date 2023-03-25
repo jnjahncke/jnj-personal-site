@@ -1,0 +1,57 @@
+---
+title: Resting Heart Rate after Pulmonary Embolism
+author: ''
+date: '2020-04-15'
+slug: HR-after-PE
+categories: []
+tags: 
+  - data viz
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-05-08T09:17:36-07:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: yes
+projects: []
+---
+
+
+
+
+
+### The Data: Personal Fitbit Heart Rate Data
+
+I've been wearing a Fitbit for nearly two years at this point and as a result, I have a lot of data on my heart rate, sleep, and activity. Fitbit allows you to [export all of your data fairly easily](https://help.fitbit.com/articles/en_US/Help_article/1133). I then did some basic data wrangling to isolate my "before PE" and "after PE" heart rate data.
+
+### The Visualization: How was my heart rate affected by my embolism?
+
+
+
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+
+As the plot states, I had a pulmonary embolism last July. Being the data nerd that I am, ever since my embolism I have been obsessed with tracking my heart rate using my Fitbit. Here I used color to separate my heart rate data from before my PE to my heart rate after my PE It's clear that my heart rate has been elevated following my PE.
+
+### The Details: How the Plot was Made
+
+This plot was made in ggplot2 using `geom_line()`. The theme used is `ggplot2::theme_light()` with some simple tweaks. The color palette was made using the [`beyonce` package](https://github.com/dill/beyonce). Here I pulled two colors from the #78 color palette:
+
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="288" />
+
+
+
+```r
+ggplot(fitbit, aes(x = Week, y = BPM, group = `Heart Rate`, color = `Heart Rate`)) +
+  geom_line(size = 1) +
+  labs(y = "Resting Heart Rate (BPM)",
+       title = "Resting Heart Rate after Pulmonary Embolism",
+       subtitle = "In July 2019 I had a pulmonary embolism (PE). My heart rate increased as a result. \nHere is my resting heart rate six months before my PE and six months after my PE.") +
+  scale_x_continuous(expand = c(0.01,0.01), 
+                     breaks = seq(0, 26, 5)) +
+  theme_light() +
+  theme(panel.border = element_blank(),
+        plot.title = element_text(face = "bold", size = 15)) +
+  scale_color_manual(values = beyonce_palette(78)[c(2,4)])
+```

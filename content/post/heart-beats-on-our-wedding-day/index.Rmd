@@ -9,18 +9,16 @@ tags:
 subtitle: ''
 summary: ''
 authors: []
-lastmod: '2023-03-24T15:52:02-07:00'
-featured: false
-draft: false
+featured: no
 image:
   caption: ''
   focal_point: ''
-  preview_only: true
+  preview_only: yes
 projects: []
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, fig_retina = 1)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig_retina = 1, fig.path = "static")
 ```
 
 ```{r fig.height=5, fig.width=9, echo=FALSE, fig.showtext = TRUE}
@@ -30,8 +28,13 @@ library(lubridate)
 library(slider)
 library(jpeg)
 library(patchwork)
-library(extrafont)
 library(showtext)
+library(extrafont)
+
+colors <- c("RR" = "#DDCB68", "JJ" = "#D84F7D")
+font_add_google("Montserrat") # default font
+font_add_google("Codystar") # decorative dot font
+showtext_auto(enable = TRUE)
 
 load("final.RData")
 final
@@ -40,9 +43,9 @@ final
 
 I love data, so I wanted to somehow plot my wedding day. My now-husband wore his Fitbit on his wrist and I wore mine on my ankle (you can see it in the picture below). Fast-forward to eight months later and I have finally gotten around to plotting out our heart rate data. I designed it to match our wedding invites.
 
-![Picture of me and my husband on our wedding day. We're sitting on a couch and you can see my fitbit on my ankle.](images/R6_25064.jpg){width=80%}
+![Picture of me and my husband on our wedding day. We're sitting on a couch and you can see my fitbit on my ankle.](images/R6_25064.jpg)
 
-![Picture of our wedding invites and rings.](images/R6_21610.jpg){width=80%}
+![Picture of our wedding invites and rings.](images/R6_21610.jpg)
 
 Let's get into it.
 
