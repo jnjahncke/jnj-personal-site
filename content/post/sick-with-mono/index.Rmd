@@ -30,7 +30,7 @@ projects: []
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig_retina = 1)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig_retina = 1, fig.path = "static")
 ```
 
 ```{r}

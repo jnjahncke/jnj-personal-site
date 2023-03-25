@@ -101,7 +101,7 @@ Why does the time column have dates from the year 1899? Probably an Excel thing.
 
 
 
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" width="1008" />
+<img src="staticunnamed-chunk-5-1.png" width="1008" />
 
 ### The Details: How the Plot was Made
 
@@ -160,6 +160,6 @@ hr_plot + temp_plot + plot_layout(widths = c(3.5,7)) +
                                 plot.background = element_rect(fill = "grey95")))
 ```
 
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-7-1.png" width="1008" />
+<img src="staticunnamed-chunk-7-1.png" width="1008" />
 
 Why the weird `hjust` values? The default justification is left, all the way at the border of the plot, but I wanted the text to start closer to the y-axis so I scooted the text over a bit using `hjust.`
