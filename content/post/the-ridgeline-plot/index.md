@@ -24,13 +24,6 @@ projects: []
 
 
 
-```
-## Warning: package 'ggridges' was built under R version 4.2.3
-```
-
-```
-## Warning: package 'knitr' was built under R version 4.2.3
-```
 
 
 Ridgeline plots are a variation of density plots in which you aim to compare the distributions of several categorical variables (represented on the y-axis) for a single continuous variable (represented on the x-axis). This is a quick way to compare a large number of groups where doing something like a simple `geom_density()` + `facet_wrap()` would occupy a large amount of space. By making use of transparency the ridges can be places in close proximity to save space.
@@ -41,7 +34,7 @@ This ridgeline plot was created using the package `ggridges`, which integrates w
 * [Wilke's Github](https://github.com/wilkelab/ggridges) 
 
 
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="staticunnamed-chunk-2-1.png" width="672" />
 
 # The Data: Billboard 200 Tracks
 
@@ -101,31 +94,31 @@ This data set is from [Components One's Datasets](https://components.one/dataset
    <td style="text-align:center;"> 0.57 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> A-1 Performance </td>
-   <td style="text-align:left;"> AZ </td>
-   <td style="text-align:center;"> 2002 </td>
+   <td style="text-align:left;"> A "DC" Christmas Medley </td>
+   <td style="text-align:left;"> Destiny's Child </td>
+   <td style="text-align:center;"> 2001 </td>
+   <td style="text-align:center;"> 2000's </td>
+   <td style="text-align:center;"> 0.76 </td>
+   <td style="text-align:center;"> 0.58 </td>
+   <td style="text-align:center;"> 0.55 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A 'Yo Kato </td>
+   <td style="text-align:left;"> DMX </td>
+   <td style="text-align:center;"> 2003 </td>
    <td style="text-align:center;"> 2000's </td>
    <td style="text-align:center;"> 0.72 </td>
-   <td style="text-align:center;"> 0.57 </td>
+   <td style="text-align:center;"> 0.55 </td>
    <td style="text-align:center;"> 0.55 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> A-11 </td>
-   <td style="text-align:left;"> Jamey Johnson </td>
-   <td style="text-align:center;"> 2012 </td>
-   <td style="text-align:center;"> 2010's </td>
-   <td style="text-align:center;"> 0.73 </td>
-   <td style="text-align:center;"> 0.51 </td>
-   <td style="text-align:center;"> 0.53 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A-11 </td>
-   <td style="text-align:left;"> Buck Owens </td>
-   <td style="text-align:center;"> 1995 </td>
-   <td style="text-align:center;"> 1990's </td>
+   <td style="text-align:left;"> A (With Love) </td>
+   <td style="text-align:left;"> Stephen Kellogg And The Sixers </td>
+   <td style="text-align:center;"> 2009 </td>
+   <td style="text-align:center;"> 2000's </td>
+   <td style="text-align:center;"> 0.68 </td>
+   <td style="text-align:center;"> 0.52 </td>
    <td style="text-align:center;"> 0.55 </td>
-   <td style="text-align:center;"> 0.56 </td>
-   <td style="text-align:center;"> 0.57 </td>
   </tr>
 </tbody>
 </table>
@@ -171,7 +164,7 @@ decadeplot <- ggplot(track_data %>% filter(year >= "1960"), aes(x = danceability
 decadeplot
 ```
 
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="staticunnamed-chunk-4-1.png" width="672" />
 
 
 
@@ -197,7 +190,7 @@ ggplot(track_data %>% filter(year >= "1960"), aes(x = danceability, y = year, fi
         axis.title.y = element_text(hjust = 0.35)) # Change the justification of the y-axis label
 ```
 
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-6-1.png" width="1152" />
+<img src="staticunnamed-chunk-6-1.png" width="1152" />
 
 ### Danceability by Year
 
@@ -217,4 +210,4 @@ ggplot(track_data %>% filter(decade >= "1960"), aes(x = danceability, y = year, 
        y = "Year")
 ```
 
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-7-1.png" width="576" />
+<img src="staticunnamed-chunk-7-1.png" width="576" />
