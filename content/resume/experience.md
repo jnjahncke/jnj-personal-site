@@ -19,12 +19,20 @@ date_format = "Jan 2006"
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 
 [[experience]]
+  title = "Postdoctoral Researcher"
+  company = "Vollum Institute / Oregon Health & Science University"
+  company_url = "https://www.ohsu.edu/vollum-institute"
+  location = "Portland, Oregon"
+  date_start = "2024-03-25"
+  date_end = ""
+
+[[experience]]
   title = "Neuroscience Graduate Student Researcher"
   company = "Oregon Health & Science University"
   company_url = "https://www.ohsu.edu/school-of-medicine/neuroscience-graduate-program"
   location = "Portland, Oregon"
   date_start = "2018-09-23"
-  date_end = ""
+  date_end = "2024-03-22"
   
 [[experience]]
   title = "Teaching Assistant, Neurobiology Course, Microscopy Section"
