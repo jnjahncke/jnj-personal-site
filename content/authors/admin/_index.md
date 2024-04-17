@@ -6,7 +6,7 @@ education:
   courses:
   - course: PhD in Neuroscience
     institution: Oregon Health & Science University
-    year: TBD
+    year: 2024
   - course: BS in Psychology
     institution: University of California, Davis
     year: 2014
@@ -14,8 +14,8 @@ education:
 email: ""
 organizations:
 - name: Oregon Health & Science University
-  url: "https://www.ohsu.edu/school-of-medicine/neuroscience-graduate-program"
-role: PhD Candidate
+  url: "https://www.ohsu.edu/vollum-institute"
+role: Postdoctoral Scholar
 social:
 - icon: twitter
   icon_pack: fab
@@ -37,4 +37,4 @@ title: Jennifer Jahncke
 
 ---
 
-Jennifer is a PhD candidate in the Neuroscience Graduate Program at Oregon Health & Science University. Under the mentorship of Dr. Kevin Wright she studies the role that the scaffolding protein dystroglycan plays in the structure and function of inhibitory synapses in the brain. Her goal is to further our understanding of the cognitive symptoms that are experienced by dystroglycanopathy patients. Jennifer is also interested in data science and science communication. In her free time Jennifer can be found hiking, crocheting, making art, and petting dogs.
+Jennifer is a postdoc in the Wright Lab at the Vollum Institute at Oregon Health & Science University. Under the mentorship of Dr. Kevin Wright she studies the role that the scaffolding protein dystroglycan plays in the structure and function of inhibitory synapses in the brain. Her goal is to further our understanding of the cognitive symptoms that are experienced by dystroglycanopathy patients. Jennifer is also interested in data science and science communication. In her free time Jennifer can be found hiking, crocheting, making art, and petting dogs.

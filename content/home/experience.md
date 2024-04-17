@@ -18,12 +18,20 @@ date_format = "Jan 2006"
 #   Leave `date_end` empty if it's your current employer.
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 [[experience]]
+  title = "Postdoctoral Researcher"
+  company = "Oregon Health & Science University"
+  company_url = "https://www.ohsu.edu/vollum-institute"
+  location = "Portland, Oregon"
+  date_start = "2024-03-25"
+  date_end = ""
+
+[[experience]]
   title = "Neuroscience Graduate Student Researcher"
   company = "Oregon Health & Science University"
   company_url = "https://www.ohsu.edu/school-of-medicine/neuroscience-graduate-program"
   location = "Portland, Oregon"
   date_start = "2018-09-23"
-  date_end = ""
+  date_end = "2024-03-22"
   
 [[experience]]
   title = "Staff Research Assistant"
