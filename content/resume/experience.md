@@ -6,7 +6,7 @@ active = true  # Activate this widget? true/false
 weight = 20  # Order that this section will appear.
 
 title = "Experience"
-subtitle = "For my full CV visit my [CV repo on Github](https://github.com/jnjahncke/jnj-cv)."
+subtitle = "To view my full CV visit my [CV repo on Github](https://github.com/jnjahncke/jnj-cv)."
 
 # Date format for experience
 #   Refer to https://sourcethemes.com/academic/docs/customization/#date-format
