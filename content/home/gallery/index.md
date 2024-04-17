@@ -6,7 +6,7 @@ active = true  # Activate this widget? true/false
 weight = 40  # Order that this section will appear.
 
 title = "Gallery"
-subtitle = """<p style="color:white"> Cerebellum means "little brain" in Latin. It is a structure that sits at the base of the brain and has long been known to be important for smooth body movements but has more recently been recognized as important for cognition and emotion. Cerebellar cortex is made up of large Purkinje neurons and small basket and stellate cells. Together, these cells form a sterotyped circuit that is repeated throughout the structure.</p> """ 
+subtitle = """<p> Cerebellum means "little brain" in Latin. It is a structure that sits at the base of the brain and has long been known to be important for smooth body movements but has more recently been recognized as important for cognition and emotion. Cerebellar cortex is made up of large Purkinje neurons and small basket and stellate cells. Together, these cells form a sterotyped circuit that is repeated throughout the structure.</p> """ 
 
 [design]
   columns = "2"
@@ -18,7 +18,9 @@ subtitle = """<p style="color:white"> Cerebellum means "little brain" in Latin. 
   #   Any HTML color name or Hex value is valid.
   
   # Background color.
-  color = "#FFD1E7"
+  # color = "#FFD1E7"
+  text_color_dark = "#a8afff" 
+  text_color = "#272d73" 
 +++
 
 {{< gallery >}}
