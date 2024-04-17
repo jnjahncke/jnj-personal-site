@@ -40,11 +40,7 @@ This ridgeline plot was created using the package `ggridges`, which integrates w
 * [CRAN vignette](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html)  
 * [Wilke's Github](https://github.com/wilkelab/ggridges) 
 
-
-```{r warning=FALSE, message=FALSE, echo=FALSE}
-load("decade_danceability.RData")
-decadeplot
-```
+![](featured.png)
 
 # The Data: Billboard 200 Tracks
 
@@ -163,11 +159,6 @@ decadeplot <- ggplot(track_data %>% filter(year >= "1960"), aes(x = danceability
   theme(axis.title.y = element_text(hjust = 0.25)) # Move y lable to be in the center of the y-axis labels, not the whole y-axis
 decadeplot
 ```
-
-```{r echo = FALSE}
-save(decadeplot, file = "decade_danceability.RData") # Save plot as an R object so that in the future I can call it before it has been created
-```
-
 
 ### Danceability by Year: Faceted by Decade
 

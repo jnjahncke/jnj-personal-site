@@ -33,8 +33,7 @@ This ridgeline plot was created using the package `ggridges`, which integrates w
 * [CRAN vignette](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html)  
 * [Wilke's Github](https://github.com/wilkelab/ggridges) 
 
-
-<img src="staticunnamed-chunk-2-1.png" width="672" />
+![](featured.png)
 
 # The Data: Billboard 200 Tracks
 
@@ -164,10 +163,7 @@ decadeplot <- ggplot(track_data %>% filter(year >= "1960"), aes(x = danceability
 decadeplot
 ```
 
-<img src="staticunnamed-chunk-4-1.png" width="672" />
-
-
-
+<img src="staticunnamed-chunk-3-1.png" width="672" />
 
 ### Danceability by Year: Faceted by Decade
 
@@ -190,7 +186,7 @@ ggplot(track_data %>% filter(year >= "1960"), aes(x = danceability, y = year, fi
         axis.title.y = element_text(hjust = 0.35)) # Change the justification of the y-axis label
 ```
 
-<img src="staticunnamed-chunk-6-1.png" width="1152" />
+<img src="staticunnamed-chunk-4-1.png" width="1152" />
 
 ### Danceability by Year
 
@@ -210,4 +206,4 @@ ggplot(track_data %>% filter(decade >= "1960"), aes(x = danceability, y = year, 
        y = "Year")
 ```
 
-<img src="staticunnamed-chunk-7-1.png" width="576" />
+<img src="staticunnamed-chunk-5-1.png" width="576" />
