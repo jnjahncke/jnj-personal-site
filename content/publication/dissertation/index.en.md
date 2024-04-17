@@ -2,7 +2,7 @@
 title: A functional role for Dystroglycan at inhibitory synapses across multiple brain
   regions
 author: ''
-date: '2024-03-25'
+date: '2024-03-18'
 slug: dissertation
 categories: []
 tags:
@@ -10,7 +10,7 @@ tags:
 authors: 
   - JN Jahncke
 doi: 'https://doi.org/10.6083/bpxhc42751'
-publishDate: '2024-03-25T14:50:18-07:00'
+publishDate: '2024-03-18T14:50:18-07:00'
 publication_types:
   - '7'
 publication: 'Oregon Health and Science University'
