@@ -24,10 +24,10 @@ This project was initially inspired by a past project, the [O-factor](https://gi
 
 Visit [our github](https://github.com/jnjahncke/o-index) for source code and an in-depth description of how an o-index is calculated. In short, given an author's name, our code performs a PubMed search for publications and, for any paper that is open access on the PMC database, scrapes the manuscript content for key terms to determine which components of the published body of work is accessible to the public.
 
-As part of our project, we created a simple web app using Shiny for Python.
+As part of our project, we created a simple web app using Shiny for Python. (You can also access the app [here](https://jennifer-jahncke.shinyapps.io/o-index/).)
 
 <iframe height="1500" width="100%" frameborder="no" src="https://jennifer-jahncke.shinyapps.io/o-index/"> </iframe>
 
 I continue to find Shiny for Python apps easy to write and difficult to deploy. When we created this app, Shiny for Python was still in beta testing days so I remain hopeful that deployment will get easier in time.
 
-There are a lot of caveats to the way our code calculates the o-index, many of which are outlined on [our github](https://github.com/jnjahncke/o-index) README. For one, the PMC web scraping stage relies on my personal PubMed API key which is not ideal. If I had more time I might attempt to play around with this project some more but for now, it remains untouched since deployment during Neurohackademy 2023.
+There are a lot of caveats to the way our code calculates the o-index, many of which are outlined on [our github](https://github.com/jnjahncke/o-index) readme. For one, the PMC web scraping stage relies on my personal PubMed API key which is not ideal. If I had more time I might attempt to play around with this project some more but for now, it remains untouched since deployment during Neurohackademy 2023.
