@@ -20,7 +20,7 @@ subtitle = ""
   name = "R"
   description = ""
   
- [[feature]]
+[[feature]]
    icon = "code"
    icon-pack = "fas"
    name = "Python"
