@@ -17,6 +17,10 @@ image:
 projects: []
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig_retina = 1, fig.path = "static")
+```
+
 I take the Portland food weeks very seriously. My partner and I make a list of our must-trys and then I make out plan of attack. We usually hit up 2-3 places a night until we've exhausted all the places that we wanted to try. Burger Week is coming up in a couple weeks and I wanted to streamline things a bit: I wanted a spreadsheet of all of the burgers. I knew that web scraping in R was a thing but honestly I had always been a bit intimidated. I had some free time on my hands and figured: now is the time to learn. So I googled a few tutorials and dove straight in. It wound up being so much easier than I thought it would be. Let's learn together.
 
 The tutorial I wound up reading in most detail is [this one](https://www.analyticsvidhya.com/blog/2017/03/beginners-guide-on-web-scraping-in-r-using-rvest-with-hands-on-knowledge/). The reason I liked this tutorial is that it turned me on to this nifty little tool to kinda cheat a little - it's a Chrome extension called [SelectorGadget](https://selectorgadget.com/) that makes finding the relevant CSS elements easy peasy. 
@@ -41,7 +45,10 @@ webpage <- read_html(url)
 Step 4: Now go to your website and activate SelectorGadget. Click on the element you want to scrape. For me, I did the restaurant names first. Scroll through the whole page and make sure the only things highlighted green/yellow are things you want. If there are any other elements highlighted, click on them and they will turn red/be excluded.
 
 
-<center> ![](restaurant-name.png){width=70%} </center>
+```{r out.width = "400px", echo = FALSE}
+knitr::include_graphics(path = "restaurant-name.png")
+```
+
 
 
 The SelectorGadget tells me that the CSS element that I want is `.headline a`. Back in R, lets use that to scrape the restaurant names. Use `html_nodes()` to scrape the element and `html_text2()` to read the text. 
