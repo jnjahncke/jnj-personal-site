@@ -34,13 +34,13 @@ date_format = "Jan 2006"
   date_start = "2018-09-23"
   date_end = "2024-03-22"
   
-[[experience]]
-  title = "Teaching Assistant, Neurobiology Course, Microscopy Section"
-  company = "Marine Biological Laboratory"
-  company_url = "https://www.mbl.edu/education/courses/neurobiology/"
-  location = "Woods Hole, Massachusetts"
-  date_start = "2018-06-24"
-  date_end = "2018-07-15"
+# [[experience]]
+#   title = "Teaching Assistant, Neurobiology Course, Microscopy Section"
+#   company = "Marine Biological Laboratory"
+#   company_url = "https://www.mbl.edu/education/courses/neurobiology/"
+#   location = "Woods Hole, Massachusetts"
+#   date_start = "2018-06-24"
+#   date_end = "2018-07-15"
   
 [[experience]]
   title = "Staff Research Assistant"
