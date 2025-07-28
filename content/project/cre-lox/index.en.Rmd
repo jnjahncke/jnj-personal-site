@@ -34,6 +34,18 @@ An example: *NEX* (AKA *NeuroD6*) is a gene expressed by pyramidal neurons in th
 
 ![](example-nex-dag1.png)
 
+Of course this explanation was a bit or an over simplification. In reality, mice have two of every chromosome, meaning that they can be homozygous wild-type (two wild-type alleles), heterozygous for a transgene (one wild-type allele, one transgenic allele), or homozygous transgenic (two copies of the transgene). In the lab we set up the following cross to ensure that we get conidtional knockout (cKO) pups and conditional heterozygote (cHet) pups to use as a control from the same litter: one parent carries one copy of Cre and one floxed allele whereas the other parent does not carry Cre at all and has two floxed alleles (see image below). Remember Punnett squares? If we create a Punnet square for the Cre allele, you can see that half of the resultant pups will get one Cre<sup>+</sup> allele and the other half will have the WT allele only. For the floxed gene, half of the pups will get two floxed alleles and the other half will carry one WT allele and one floxed allele. This gives us 4 possible genotypes for the pups from this breeding pair, each occurring with a frequency of 1 in 4.
+
+| Genotype | Expression Pattern |
+|---------|-------------------|
+|Promoter<sup>Cre/WT</sup>;Gene<sup>flox/flox</sup> | This is a conditional knockout (cKO) mouse. Cre+ cells will lose both copies of the floxed gene, creating a knockout expression profile. |
+|Promoter<sup>Cre/WT</sup>;Gene<sup>flox/WT</sup> | This is a conditional heterozygous (cHet) mouse. Cre+ cells will lose one copy of the floxed allele, leaving one wild-type copy in place. Typically (not always) these animals will appear just like a wild-type animal. We often use these as the control comparision for cKO mice. |
+|Promoter<sup>WT/WT</sup>;Gene<sup>flox/flox</sup> | Because there is no Cre expression in this mouse, the floxed gene should retain it's wild-type expression. We don't typically use these for experiments as they wouldn't allow us to control for the effect of Cre expression. |
+|Promoter<sup>WT/WT</sup>;Gene<sup>flox/WT</sup> | Because there is no Cre expression in this mouse, the floxed gene should retain it's wild-type expression. We don't typically use these for experiments as they wouldn't allow us to control for the effect of Cre expression. |
+
+![](two-alleles.png)
+
+
 The invention of CRISPR has made the design of these so-called transgenic mice relatively easy and there are facilities that will design and produce transgenic mice for you. Since the Cre-lox system has been around for a while now, a lot of Cre-expressing mice and floxed mice are available at repositories like The Jackson Laboratory. So for the most part, scientists can just order the pair of Cre and floxed mice necessary for their experiments without having to do any fancy genetic engineering themselves.
 
 ## Going Further: Reporter Alleles
