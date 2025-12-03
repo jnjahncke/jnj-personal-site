@@ -6,6 +6,6 @@
 .DS_Store
 /blogdown
 Thumbs.db
-/public/
+public/
 Project Hugo Site.Rproj
-/content/project/cre-lox/gitignore/
+/content/project/cre-lox/gitignore
