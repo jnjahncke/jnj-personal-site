@@ -218,7 +218,7 @@ Is there a territory war between PG and Beanz? When I saw this tag in North Port
 
 So far I've only spotted Beanz in North Portland, where there are almost no PG tags.
 
-```{r fig.width=10, fig.height=5}
+```{r fig.width=10, fig.height=5, fig.path="static", fig.path="static"}
 # Add Beanz
 
 # Convert to mercator

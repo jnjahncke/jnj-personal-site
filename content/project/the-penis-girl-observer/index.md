@@ -122,7 +122,7 @@ Is there a territory war between PG and Beanz? When I saw this tag in North Port
 
 So far I've only spotted Beanz in North Portland, where there are almost no PG tags.
 
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-7-1.png" width="960" />
+<img src="staticunnamed-chunk-7-1.png" width="960" />
 
 # Hate for Penis Girl & PG Farewell?
 
