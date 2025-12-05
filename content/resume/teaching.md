@@ -53,7 +53,7 @@ date_format = "Jan 2006"
   title = "Course Faculty: Foundations of Medicine Block 6 - Nervous System and Function"
   certificate_url = ""
   date_start = "2023-08-23"
-  date_end = ""
+  date_end = "2025-08-27"
   description = ""
   
 [[item]]
@@ -62,27 +62,9 @@ date_format = "Jan 2006"
   title = "Lecturer: Rigor & Reproducibility in Light Microscopy"
   certificate_url = ""
   date_start = "2023-08-30"
-  date_end = ""
+  date_end = "2025-09-12"
   description = ""
   
-[[item]]
-  organization = "Oregon Health & Science University"
-  organization_url = "https://www.ohsu.edu/school-of-medicine/md-program/md-program-curriculum"
-  title = "Course Faculty: Foundations of Medicine Block 6 - Nervous System and Function"
-  certificate_url = ""
-  date_start = "2024-08-28"
-  date_end = ""
-  description = ""
-  
-[[item]]
-  organization = "Oregon Health & Science University"
-  organization_url = ""
-  title = "Lecturer: Rigor & Reproducibility in Light Microscopy"
-  certificate_url = ""
-  date_start = "2024-09-24"
-  date_end = ""
-  description = ""
-
 [[item]]
   organization = "Marine Biological Laboratory"
   organization_url = "https://www.mbl.edu/education/advanced-research-training-courses/course-offerings/analytical-and-quantitative-light-microscopy"
