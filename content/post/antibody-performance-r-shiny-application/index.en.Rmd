@@ -1,0 +1,165 @@
+---
+title: Antibody Performance R Shiny Application
+author: ''
+date: '2025-12-09'
+slug: antibody-performance-r-shiny-application
+categories: []
+tags:
+  - how to
+  - interactive
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2025-12-09T16:21:05-08:00'
+featured: false
+draft: false
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: true
+projects: []
+---
+
+My bread and butter technique as a neuroscientist is immunohistochemistry - using fluorescently conjugated antibodies to visualize protein localization in a fixed brain section. I've carved a niche for myself as the antibody whisperer. Give me an unvalidated antibody and I will find the optimal conditions to get it working. I have a suite a different fixatives that may or may not need to be paired with an antigen retrieval step. This means for each new antibody, I test its performance in anywhere from 2 to 8 conditions. It can be hard to keep track of which antibody likes which condition (or which condition is good enough). For this reason, I whipped up a really quick Shiny app to show me example microscopy images under each condition I have tested an antibody in. The code wound up being super simple and now that I know my way around Shiny apps a little better the whole thing came together in under an hour. I reference it regularly and it has truly been a game changer. 
+
+```{r echo = FALSE, message = FALSE}
+library(tidyverse)
+antibodies <- readxl::read_excel(path = "catalog.xlsx")
+```
+
+Briefly, the app works by loading in a master excel sheet that contains (1) the file path to the representative image and (2) the metadata for the experimental conditions that led to that image. The files are stored in a subfolder called `www`. The spreadsheet has the following columns: `r antibodies |> colnames()`
+
+Most column names are self explanitory, but to run through them breifly:
+
+Column Name | Information
+---|---
+Antibody | Name of the protein that the antibody recognizes, or the name of the antibody clone
+Vendor | Vendor from which we bought the antibody
+Cat. No. | Catalog number
+Species | Antibody host species
+Conc. | Concentration I used the antibody at
+Channel | Secondary antibody peak absorbency wavelength
+Region | Brain region imaged
+AgR | Whether or not I used antigen retreival, and which method I used
+Fixative | Fixative used for that experiment (Paraformaldehyde, Glyoxal, Mixure, etc. I have shorthand for most of these)
+FixMethod | How the fixative was applied to the tissue
+Anesthesia | Method of anesthesia for the animal before euthanasia (I found this can effect certain stains...)
+ImagingModality | Which microscope/modality was used for image acquisition
+File | The name of the file within the `www` folder
+
+
+A snapshot of the spreadsheet, read in as a tibble:
+
+```{r}
+antibodies <- readxl::read_excel(path = "catalog.xlsx")
+antibodies |> head()
+```
+
+The app first loads the metadata databse (`catalog.xlsx`) and then filters the database based on the information the user inputs in the app, displaying the requested information.
+
+```{r eval= FALSE}
+antibodies <- readxl::read_excel(path = "catalog.xlsx")
+
+# Format antibody info for display
+antibodies <- antibodies |> mutate(ab_list = paste0(Antibody, " (", Vendor, ", ", `Cat. No.`, ")")) |> arrange(ab_list)
+
+# format image display in table
+addResourcePath("images", here::here("www"))
+first <- '<img src="'
+last <- '" height="350"></img>'
+antibodies <- antibodies |> mutate(Image = paste0(first, "images/",File, last))
+
+# define choices for drop down field
+ab_choices <- antibodies$ab_list |> as_factor() |> levels()
+fix_choices <- antibodies$Fixative |> as_factor() |> levels()
+fixM_choices <- antibodies$FixMethod |> as_factor() |> levels()
+reg_choices <- antibodies$Region |> as_factor() |> levels()
+agr_choices <- antibodies$AgR |> as_factor() |> levels()
+ane_choices <- antibodies$Anesthesia |> as_factor() |> levels()
+imgM_choices <- antibodies$ImagingModality |> as_factor() |> levels()
+```
+
+Then I just need to specify the application layout/operation:
+
+```{r eval = FALSE}
+# Define UI for application
+ui <- fluidPage(
+  
+  # Application title
+  titlePanel("Antibody Testing"),
+  
+  # Sidebar with a slider input for number of bins 
+  sidebarLayout(
+    sidebarPanel(
+      selectizeInput("ab", label = "Select Antibody:", 
+                     choices = ab_choices, selected = "Calbindin (Boster Bio, M03047-2)", 
+                     multiple = TRUE),
+      width = 8
+    ),
+    
+    # Show a plot of the generated distribution
+    mainPanel(
+      # filters
+      wellPanel(p("Apply Filters (Optional):"),
+                fluidRow(column(width = 2, checkboxGroupInput("fix", label = "Fixative:", 
+                                                              choices = fix_choices, selected = fix_choices)),
+                         column(width = 2, checkboxGroupInput("fixM", label = "Fix Method:", 
+                                                              choices = fixM_choices, selected = fixM_choices)),
+                         column(width = 2, checkboxGroupInput("ane", label = "Anesthesia:", 
+                                                              choices = ane_choices, selected = ane_choices)),
+                         column(width = 2, checkboxGroupInput("agr", label = "Antigen Retrieval:", 
+                                                              choices = agr_choices, selected = agr_choices)),
+                         column(width = 2, checkboxGroupInput("region", label = "Region:", choices = reg_choices, selected = reg_choices)),
+                         column(width = 2, checkboxGroupInput("imgM", label = "Imaging Modality:", 
+                                                              choices = imgM_choices, selected = imgM_choices))),
+                width = 8),
+      
+      DT::dataTableOutput("ab_table") 
+    )
+  )
+)
+
+# Define required server logic
+server <- function(input, output) {
+  
+  output$ab_table <- DT::renderDT(
+    antibodies |> filter(ab_list %in% input$ab,
+                         Fixative %in% input$fix,
+                         FixMethod %in% input$fixM,
+                         Anesthesia %in% input$ane,
+                         AgR %in% input$agr,
+                         Region %in% input$region,
+                         ImagingModality %in% input$imgM) |> 
+      select(-ab_list, -File) |> DT::datatable(escape = FALSE, rownames = FALSE)
+  )
+
+
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+```
+
+That's the *whole thing*. You can use it to look at one antibody, across various conditions.
+
+<br>
+<video style="display:block; margin:0 auto;" controls autoplay loop>
+
+<source src="filters.mp4" type="video/mp4">
+
+</video>
+<br>
+
+You can also use it to compare multiple antibodies side-by-side.
+
+<br>
+<video style="display:block; margin:0 auto;" controls autoplay loop>
+
+<source src="antibodies.mp4" type="video/mp4">
+
+</video>
+<br>
+
+For now, I only host the application locally, as it only benefits me, so I also figured out how to create a shortcut to launch the app from my desktop. I am running Windows so I do this using a batch file. In the same folder I have my app saved in (though the batch file can be stored anywhere on your computer), I have a file `antibody_performance.bat` whose contents are `"path_to_R.exe" -e "shiny::runApp('path_to_folder_w_app', launch.brower = TRUE)"`. It's a simple line of code that broken down says "here is where R is, execute (-e) the following code in R." Then I made a shortcut to the batch file, which I keep on my desktop for easy access. When I double click the shortcut, the command window opens, boots up R, runs the `shiny::runApp()` command, and launches the app in my internet browser.
+
+I've been using this app for the better part of a year now and I don't have any major tweaks in mind. I do have a pipe dream of hosting a Google Sheet metadata database on our lab's Google Drive that any lab member could add their data to, with the `www` folder also in the Google Drive, and then hosting the app online so that all lab members could contribute. We would just need to make sure that we avoid issues that may arise from multiple users (inconsistently entered metadata, mishandling of file names, etc.). Maybe one day :)
