@@ -18,6 +18,15 @@ date_format = "Jan 2006"
 #   Leave other parameters empty if not required.
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 
+[[item]]
+  organization = "Boot.dev"
+  organization_url = ""
+  title = "Learn SQL"
+  url = "https://www.boot.dev/courses/learn-sql"
+  certificate_url = ""
+  date_start = "2026-10-01"
+  date_end = "2026-11-01"
+  description = ""
 
 [[item]]
   organization = "Marine Biological Laboratory"

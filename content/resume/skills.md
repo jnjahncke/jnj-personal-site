@@ -27,15 +27,21 @@ subtitle = ""
    description = ""
    
 [[feature]]
-  icon = "adobe"
-  icon_pack = "fab"
-  name = "Illustrator/Photoshop"
+  icon = "database"
+  icon_pack = "fas"
+  name = "SQL"
   description = ""  
- 
+
 [[feature]]
   icon = "chart-bar"
   icon-pack = "far"
   name = "Data Management & Analysis"
+  description = ""
+  
+[[feature]]
+  icon = "adobe"
+  icon_pack = "fab"
+  name = "Illustrator/Photoshop"
   description = ""
   
 [[feature]]
@@ -44,11 +50,11 @@ subtitle = ""
   name = "Microscopy"
   description = ""
   
-[[feature]]
-  icon = "bolt"
-  icon_pack = "fas"
-  name = "Electrophysiology"
-  description = ""
+# [[feature]]
+#   icon = "bolt"
+#   icon_pack = "fas"
+#   name = "Electrophysiology"
+#   description = ""
 
 # [[feature]]
 #   icon = "dna"

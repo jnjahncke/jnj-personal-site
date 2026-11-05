@@ -37,4 +37,4 @@ title: Jennifer Jahncke
 
 ---
 
-Jennifer is a postdoc in the Wright Lab at the Vollum Institute at Oregon Health & Science University. Under the mentorship of Dr. Kevin Wright she studies the role that the scaffolding protein dystroglycan plays in the structure and function of inhibitory synapses in the brain. Her goal is to further our understanding of the cognitive symptoms that are experienced by dystroglycanopathy patients. Jennifer is also interested in data science and science communication. In her free time Jennifer can be found hiking, crocheting, making art, and petting dogs.
+Jennifer is a postdoc at the Vollum Institute at Oregon Health & Science University. She studies the role of synaptic cell adhesion molecules in the formation of inhibitory synapses in the brain. Jennifer is also passionate about data science and science communication. If you give Jennifer a dataset, she will clean it and crunch it for you in no time. In her free time Jennifer can be found crocheting, making art, and petting dogs.
